@@ -1,2 +1,2 @@
 export * from './base.repository';
-export * as PostRepository from './post.repository';
+export * as Post from './post.repository';
