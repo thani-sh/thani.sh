@@ -1,2 +1,2 @@
-export * from './database';
-export * as post from './post.repository';
+export * from './base.repository';
+export * as PostRepository from './post.repository';
