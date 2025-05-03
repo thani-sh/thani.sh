@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { applyAction } from '$app/forms';
 	import type { NewPost } from '$lib/types';
-	import Editor from '$lib/ui/Editor.svelte';
+	import { PostEditor } from '$lib/ui';
 
 	export let form;
 
@@ -18,14 +18,12 @@
 	}
 </script>
 
-<div class="container mx-auto p-4">
-	<h1 class="mb-6 text-2xl font-bold">New Post</h1>
-
+<div class="container mx-auto p-4 pt-32">
 	{#if form?.error}
 		<div class="alert alert-error mb-4">
 			<span>{form.error}</span>
 		</div>
 	{/if}
 
-	<Editor onSubmit={handleSubmit} />
+	<PostEditor onSubmit={handleSubmit} />
 </div>

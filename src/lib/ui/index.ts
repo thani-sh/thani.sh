@@ -1,1 +1,1 @@
-export * as Editor from './editor.svelte';
+export { default as PostEditor } from './PostEditor.svelte';

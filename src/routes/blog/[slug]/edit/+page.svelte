@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { applyAction } from '$app/forms';
 	import type { NewPost } from '$lib/types';
-	import Editor from '$lib/ui/Editor.svelte';
+	import { PostEditor } from '$lib/ui';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -37,5 +37,5 @@
 		</div>
 	{/if}
 
-	<Editor {currentData} onSubmit={handleSubmit} />
+	<PostEditor {currentData} onSubmit={handleSubmit} />
 </div>
