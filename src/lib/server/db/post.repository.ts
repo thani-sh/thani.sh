@@ -14,6 +14,9 @@ export type PostItem = Pick<Post, 'id' | 'slug' | 'heading' | 'summary' | 'creat
 // Export types used when creating a new post
 export type NewPost = Omit<Post, 'id' | 'created_at' | 'updated_at'>;
 
+// Export known errors for this repository
+export const ErrSlugTaken = new Error('Slug already taken');
+
 /**
  * Fetch all posts from the database
  */
@@ -51,6 +54,16 @@ export async function insert(post: NewPost): Promise<Post> {
  * Modify an existing post in the database
  */
 export async function modify(id: number, post: Partial<NewPost>): Promise<void> {
+	if (Object.keys(post).length === 0) {
+		return;
+	}
+	if (post.slug) {
+		// Check if the updated slug is already taken
+		const existingPost = await getBySlug(post.slug);
+		if (existingPost && existingPost.id !== id) {
+			throw ErrSlugTaken;
+		}
+	}
 	await db
 		.update(postTable)
 		.set({ ...post, updated_at: new Date() })
