@@ -6,41 +6,36 @@ import type { Actions } from './$types';
 
 // Custom zod type to parse string[]
 const jsonStringArray = z.preprocess(
-	(val) => (typeof val === 'string' ? JSON.parse(val) : undefined),
+	(val) => (typeof val === 'string' ? JSON.parse(val) : []),
 	z.array(z.string())
 );
 
 // Schema for updating a post
-const updateSchema = z.object({
-	slug: z.string(),
+const insertSchema = z.object({
+	slug: z.string().min(1, 'Slug is required'),
 	tags: jsonStringArray,
-	heading: z.string(),
-	summary: z.string(),
-	content: z.string()
+	heading: z.string().min(1, 'Heading is required'),
+	summary: z.string().min(1, 'Summary is required'),
+	content: z.string().min(1, 'Content is required')
 });
 
 /**
  * Actions for updating a blog post.
  */
 export const actions: Actions = {
-	update: async ({ request, params }) => {
+	insert: async ({ request }) => {
 		try {
 			// Parse the form data and validate it
 			const data = await request.formData();
-			const diff: Partial<NewPost> = updateSchema.parse({
+			const post: NewPost = insertSchema.parse({
 				slug: data.get('slug')?.toString(),
 				tags: data.get('tags')?.toString(),
 				heading: data.get('heading')?.toString(),
 				summary: data.get('summary')?.toString(),
 				content: data.get('content')?.toString()
 			});
-			// Get current post from the database by slug
-			const post = await Post.getBySlug(params.slug);
-			if (!post) {
-				return fail(404, { error: 'Post not found' });
-			}
 			// Update the post in the database
-			await Post.modify(post.id, diff);
+			await Post.insert(post);
 		} catch (error) {
 			if (error === Post.ErrSlugTaken) {
 				return fail(400, { error: 'Slug already taken' });

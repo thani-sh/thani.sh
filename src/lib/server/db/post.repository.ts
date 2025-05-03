@@ -1,18 +1,10 @@
-import { desc, eq, type InferSelectModel } from 'drizzle-orm';
-import { db } from './base.repository';
+import type { NewPost, Post } from '$lib/types';
+import { desc, eq } from 'drizzle-orm';
+import { db } from './drizzle';
 import { postTable } from './post.schema';
 
 // Re-export the post table!
 export { postTable as table };
-
-// Export types used when fetching the full post item
-export type Post = InferSelectModel<typeof postTable>;
-
-// Export types used when fetching a list of posts
-export type PostItem = Pick<Post, 'id' | 'slug' | 'heading' | 'summary' | 'created_at'>;
-
-// Export types used when creating a new post
-export type NewPost = Omit<Post, 'id' | 'created_at' | 'updated_at'>;
 
 // Export known errors for this repository
 export const ErrSlugTaken = new Error('Slug already taken');
