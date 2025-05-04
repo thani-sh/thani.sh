@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { applyAction } from '$app/forms';
-	import { goto } from '$app/navigation';
+	import { goto, invalidateAll } from '$app/navigation';
 	import type { NewPost } from '$lib/types';
 	import { PostEditor } from '$lib/ui';
 
@@ -16,7 +16,13 @@
 
 		const res = await fetch('?/insert', { method: 'POST', body });
 		await applyAction(await res.json());
+		await invalidateAll();
+
 		goto(`/blog/${formData.slug}`);
+	}
+
+	async function handleCancel() {
+		goto('/blog');
 	}
 </script>
 
@@ -27,5 +33,5 @@
 		</div>
 	{/if}
 
-	<PostEditor onSubmit={handleSubmit} />
+	<PostEditor onSubmit={handleSubmit} onCancel={handleCancel} />
 </div>

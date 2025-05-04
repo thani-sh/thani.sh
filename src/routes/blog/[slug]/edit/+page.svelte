@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { applyAction } from '$app/forms';
-	import { goto } from '$app/navigation';
+	import { goto, invalidateAll } from '$app/navigation';
 	import type { NewPost } from '$lib/types';
 	import { PostEditor } from '$lib/ui';
 	import type { PageData } from './$types';
@@ -13,7 +13,7 @@
 		tags: data.post.tags ? [...data.post.tags] : [],
 		heading: data.post.heading || '',
 		summary: data.post.summary || '',
-		content: data.post.content || ''
+		content: data.post.content || {}
 	};
 
 	async function handleSubmit(formData: NewPost) {
@@ -26,18 +26,26 @@
 
 		const res = await fetch('?/update', { method: 'POST', body });
 		await applyAction(await res.json());
+		await invalidateAll();
+
 		goto(`/blog/${formData.slug}`);
+	}
+
+	async function handleCancel() {
+		if (currentData.slug) {
+			goto(`/blog/${currentData.slug}`);
+		} else {
+			goto('/blog');
+		}
 	}
 </script>
 
-<div class="container mx-auto p-4">
-	<h1 class="mb-6 text-2xl font-bold">Edit Post</h1>
-
+<div class="container mx-auto p-4 lg:pt-32">
 	{#if form?.error}
 		<div class="alert alert-error mb-4">
 			<span>{form.error}</span>
 		</div>
 	{/if}
 
-	<PostEditor {currentData} onSubmit={handleSubmit} />
+	<PostEditor post={currentData} onSubmit={handleSubmit} onCancel={handleCancel} />
 </div>
