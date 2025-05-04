@@ -1,4 +1,4 @@
-import type { NewPost, Post } from '$lib/types';
+import type { NewPost, Post, PostItem } from '$lib/types';
 import { desc, eq } from 'drizzle-orm';
 import { db } from './drizzle';
 import { postTable } from './post.schema';
@@ -12,8 +12,19 @@ export const ErrSlugTaken = new Error('Slug already taken');
 /**
  * Fetch all posts from the database
  */
-export async function getAll(): Promise<Post[]> {
-	return await db.select().from(postTable).orderBy(desc(postTable.created_at)).all();
+export async function getAll(): Promise<PostItem[]> {
+	return await db
+		.select({
+			id: postTable.id,
+			slug: postTable.slug,
+			tags: postTable.tags,
+			heading: postTable.heading,
+			summary: postTable.summary,
+			created_at: postTable.created_at
+		})
+		.from(postTable)
+		.orderBy(desc(postTable.created_at))
+		.all();
 }
 
 /**
