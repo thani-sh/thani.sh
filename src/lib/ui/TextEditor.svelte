@@ -1,4 +1,3 @@
-<!-- TextEditor.svelte -->
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
 
@@ -27,12 +26,7 @@
 					autofocus: false,
 					tools: {
 						header: (await import('@editorjs/header')).default,
-						list: (await import('@editorjs/list')).default,
-						checklist: (await import('@editorjs/checklist')).default,
-						quote: (await import('@editorjs/quote')).default,
-						embed: (await import('@editorjs/embed')).default,
-						linkTool: (await import('@editorjs/link')).default,
-						raw: (await import('@editorjs/raw')).default
+						list: (await import('@editorjs/list')).default
 					},
 					onChange: async () => {
 						try {
