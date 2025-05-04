@@ -10,13 +10,18 @@ const jsonStringArray = z.preprocess(
 	z.array(z.string())
 );
 
+const jsonObject = z.preprocess(
+	(val) => (typeof val === 'string' ? JSON.parse(val) : {}),
+	z.object({})
+);
+
 // Schema for updating a post
 const updateSchema = z.object({
 	slug: z.string(),
 	tags: jsonStringArray,
 	heading: z.string(),
 	summary: z.string(),
-	content: z.string()
+	content: jsonObject
 });
 
 /**

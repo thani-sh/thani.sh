@@ -67,14 +67,14 @@
 					bind:value={formData.heading}
 					required
 					placeholder="Post title"
-					class="w-full border-none bg-transparent text-6xl font-medium transition-colors duration-300 focus:outline-none"
+					class="input input-xl input-ghost h-24 w-full bg-transparent text-6xl font-medium focus:outline-none"
 				/>
 			</div>
 
-			<div class="form-control w-full p-4">
+			<div class="form-control w-full px-4">
 				<TextEditor
 					data={formData.content}
-					help="Main content of the post"
+					help="Post content"
 					className="text-xl"
 					onChange={(data) => {
 						formData.content = data;

@@ -6,7 +6,7 @@ export const postTable = sqliteTable('posts', {
 	tags: text({ mode: 'json' }).$type<string[]>().notNull(),
 	heading: text().notNull(),
 	summary: text().notNull(),
-	content: text().notNull(),
+	content: text({ mode: 'json' }).$type<object>().notNull(),
 	created_at: integer({ mode: 'timestamp' }).notNull(),
 	updated_at: integer({ mode: 'timestamp' }).notNull()
 });

@@ -24,7 +24,7 @@
 					data: data,
 					readOnly: false,
 					placeholder: help,
-					autofocus: true,
+					autofocus: false,
 					tools: {
 						header: (await import('@editorjs/header')).default,
 						list: (await import('@editorjs/list')).default,
