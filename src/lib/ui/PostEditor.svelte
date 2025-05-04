@@ -14,7 +14,7 @@
 	// Local state for form
 	let formData: NewPost = currentData
 		? { ...currentData }
-		: { heading: '', slug: '', tags: [], summary: '', content: '' };
+		: { heading: '', slug: '', tags: [], summary: '', content: {} };
 
 	// Local state for tag input
 	let tagInput = {
