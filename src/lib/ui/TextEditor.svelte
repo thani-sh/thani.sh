@@ -27,7 +27,8 @@
 					autofocus: false,
 					tools: {
 						header: (await import('@editorjs/header')).default,
-						list: (await import('@editorjs/list')).default
+						list: (await import('@editorjs/list')).default,
+						code: (await import('@calumk/editorjs-codecup')).default
 					},
 					onChange: async () => {
 						try {

@@ -15,6 +15,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@calumk/codecup@npm:^1.8.1":
+  version: 1.9.4
+  resolution: "@calumk/codecup@npm:1.9.4"
+  dependencies:
+    "@types/prismjs": "npm:^1.9.1"
+    prismjs: "npm:^1.29.0"
+  checksum: 10c0/24a2aad7e85b263a3ffe3f067f1307f35a6214d4dd2c97e0f8ead2d82d108cf1128937b55a86d0aafb5e5eb9db52b8383ba1756350b706f4bda108737748d3d8
+  languageName: node
+  linkType: hard
+
+"@calumk/editorjs-codecup@npm:^1.3.0":
+  version: 1.3.0
+  resolution: "@calumk/editorjs-codecup@npm:1.3.0"
+  dependencies:
+    "@calumk/codecup": "npm:^1.8.1"
+  checksum: 10c0/1957fa391a01ad4bc4306126d3dc1d48b2e80cb4f58a3501256504de3abcc9bfef68fd0577ed30eac550feac41cb270a4863a6c992f4a5803f50dce34ff598a3
+  languageName: node
+  linkType: hard
+
 "@cloudflare/kv-asset-handler@npm:0.4.0":
   version: 0.4.0
   resolution: "@cloudflare/kv-asset-handler@npm:0.4.0"
@@ -1771,6 +1790,13 @@ __metadata:
   dependencies:
     undici-types: "npm:~6.21.0"
   checksum: 10c0/2879f012d1aeba0bfdb5fed80d165f4f2cb3d1f2e1f98a24b18d4a211b4ace7d64bf2622784c78355982ffc1081ba79d0934efc2fb8353913e5871a63609661f
+  languageName: node
+  linkType: hard
+
+"@types/prismjs@npm:^1.9.1":
+  version: 1.26.5
+  resolution: "@types/prismjs@npm:1.26.5"
+  checksum: 10c0/5619cb449e0d8df098c8759d6f47bf8fdd510abf5dbdfa999e55c6a2545efbd1e209cc85a33d8d9f4ff2898089a1a6d9a70737c9baffaae635c46852c40d384a
   languageName: node
   linkType: hard
 
@@ -4629,7 +4655,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prismjs@npm:^1.17.1":
+"prismjs@npm:^1.17.1, prismjs@npm:^1.29.0":
   version: 1.30.0
   resolution: "prismjs@npm:1.30.0"
   checksum: 10c0/f56205bfd58ef71ccfcbcb691fd0eb84adc96c6ff21b0b69fc6fdcf02be42d6ef972ba4aed60466310de3d67733f6a746f89f2fb79c00bf217406d465b3e8f23
@@ -5327,6 +5353,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "thani.sh@workspace:."
   dependencies:
+    "@calumk/editorjs-codecup": "npm:^1.3.0"
     "@editorjs/editorjs": "npm:^2.30.8"
     "@editorjs/header": "npm:^2.8.8"
     "@editorjs/list": "npm:^2.0.6"
