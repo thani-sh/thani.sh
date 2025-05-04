@@ -6,16 +6,16 @@
 	import { uniq } from 'lodash-es';
 
 	// Define props for current data and submission handlers
-	export let currentData: NewPost | null = null;
+	export let post: NewPost | null = null;
 
 	// Function props for submission and cancellation
 	export let onSubmit: (data: NewPost) => void;
 	export let onCancel: () => void = () => {};
 
 	// Local state for form
-	let formData: NewPost = currentData
-		? { ...currentData }
-		: { heading: '', slug: '', tags: [], summary: '', content: {} };
+	let formData: NewPost = post
+		? { ...post }
+		: { heading: 'Post Title', slug: '', tags: [], summary: '', content: {} };
 
 	// Local state for tag input
 	let tagInput = {
@@ -27,8 +27,8 @@
 			this._value = value;
 			formData.tags = uniq(
 				value
-				.split(',')
-				.map((tag) => tag.trim())
+					.split(',')
+					.map((tag) => tag.trim())
 					.filter((tag) => tag.length > 0)
 			);
 		}
@@ -53,7 +53,7 @@
 	}
 </script>
 
-<form on:submit|preventDefault={handleSubmit} class="space-y-6">
+<form on:submit|preventDefault={handleSubmit}>
 	<div class="drawer drawer-end">
 		<input id="editor-drawer" type="checkbox" class="drawer-toggle" />
 
@@ -63,16 +63,11 @@
 			</label>
 
 			<!-- Main content area -->
-			<div class="flex items-center justify-between">
-				<input
-					type="text"
-					id="heading"
-					bind:value={formData.heading}
-					required
-					placeholder="Post title"
-					class="input input-xl input-ghost h-24 w-full bg-transparent text-6xl font-medium focus:outline-none"
-				/>
-			</div>
+			<h1
+				contenteditable
+				class="h-24 w-full p-4 text-6xl font-medium focus:outline-none"
+				bind:textContent={formData.heading}
+			></h1>
 
 			<div class="form-control w-full px-4">
 				<TextEditor
