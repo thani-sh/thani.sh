@@ -6,50 +6,75 @@
 	import { uniq } from 'lodash-es';
 
 	// Define props for current data and submission handlers
-	export let post: NewPost | null = null;
+	export let post: NewPost;
 
 	// Function props for submission and cancellation
-	export let onSubmit: (data: NewPost) => void;
+	export let onChange: (data: NewPost) => void = () => {};
+	export let onSubmit: (data: NewPost) => void = () => {};
 	export let onCancel: () => void = () => {};
 
-	// Local state for form
-	let formData: NewPost = post
-		? { ...post }
-		: { heading: 'Post Title', slug: '', tags: [], summary: '', content: {} };
+	/**
+	 * Helper function to parse the tags string into an array of unique tags.
+	 */
+	function parseTags(tagsString: string): string[] {
+		return uniq(
+			tagsString
+				.split(',')
+				.map((tag) => tag.trim())
+				.filter((tag) => tag.length > 0)
+		);
+	}
 
-	// Local state for tag input
-	let tagInput = {
-		_value: formData.tags.join(', '),
+	/**
+	 * Create a proxy object to handle the tags property and keep the post object in
+	 * sync, handle default value for slug, and trigger onChange when properties change.
+	 */
+	let postProxy = {
+		_tags: post.tags.join(', '),
 		get tags() {
-			return this._value;
+			return this._tags;
 		},
 		set tags(value) {
-			this._value = value;
-			formData.tags = uniq(
-				value
-					.split(',')
-					.map((tag) => tag.trim())
-					.filter((tag) => tag.length > 0)
-			);
-		}
-	};
-
-	// Local state for slug input
-	let slugInput = {
+			this._tags = value;
+			post.tags = parseTags(value);
+			onChange(post);
+		},
+		get heading() {
+			return post.heading;
+		},
+		set heading(value) {
+			post.heading = value;
+			onChange(post);
+		},
 		get slug() {
-			return formData.slug || slugify(formData.heading);
+			return post.slug || slugify(post.heading);
 		},
 		set slug(value) {
-			formData.slug = value;
+			post.slug = value;
+			onChange(post);
+		},
+		get summary() {
+			return post.summary;
+		},
+		set summary(value) {
+			post.summary = value;
+			onChange(post);
+		},
+		get content() {
+			return post.content;
+		},
+		set content(value) {
+			post.content = value;
+			onChange(post);
 		}
 	};
 
 	// Handle form submission
 	function handleSubmit() {
-		if (!formData.slug) {
-			formData.slug = slugify(formData.heading);
+		if (!post.slug) {
+			post.slug = slugify(post.heading);
 		}
-		onSubmit(formData);
+		onSubmit(post);
 	}
 </script>
 
@@ -66,16 +91,16 @@
 			<h1
 				contenteditable
 				class="h-24 w-full p-4 text-6xl font-medium focus:outline-none"
-				bind:textContent={formData.heading}
+				bind:textContent={postProxy.heading}
 			></h1>
 
 			<div class="form-control w-full px-4">
 				<TextEditor
-					data={formData.content}
+					data={postProxy.content}
 					help="Post content"
 					className="text-xl"
 					onChange={(data) => {
-						formData.content = data;
+						postProxy.content = data;
 					}}
 				/>
 			</div>
@@ -92,7 +117,7 @@
 					</label>
 					<textarea
 						id="summary"
-						bind:value={formData.summary}
+						bind:value={postProxy.summary}
 						placeholder="Brief description of the post"
 						class="textarea textarea-bordered w-full resize-none focus:outline-none"
 						rows="3"
@@ -106,7 +131,7 @@
 					<input
 						type="text"
 						id="slug"
-						bind:value={slugInput.slug}
+						bind:value={postProxy.slug}
 						required
 						placeholder="post-url-slug"
 						class="input input-bordered w-full focus:outline-none"
@@ -120,14 +145,14 @@
 					<input
 						type="text"
 						id="tags"
-						bind:value={tagInput.tags}
+						bind:value={postProxy.tags}
 						placeholder="tag1, tag2, tag3"
 						class="input input-bordered w-full focus:outline-none"
 					/>
 
-					{#if formData.tags.length > 0}
+					{#if post.tags.length > 0}
 						<div class="mt-2 flex flex-wrap gap-2">
-							{#each formData.tags as tag}
+							{#each post.tags as tag}
 								<span class="badge badge-primary">{tag}</span>
 							{/each}
 						</div>
