@@ -3,6 +3,7 @@
 	import { PanelRight } from '@lucide/svelte';
 	import slugify from '@sindresorhus/slugify';
 	import TextEditor from './TextEditor.svelte';
+	import { uniq } from 'lodash-es';
 
 	// Define props for current data and submission handlers
 	export let currentData: NewPost | null = null;
@@ -24,10 +25,12 @@
 		},
 		set tags(value) {
 			this._value = value;
-			formData.tags = value
+			formData.tags = uniq(
+				value
 				.split(',')
 				.map((tag) => tag.trim())
-				.filter((tag) => tag.length > 0);
+					.filter((tag) => tag.length > 0)
+			);
 		}
 	};
 
