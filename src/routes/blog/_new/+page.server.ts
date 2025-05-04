@@ -12,7 +12,7 @@ const jsonStringArray = z.preprocess(
 
 const jsonObject = z.preprocess(
 	(val) => (typeof val === 'string' ? JSON.parse(val) : {}),
-	z.object({})
+	z.record(z.string(), z.any())
 );
 
 // Schema for updating a post
@@ -20,7 +20,7 @@ const insertSchema = z.object({
 	slug: z.string().min(1, 'Slug is required'),
 	tags: jsonStringArray,
 	heading: z.string().min(1, 'Heading is required'),
-	summary: z.string().min(1, 'Summary is required'),
+	summary: z.string(),
 	content: jsonObject
 });
 

@@ -12,7 +12,7 @@ const jsonStringArray = z.preprocess(
 
 const jsonObject = z.preprocess(
 	(val) => (typeof val === 'string' ? JSON.parse(val) : {}),
-	z.object({})
+	z.record(z.string(), z.any())
 );
 
 // Schema for updating a post
