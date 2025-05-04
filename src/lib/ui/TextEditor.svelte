@@ -6,6 +6,7 @@
 	export let help: string = 'Write your content here...';
 	export let onChange: (data: any) => void = () => {};
 	export let className: string = '';
+	export let readOnly: boolean = false;
 
 	// Editor instance
 	let editor: any = null;
@@ -21,7 +22,7 @@
 				editor = new EditorJS({
 					holder: editorElement,
 					data: data,
-					readOnly: false,
+					readOnly: readOnly,
 					placeholder: help,
 					autofocus: false,
 					tools: {
