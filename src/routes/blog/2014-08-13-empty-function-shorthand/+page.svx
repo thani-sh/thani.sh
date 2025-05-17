@@ -1,6 +1,6 @@
 ---
 title: Empty Function Shorthand
-description: JavaScript is an interesting language and so far my favorite. Maybe  it's just me but I find stuff some people complain about javascript such  as _automatic semicolon insertion, the way javascript scoping works and function/variable hoisting_ to be some of its best features.,
+description: JavaScript is an interesting language and so far my favorite. Maybe it's just me but I find stuff some people complain about javascript such as automatic semicolon insertion.
 date: 2014-08-13
 tags: ['js']
 layout: 'blog'

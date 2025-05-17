@@ -1,6 +1,6 @@
 ---
 title: Github repo license file
-description: Github is without doubt one of the best things ever happened to open  source software development. I, like many other FOSS developers, always  use Github to host my projects. And like most of them I thought all of  my public projects are by default open source.,
+description: I, like many other developers, always use Github to host my projects. And like most of them I thought all of  my public projects are by default open source.
 date: 2015-10-17
 tags: ['github']
 layout: 'blog'

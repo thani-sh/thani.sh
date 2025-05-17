@@ -1,6 +1,6 @@
 ---
 title: Debugging RxJS code
-description: This are undocumented internal details of RxJS and it can break anytime. It probably would have changed by the time you're reading this blog post. But still, there can be something similar.,
+description: This are undocumented internal details of RxJS and it can break anytime. It probably would have changed by the time you're reading this blog post.
 date: 2018-09-05
 tags: ['js', 'rxjs']
 layout: 'blog'

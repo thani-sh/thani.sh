@@ -13,7 +13,7 @@ function getAbsolutePath(relativePath) {
 const theme = 'one-dark-pro';
 const highlighter = await createHighlighter({
 	themes: [theme],
-	langs: ['javascript', 'typescript', 'go', 'bash', 'json', 'html', 'markdown']
+	langs: ['javascript', 'typescript', 'go', 'bash', 'json', 'html', 'markdown', 'handlebars', 'css']
 });
 
 const config = {

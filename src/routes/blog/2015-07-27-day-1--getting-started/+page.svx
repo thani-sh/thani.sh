@@ -1,6 +1,6 @@
 ---
-title: Day 1: Getting Started
-description: The go playground is where go code can be run easily and fast therefore it makes an efficient place to try new go code. This also makes the playground useful when learning how to program with Go.,
+title: Day 1 - Getting Started
+description: The go playground is where go code can be run easily and fast therefore it makes an efficient place to try new go code. This also makes the playground useful when learning how to program with Go.
 date: 2015-07-27
 tags: ['go']
 layout: 'blog'

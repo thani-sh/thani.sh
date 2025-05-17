@@ -1,12 +1,12 @@
 ---
 title: Limit Go Benchmark b.N
-description: **TLDR** - Operations count (b.N) can be set inside the function.,
+description: Operations count (b.N) can be set inside the function to limit the number of operations Go benchmark does. But perhaps this is a sign there might be other issues.
 date: 2015-07-23
 tags: ['go']
 layout: 'blog'
 ---
 
-**TLDR** - Operations count (b.N) can be set inside the function.
+Operations count (b.N) can be set inside the function to limit the number of operations Go benchmark does. But perhaps this is a sign there might be other issues.
 
 Go benchmarks can be extremely useful when attempting to write performance critical applications. Both cpu and memory benchmarks can be written for Go programs.
 

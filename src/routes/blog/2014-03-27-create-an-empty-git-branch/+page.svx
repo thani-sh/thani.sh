@@ -1,6 +1,6 @@
 ---
 title: Create an empty git branch
-description: It's really easy to create a new empty git branch with no parents (AKA orphan branches). First create an orphan branch with this command.,
+description: It's really easy to create a new empty git branch with no parents (AKA orphan branches). First create an orphan branch with this command.
 date: 2014-03-27
 tags: ['git', 'github']
 layout: 'blog'

@@ -1,6 +1,6 @@
 ---
 title: Aggregation for Firebase
-description: Assume we need to create a realtime dashboard to show some summary  values. Usually, with Firebase, we'll have to get all data to the client  and process them there. But this can only work for small data sets. If  we have a few megabytes of data or more, this approach can get really  slow. And we must aggregate values on each and every client application  (web, mobile, etc).,
+description: Assume we need to create a realtime dashboard to show some summary values. Usually, with Firebase, we'll have to get all data to the client and process them there.
 date: 2014-05-24
 tags: ['js', 'firebase']
 layout: 'blog'

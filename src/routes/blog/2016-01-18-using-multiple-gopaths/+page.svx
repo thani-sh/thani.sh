@@ -1,14 +1,16 @@
 ---
 title: Using multiple GOPATHs
-description: For an example, if we set the GOPATH environment variable to _/tmp/go1:/tmp/go2:/tmp/go3_ all three of them will act as GOPATHs.,
+description: Is it possible to use multiple directories as GOPATH and how does it behave when downloading packages or when importing go pacakges from code?
 date: 2016-01-18
 tags: ['go']
 layout: 'blog'
 ---
 
+Is it possible to use multiple directories as GOPATH and how does it behave when downloading packages or when importing go pacakges from code?
+
 For an example, if we set the GOPATH environment variable to _/tmp/go1:/tmp/go2:/tmp/go3_ all three of them will act as GOPATHs.
 
-```
+```bash
 GOPATH=/tmp/go1:/tmp/go2:/tmp/go3
 ```
 
@@ -18,7 +20,7 @@ But this raises a few questions.
 
 To test this out, simply set the GOPATH, and try go getting a simple repository. You may run these commands if you like.
 
-```
+```bash
 GOPATH=/tmp/go1:/tmp/go2:/tmp/go3
 go get github.com/deis/helloworld
 find /tmp/ | grep helloworld | head -1

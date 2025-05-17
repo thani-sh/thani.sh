@@ -1,10 +1,23 @@
 ---
 title: Multiplayer Tetris Game (part 3)
-description: This tutorial continues where we left off on part 2. We will split the code into multiple files to make it easier to maintain and implement a few more game rules.,
+description: This tutorial continues where we left off on part 2. We will split the code into multiple files to make it easier to maintain and implement a few more game rules.
 date: 2022-11-11
 tags: ['js']
 layout: 'blog'
 ---
+
+<script>
+import { GameIframe } from "$lib/ui";
+</script>
+
+This tutorial continues where we left off on part 2. We will split the code into multiple files to make it easier to maintain and implement a few more game rules.
+
+Did it work? you can try the updated game here (Instructions: click to focus and use ↑←↓→ keys and WASD keys)
+
+<GameIframe
+  src="/blog/2022-11-11-multiplayer-tetris-game-part-3/embeds/finished/index.html"
+  height="450px"
+/>
 
 ## Refactoring the code
 

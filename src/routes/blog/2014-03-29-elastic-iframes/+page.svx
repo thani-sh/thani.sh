@@ -1,6 +1,6 @@
 ---
 title: Elastic Iframes
-description: Sometimes it become necessary to use iframes when building some web  applications. Often we have them hidden but sometimes iframes can be  useful visible too.,
+description: Sometimes it become necessary to use iframes when building some web  applications. Often we have them hidden but sometimes iframes can be  useful visible too.
 date: 2014-03-29
 tags: ['js']
 layout: 'blog'

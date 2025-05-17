@@ -1,6 +1,6 @@
 ---
 title: FabricJS performance hack
-description: The frame rate can be improved by only rendering inside a rAF callback.,
+description: The frame rate can be improved by only rendering inside a rAF callback.
 date: 2017-05-17
 tags: ['js', 'canvas']
 layout: 'blog'

@@ -1,6 +1,6 @@
 ---
 title: Duplicate click events
-description: While trying to debug this issue, we found out a couple of interesting things about how Angular manages event handlers.,
+description: While trying to debug this issue, we found out a couple of interesting things about how Angular manages event handlers.
 date: 2017-06-27
 tags: ['js', 'angular']
 layout: 'blog'
@@ -17,7 +17,7 @@ The double click event bug can be recreated easily with the following [example a
 
 The “click” Output of the button component:
 
-```
+```js
 <button (click)="clicked($event)">
   <ng-content></ng-content>
 </button>
@@ -36,7 +36,7 @@ export class TestButtonComponent implements OnInit {
 
 and the code which listens to the event:
 
-```
+```js
 <app-test-button (click)="clicked($event)">
   Test Button
 </app-test-button>

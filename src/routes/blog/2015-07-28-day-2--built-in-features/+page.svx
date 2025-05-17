@@ -1,6 +1,6 @@
 ---
-title: Day 2: Built-in Features
-description: This tutorial consists of a number of example go programs demonstrating each feature. It is recommended to try some of them on the Go playground or on your local machine.,
+title: Day 2 - Built-in Features
+description: This tutorial consists of a number of example go programs demonstrating each feature. It is recommended to try some of them on the Go playground or on your local machine.
 date: 2015-07-28
 tags: ['go']
 layout: 'blog'
@@ -173,7 +173,7 @@ func main() {
 
 Above example can be written using a switch statement. A switch can be used with strings, integers and other types.
 
-```
+```go
 package main
 
 func main() {
@@ -365,7 +365,7 @@ func main() {
 
 A map can be created with an initial set of items. Unlike slices, maps are copied if assigned to a new variable.
 
-```
+```go
 package main
 
 import "fmt"

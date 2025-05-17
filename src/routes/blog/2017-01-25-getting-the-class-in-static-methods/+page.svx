@@ -1,6 +1,6 @@
 ---
 title: The class in static methods
-description: This is useful when writing static methods which can be inherited by other classes. Here's an example:,
+description: This is useful when writing static methods which can be inherited by other classes. Here's an example.
 date: 2017-01-25
 tags: ['js']
 layout: 'blog'
@@ -8,7 +8,7 @@ layout: 'blog'
 
 This is useful when writing static methods which can be inherited by other classes. Here's an example:
 
-```
+```js
 class Parent {
   static x() {
     return 10
@@ -34,7 +34,7 @@ console.log(Person.xy(), Child.xy())
 
 The solution was so simple I feel bad it took me some time to figure it out. The important this to remember is that what happens behind all the OOP is just simple javascript. Let's focus on where we call the function.
 
-```
+```js
 Parent.xy()
 ```
 
@@ -42,7 +42,7 @@ What do you think the value of this is inside the xy function? The class Parent 
 
 But the value of "this" can quickly get confusing once we start using both static and non-static methods.
 
-```
+```js
 class Parent {
   static x() {
     return 10

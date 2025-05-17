@@ -1,6 +1,6 @@
 ---
 title: Multiplayer Tetris Game (part 1)
-description: A tutorial about writing a multiplayer game from scratch. Starting from solidifying the requirements and continues all the way up to creating a working prototype with vanilla js.,
+description: A tutorial about writing a multiplayer game from scratch. Starting from solidifying the requirements and continues all the way up to creating a working prototype with vanilla js.
 date: 2020-12-13
 tags: ['js']
 layout: 'blog'
@@ -10,6 +10,8 @@ layout: 'blog'
 import { GameIframe } from "$lib/ui";
 import img1 from "./images/basic-components.png";
 </script>
+
+A tutorial about writing a multiplayer game from scratch. Starting from solidifying the requirements and continues all the way up to creating a working prototype with vanilla js.
 
 ## Before We Start
 
@@ -52,10 +54,10 @@ In the game world, a shape would have a position and a type. It also needs a col
 
 ```ts
 interface Shape {
-  x: number;
-  y: number;
-  type: ShapeType;
-  color: string;
+	x: number;
+	y: number;
+	type: ShapeType;
+	color: string;
 }
 ```
 
@@ -69,19 +71,19 @@ And some example shape types we can use in the game. We have the square, "L", "T
 
 ```ts
 const SHAPE_TYPES: ShapeType[] = [
-  [
-    [1, 1],
-    [1, 1],
-  ],
-  [
-    [1, 0, 0],
-    [1, 1, 1],
-  ],
-  [
-    [0, 1, 0],
-    [1, 1, 1],
-  ],
-  [[1, 1, 1]],
+	[
+		[1, 1],
+		[1, 1]
+	],
+	[
+		[1, 0, 0],
+		[1, 1, 1]
+	],
+	[
+		[0, 1, 0],
+		[1, 1, 1]
+	],
+	[[1, 1, 1]]
 ];
 ```
 
@@ -97,28 +99,28 @@ And some example player actions we can use in the game.
 
 ```ts
 const ACTION_TYPES: { [name: string]: PlayerAction } = {
-  moveLeft: (shape) => {
-    shape.x--;
-  },
+	moveLeft: (shape) => {
+		shape.x--;
+	},
 
-  moveRight: (shape) => {
-    shape.x++;
-  },
+	moveRight: (shape) => {
+		shape.x++;
+	},
 
-  moveDown: (shape) => {
-    shape.y++;
-  },
+	moveDown: (shape) => {
+		shape.y++;
+	},
 
-  rotateShape: (shape) => {
-    const type = [];
-    for (let i = 0; i < shape.type[0].length; ++i) {
-      type[i] = [];
-      for (let j = 0; j < shape.type.length; ++j) {
-        type[i][j] = shape.type[shape.type.length - 1 - j][i];
-      }
-    }
-    shape.type = type;
-  },
+	rotateShape: (shape) => {
+		const type = [];
+		for (let i = 0; i < shape.type[0].length; ++i) {
+			type[i] = [];
+			for (let j = 0; j < shape.type.length; ++j) {
+				type[i][j] = shape.type[shape.type.length - 1 - j][i];
+			}
+		}
+		shape.type = type;
+	}
 };
 ```
 
@@ -128,18 +130,18 @@ These actions are triggered by user interactions. We can map these actions to ke
 type PlayerKeymap = { [key: string]: PlayerAction };
 
 const PLAYER_KEYMAPS: PlayerKeymap[] = [
-  {
-    KeyW: ACTION_TYPES.rotateShape,
-    KeyA: ACTION_TYPES.moveLeft,
-    KeyS: ACTION_TYPES.moveDown,
-    KeyD: ACTION_TYPES.moveRight,
-  },
-  {
-    ArrowUp: ACTION_TYPES.rotateShape,
-    ArrowLeft: ACTION_TYPES.moveLeft,
-    ArrowDown: ACTION_TYPES.moveDown,
-    ArrowRight: ACTION_TYPES.moveRight,
-  },
+	{
+		KeyW: ACTION_TYPES.rotateShape,
+		KeyA: ACTION_TYPES.moveLeft,
+		KeyS: ACTION_TYPES.moveDown,
+		KeyD: ACTION_TYPES.moveRight
+	},
+	{
+		ArrowUp: ACTION_TYPES.rotateShape,
+		ArrowLeft: ACTION_TYPES.moveLeft,
+		ArrowDown: ACTION_TYPES.moveDown,
+		ArrowRight: ACTION_TYPES.moveRight
+	}
 ];
 ```
 
@@ -161,7 +163,7 @@ Next we need some way to filter player actions. Given a player action the rule s
 
 ```ts
 // TODO: would probably need more information to decide the outcome
-type GameRule = (action: PlayerAction) => "apply" | "dont_apply";
+type GameRule = (action: PlayerAction) => 'apply' | 'dont_apply';
 ```
 
 #### The Game Renderer
@@ -183,19 +185,19 @@ The player receives a listener function and calls it when the user performs acti
 ```js
 // the returned function must be called to destroy the player
 const startPlayer = (keymap, listener) => {
-  const keyDownListener = (e) => {
-    for (const key of Object.keys(keymap)) {
-      if (e.code === key) {
-        listener(keymap[key]);
-        break;
-      }
-    }
-  };
-  document.addEventListener("keydown", keyDownListener);
+	const keyDownListener = (e) => {
+		for (const key of Object.keys(keymap)) {
+			if (e.code === key) {
+				listener(keymap[key]);
+				break;
+			}
+		}
+	};
+	document.addEventListener('keydown', keyDownListener);
 
-  return () => {
-    document.removeEventListener("keydown", keyDownListener);
-  };
+	return () => {
+		document.removeEventListener('keydown', keyDownListener);
+	};
 };
 ```
 
@@ -205,46 +207,46 @@ We also added an options object which we can use to configure the game world. Ri
 
 ```js
 const startWorld = (keymaps, renderer, options) => {
-  const PLAYER_COLORS = ["#6fa8dc", "#f6b26b"];
-  const playersCount = keymaps.length;
-  const playerShapes = [];
-  const stopPlayerFns = [];
-  const requestReRender = () => {
-    renderer(playerShapes);
-  };
-  const createNewShape = (i) => {
-    const index = Math.floor(Math.random() * SHAPE_TYPES.length);
-    const shape = { x: 0, y: 0, type: SHAPE_TYPES[index], color: "#111" };
-    shape.x = Math.floor((options.worldWidth / playersCount / 2) * (i * 2 + 1));
-    shape.color = PLAYER_COLORS[i % PLAYER_COLORS];
-    playerShapes[i].unshift(shape);
-    requestReRender();
-  };
-  const canPerformAction = (i, action) => {
-    // TODO: implement checks
-    return true;
-  };
-  const playerActionListener = (i, action) => {
-    if (!canPerformAction(i, action)) {
-      return;
-    }
-    const shape = playerShapes[i][0];
-    action(shape);
-    requestReRender();
-  };
-  for (let i = 0; i < playersCount; ++i) {
-    playerShapes[i] = [];
-    createNewShape(i);
-  }
-  for (let i = 0; i < playersCount; ++i) {
-    const keymap = keymaps[i];
-    const listener = (action) => playerActionListener(i, action);
-    stopPlayerFns[i] = startPlayer(keymap, listener);
-  }
+	const PLAYER_COLORS = ['#6fa8dc', '#f6b26b'];
+	const playersCount = keymaps.length;
+	const playerShapes = [];
+	const stopPlayerFns = [];
+	const requestReRender = () => {
+		renderer(playerShapes);
+	};
+	const createNewShape = (i) => {
+		const index = Math.floor(Math.random() * SHAPE_TYPES.length);
+		const shape = { x: 0, y: 0, type: SHAPE_TYPES[index], color: '#111' };
+		shape.x = Math.floor((options.worldWidth / playersCount / 2) * (i * 2 + 1));
+		shape.color = PLAYER_COLORS[i % PLAYER_COLORS];
+		playerShapes[i].unshift(shape);
+		requestReRender();
+	};
+	const canPerformAction = (i, action) => {
+		// TODO: implement checks
+		return true;
+	};
+	const playerActionListener = (i, action) => {
+		if (!canPerformAction(i, action)) {
+			return;
+		}
+		const shape = playerShapes[i][0];
+		action(shape);
+		requestReRender();
+	};
+	for (let i = 0; i < playersCount; ++i) {
+		playerShapes[i] = [];
+		createNewShape(i);
+	}
+	for (let i = 0; i < playersCount; ++i) {
+		const keymap = keymaps[i];
+		const listener = (action) => playerActionListener(i, action);
+		stopPlayerFns[i] = startPlayer(keymap, listener);
+	}
 
-  return () => {
-    stopPlayerFns.forEach((fn) => fn());
-  };
+	return () => {
+		stopPlayerFns.forEach((fn) => fn());
+	};
 };
 ```
 
@@ -252,12 +254,12 @@ Let's see how it works with a test renderer.
 
 ```js
 const renderer = (shapes) => {
-  console.log("render:");
-  console.log(JSON.stringify(shapes[0]));
-  console.log(JSON.stringify(shapes[1]));
+	console.log('render:');
+	console.log(JSON.stringify(shapes[0]));
+	console.log(JSON.stringify(shapes[1]));
 };
 const options = {
-  worldWidth: 32,
+	worldWidth: 32
 };
 startWorld(keymaps, renderer);
 ```
@@ -270,52 +272,52 @@ Let's go ahead and create a simple canvas renderer so we can see what's going on
 
 ```js
 const createRenderer = (canvas, options) => {
-  const canvasWidth = options.worldWidth * options.worldScale;
-  const canvasHeight = options.worldHeight * options.worldScale;
-  canvas.width = canvasWidth;
-  canvas.height = canvasHeight;
-  const ctx = canvas.getContext("2d");
+	const canvasWidth = options.worldWidth * options.worldScale;
+	const canvasHeight = options.worldHeight * options.worldScale;
+	canvas.width = canvasWidth;
+	canvas.height = canvasHeight;
+	const ctx = canvas.getContext('2d');
 
-  const renderBlock = (x, y, color) => {
-    ctx.fillStyle = color;
-    ctx.strokeStyle = "#000";
-    ctx.fillRect(
-      x * options.worldScale,
-      y * options.worldScale,
-      options.worldScale,
-      options.worldScale
-    );
-    ctx.strokeRect(
-      x * options.worldScale,
-      y * options.worldScale,
-      options.worldScale,
-      options.worldScale
-    );
-  };
+	const renderBlock = (x, y, color) => {
+		ctx.fillStyle = color;
+		ctx.strokeStyle = '#000';
+		ctx.fillRect(
+			x * options.worldScale,
+			y * options.worldScale,
+			options.worldScale,
+			options.worldScale
+		);
+		ctx.strokeRect(
+			x * options.worldScale,
+			y * options.worldScale,
+			options.worldScale,
+			options.worldScale
+		);
+	};
 
-  const renderShape = (shape) => {
-    ctx.save();
-    ctx.translate(shape.x * options.worldScale, shape.y * options.worldScale);
-    for (let i = 0; i < shape.type.length; ++i) {
-      const row = shape.type[i];
-      for (let j = 0; j < row.length; ++j) {
-        if (row[j]) {
-          renderBlock(j, i, shape.color);
-        }
-      }
-    }
-    ctx.restore();
-  };
+	const renderShape = (shape) => {
+		ctx.save();
+		ctx.translate(shape.x * options.worldScale, shape.y * options.worldScale);
+		for (let i = 0; i < shape.type.length; ++i) {
+			const row = shape.type[i];
+			for (let j = 0; j < row.length; ++j) {
+				if (row[j]) {
+					renderBlock(j, i, shape.color);
+				}
+			}
+		}
+		ctx.restore();
+	};
 
-  return (playerShapes) => {
-    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-    for (let i = 0; i < playerShapes.length; ++i) {
-      const shapes = playerShapes[i];
-      for (let j = 0; j < shapes.length; ++j) {
-        renderShape(shapes[j]);
-      }
-    }
-  };
+	return (playerShapes) => {
+		ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+		for (let i = 0; i < playerShapes.length; ++i) {
+			const shapes = playerShapes[i];
+			for (let j = 0; j < shapes.length; ++j) {
+				renderShape(shapes[j]);
+			}
+		}
+	};
 };
 ```
 
@@ -325,18 +327,18 @@ The next step is to make things move downwards. Let's apply these changes to the
 
 ```js
 const startWorld = (keymaps, renderer, ticker, options) => {
-  // ...
-  const stopGameClock = ticker(() => {
-    for (let i = 0; i < playerShapes.length; ++i) {
-      playerActionListener(i, ACTION_TYPES.moveDown);
-    }
-  });
-  // ...
+	// ...
+	const stopGameClock = ticker(() => {
+		for (let i = 0; i < playerShapes.length; ++i) {
+			playerActionListener(i, ACTION_TYPES.moveDown);
+		}
+	});
+	// ...
 
-  return () => {
-    stopGameClock();
-    // ...
-  };
+	return () => {
+		stopGameClock();
+		// ...
+	};
 };
 ```
 
@@ -344,9 +346,9 @@ The next step is to add some rules to the game world. We can check against these
 
 ```js
 const RULE_ACTIONS = {
-  BLOCK_ACTION: 1,
-  CREATE_SHAPE: 2,
-  END_THE_GAME: 3,
+	BLOCK_ACTION: 1,
+	CREATE_SHAPE: 2,
+	END_THE_GAME: 3
 };
 ```
 
@@ -354,38 +356,38 @@ And then change the player action listener to check the rules.
 
 ```js
 const startWorld = (keymaps, renderer, ticker, ruleset, options) => {
-  // ...
-  const playerActionListener = (i, action) => {
-    const activeShape = playerShapes[i][0];
-    const simulated = Object.create(activeShape);
-    action(simulated);
-    for (let j = 0; j < ruleset.length; ++j) {
-      const ruleFn = ruleset[j];
-      const result = ruleFn(simulated, activeShape, playerShapes);
-      if (result === RULE_ACTIONS.BLOCK_ACTION) {
-        return;
-      } else if (result === RULE_ACTIONS.CREATE_SHAPE) {
-        createNewShape(i);
-        return;
-      } else if (result === RULE_ACTIONS.END_THE_GAME) {
-        alert("GAME OVER!");
-        stopWorld();
-      }
-    }
-    action(activeShape);
-    requestReRender();
-  };
-  const stopGameClock = ticker(() => {
-    for (let i = 0; i < playerShapes.length; ++i) {
-      playerActionListener(i, ACTION_TYPES.moveDown);
-    }
-  });
-  const stopWorld = () => {
-    stopGameClock();
-    stopPlayerFns.forEach((fn) => fn());
-  };
-  // ...
-  return stopWorld;
+	// ...
+	const playerActionListener = (i, action) => {
+		const activeShape = playerShapes[i][0];
+		const simulated = Object.create(activeShape);
+		action(simulated);
+		for (let j = 0; j < ruleset.length; ++j) {
+			const ruleFn = ruleset[j];
+			const result = ruleFn(simulated, activeShape, playerShapes);
+			if (result === RULE_ACTIONS.BLOCK_ACTION) {
+				return;
+			} else if (result === RULE_ACTIONS.CREATE_SHAPE) {
+				createNewShape(i);
+				return;
+			} else if (result === RULE_ACTIONS.END_THE_GAME) {
+				alert('GAME OVER!');
+				stopWorld();
+			}
+		}
+		action(activeShape);
+		requestReRender();
+	};
+	const stopGameClock = ticker(() => {
+		for (let i = 0; i < playerShapes.length; ++i) {
+			playerActionListener(i, ACTION_TYPES.moveDown);
+		}
+	});
+	const stopWorld = () => {
+		stopGameClock();
+		stopPlayerFns.forEach((fn) => fn());
+	};
+	// ...
+	return stopWorld;
 };
 ```
 
@@ -393,107 +395,107 @@ And add some rules to the game world.
 
 ```js
 const createGameRules = (options) => {
-  const doesBBoxOverlap = (s1, s2) => {
-    if (
-      s1.x > s2.x + s2.type[0].length ||
-      s1.x + s1.type[0].length < s2.x ||
-      s1.y > s2.y + s2.type.length ||
-      s1.y + s1.type.length < s2.y
-    ) {
-      return false;
-    }
-    return true;
-  };
-  const doesBlockOverlap = (s1, row, col, s2) => {
-    if (!s1.type[row][col]) {
-      return false;
-    }
-    const s2row = row + s1.y - s2.y;
-    const s2col = col + s1.x - s2.x;
-    if (s2.type[s2row] && s2.type[s2row][s2col]) {
-      return true;
-    }
-    return false;
-  };
-  const getOtherShapes = function* (activeShape, playerShapes) {
-    for (let i = 0; i < playerShapes.length; ++i) {
-      const shapes = playerShapes[i];
-      for (let j = 0; j < shapes.length; ++j) {
-        const shape = shapes[j];
-        if (shape === activeShape) {
-          continue;
-        }
-        yield [shape, j === 0];
-      }
-    }
-  };
-  const isBlockedFromLeft = (simulated, activeShape, playerShapes) => {
-    if (simulated.type === activeShape.type && simulated.x >= activeShape.x) {
-      return null;
-    }
-    if (simulated.x < 0) {
-      return RULE_ACTIONS.BLOCK_ACTION;
-    }
-    for (let [shape] of getOtherShapes(activeShape, playerShapes)) {
-      if (!doesBBoxOverlap(simulated, shape)) {
-        continue;
-      }
-      const col = 0;
-      for (let row = 0; row < simulated.type.length; ++row) {
-        if (doesBlockOverlap(simulated, row, col, shape)) {
-          return RULE_ACTIONS.BLOCK_ACTION;
-        }
-      }
-    }
-    return null;
-  };
-  const isBlockedFromRight = (simulated, activeShape, playerShapes) => {
-    if (simulated.type === activeShape.type && simulated.x <= activeShape.x) {
-      return null;
-    }
-    if (simulated.x + simulated.type[0].length > options.worldWidth) {
-      return RULE_ACTIONS.BLOCK_ACTION;
-    }
-    for (let [shape] of getOtherShapes(activeShape, playerShapes)) {
-      if (!doesBBoxOverlap(simulated, shape)) {
-        continue;
-      }
-      const col = simulated.type[0].length - 1;
-      for (let row = 0; row < simulated.type.length; ++row) {
-        if (doesBlockOverlap(simulated, row, col, shape)) {
-          return RULE_ACTIONS.BLOCK_ACTION;
-        }
-      }
-    }
-    return null;
-  };
-  const isBlockedFromBottom = (simulated, activeShape, playerShapes) => {
-    if (simulated.type === activeShape.type && simulated.y <= activeShape.y) {
-      return null;
-    }
-    if (simulated.y + simulated.type.length > options.worldHeight) {
-      return RULE_ACTIONS.CREATE_SHAPE;
-    }
-    for (let [shape, isActive] of getOtherShapes(activeShape, playerShapes)) {
-      if (!doesBBoxOverlap(simulated, shape)) {
-        continue;
-      }
-      const row = simulated.type.length - 1;
-      for (let col = 0; col < simulated.type[0].length; ++col) {
-        if (doesBlockOverlap(simulated, row, col, shape)) {
-          if (simulated.y <= 0) {
-            return RULE_ACTIONS.END_THE_GAME;
-          }
-          if (isActive) {
-            return RULE_ACTIONS.BLOCK_ACTION;
-          }
-          return RULE_ACTIONS.CREATE_SHAPE;
-        }
-      }
-    }
-    return null;
-  };
-  return [isBlockedFromLeft, isBlockedFromRight, isBlockedFromBottom];
+	const doesBBoxOverlap = (s1, s2) => {
+		if (
+			s1.x > s2.x + s2.type[0].length ||
+			s1.x + s1.type[0].length < s2.x ||
+			s1.y > s2.y + s2.type.length ||
+			s1.y + s1.type.length < s2.y
+		) {
+			return false;
+		}
+		return true;
+	};
+	const doesBlockOverlap = (s1, row, col, s2) => {
+		if (!s1.type[row][col]) {
+			return false;
+		}
+		const s2row = row + s1.y - s2.y;
+		const s2col = col + s1.x - s2.x;
+		if (s2.type[s2row] && s2.type[s2row][s2col]) {
+			return true;
+		}
+		return false;
+	};
+	const getOtherShapes = function* (activeShape, playerShapes) {
+		for (let i = 0; i < playerShapes.length; ++i) {
+			const shapes = playerShapes[i];
+			for (let j = 0; j < shapes.length; ++j) {
+				const shape = shapes[j];
+				if (shape === activeShape) {
+					continue;
+				}
+				yield [shape, j === 0];
+			}
+		}
+	};
+	const isBlockedFromLeft = (simulated, activeShape, playerShapes) => {
+		if (simulated.type === activeShape.type && simulated.x >= activeShape.x) {
+			return null;
+		}
+		if (simulated.x < 0) {
+			return RULE_ACTIONS.BLOCK_ACTION;
+		}
+		for (let [shape] of getOtherShapes(activeShape, playerShapes)) {
+			if (!doesBBoxOverlap(simulated, shape)) {
+				continue;
+			}
+			const col = 0;
+			for (let row = 0; row < simulated.type.length; ++row) {
+				if (doesBlockOverlap(simulated, row, col, shape)) {
+					return RULE_ACTIONS.BLOCK_ACTION;
+				}
+			}
+		}
+		return null;
+	};
+	const isBlockedFromRight = (simulated, activeShape, playerShapes) => {
+		if (simulated.type === activeShape.type && simulated.x <= activeShape.x) {
+			return null;
+		}
+		if (simulated.x + simulated.type[0].length > options.worldWidth) {
+			return RULE_ACTIONS.BLOCK_ACTION;
+		}
+		for (let [shape] of getOtherShapes(activeShape, playerShapes)) {
+			if (!doesBBoxOverlap(simulated, shape)) {
+				continue;
+			}
+			const col = simulated.type[0].length - 1;
+			for (let row = 0; row < simulated.type.length; ++row) {
+				if (doesBlockOverlap(simulated, row, col, shape)) {
+					return RULE_ACTIONS.BLOCK_ACTION;
+				}
+			}
+		}
+		return null;
+	};
+	const isBlockedFromBottom = (simulated, activeShape, playerShapes) => {
+		if (simulated.type === activeShape.type && simulated.y <= activeShape.y) {
+			return null;
+		}
+		if (simulated.y + simulated.type.length > options.worldHeight) {
+			return RULE_ACTIONS.CREATE_SHAPE;
+		}
+		for (let [shape, isActive] of getOtherShapes(activeShape, playerShapes)) {
+			if (!doesBBoxOverlap(simulated, shape)) {
+				continue;
+			}
+			const row = simulated.type.length - 1;
+			for (let col = 0; col < simulated.type[0].length; ++col) {
+				if (doesBlockOverlap(simulated, row, col, shape)) {
+					if (simulated.y <= 0) {
+						return RULE_ACTIONS.END_THE_GAME;
+					}
+					if (isActive) {
+						return RULE_ACTIONS.BLOCK_ACTION;
+					}
+					return RULE_ACTIONS.CREATE_SHAPE;
+				}
+			}
+		}
+		return null;
+	};
+	return [isBlockedFromLeft, isBlockedFromRight, isBlockedFromBottom];
 };
 ```
 

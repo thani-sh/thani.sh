@@ -1,6 +1,6 @@
 ---
 title: Organizing files in Meteor
-description: Starting hacking on a project with Meteor is lots of fun. But things  can become a mess very easily. Meteor does not have too much  restrictions on how to organize our project files but it'll be useful to  know some of its ways.,
+description: Starting hacking on a project with Meteor is lots of fun. But things can become a mess very easily. Meteor does not have too much restrictions on how to organize our project.
 date: 2014-05-02
 tags: ['meteor']
 layout: 'blog'
@@ -20,11 +20,10 @@ _If you're writing packages, also try testing them using tinytest. It's really e
 
 Files which goes under `client` directory runs only on clients and files under `server` runs only on the server. Which means, no need to wrap everything you write inside a giant if statement like this.
 
-```
+```js
 if (Meteor.isClient()) {
     ...
 }
-
 ```
 
 And the most important thing is that you can use `client` and `server` inside other directories. Let's say you have several modules in your projects and each have their own `client` or `server` directory or both, you can arrange them like this (if you like to) or make up your own way to organize files using `client` and `server` directories.

@@ -1,10 +1,23 @@
 ---
 title: Multiplayer Tetris Game (part 4)
-description: This tutorial continues where we left off on part 3. We will add some tests to make sure the game is working as expected.,
+description: This tutorial continues where we left off on part 3. We will add some tests to make sure the game is working as expected.
 date: 2022-11-20
 tags: ['js']
 layout: 'blog'
 ---
+
+<script>
+import { GameIframe } from "$lib/ui";
+</script>
+
+This tutorial continues where we left off on part 3. We will add some tests to make sure the game is working as expected.
+
+Did it work? you can try the updated game here (Instructions: click to focus and use ↑←↓→ keys and WASD keys)
+
+<GameIframe
+	src="/blog/2022-11-20-multiplayer-tetris-game-part-4/embeds/finished/index.html"
+	height="450px"
+/>
 
 ## Testing the game
 
@@ -51,85 +64,85 @@ You can read more about how to write unit tests here: [https://nodejs.org/api/te
 **world_rule.test.js**
 
 ```ts
-import * as assert from "node:assert";
-import { describe, it } from "node:test";
-import { ShapeActionName } from "../shape_action";
-import { WORLD_ACTION } from "../world_action";
-import { createWorldRules } from "../world_rule";
-import { createTestShape } from "./_test_utils";
+import * as assert from 'node:assert';
+import { describe, it } from 'node:test';
+import { ShapeActionName } from '../shape_action';
+import { WORLD_ACTION } from '../world_action';
+import { createWorldRules } from '../world_rule';
+import { createTestShape } from './_test_utils';
 
-describe("World Rules", () => {
-  const [isBlockedFromLeft] = createWorldRules();
+describe('World Rules', () => {
+	const [isBlockedFromLeft] = createWorldRules();
 
-  describe("isBlockedFromLeft", () => {
-    /**
-     * | A
-     * |AAA
-     * |
-     */
-    it("should block movements beyond the left edge of the game world", () => {
-      const shape = createTestShape({ posX: 0 });
-      const action = isBlockedFromLeft({
-        shape: shape,
-        sim: { ...shape, posX: shape.posX - 1 },
-        shapes: [[shape]],
-        action: ShapeActionName.MOVE_LEFT,
-      });
-      assert.equal(action, WORLD_ACTION.BLOCK_SHAPE_ACTION);
-    });
+	describe('isBlockedFromLeft', () => {
+		/**
+		 * | A
+		 * |AAA
+		 * |
+		 */
+		it('should block movements beyond the left edge of the game world', () => {
+			const shape = createTestShape({ posX: 0 });
+			const action = isBlockedFromLeft({
+				shape: shape,
+				sim: { ...shape, posX: shape.posX - 1 },
+				shapes: [[shape]],
+				action: ShapeActionName.MOVE_LEFT
+			});
+			assert.equal(action, WORLD_ACTION.BLOCK_SHAPE_ACTION);
+		});
 
-    /**
-     * |   BB
-     * |   BB A
-     * |   BBAAA
-     * |
-     */
-    it("should block movements if there are other blocking shapes", () => {
-      const shapeA = createTestShape({ posX: 5, poxY: 5 });
-      const shapeB = createTestShape({
-        posX: 3,
-        posY: 4,
-        type: [
-          [1, 1],
-          [1, 1],
-          [1, 1],
-        ],
-      });
-      const action = isBlockedFromLeft({
-        shape: shapeA,
-        sim: { ...shapeA, posX: shapeA.posX - 1 },
-        shapes: [[shapeA, shapeB]],
-        action: ShapeActionName.MOVE_LEFT,
-      });
-      assert.equal(action, WORLD_ACTION.BLOCK_SHAPE_ACTION);
-    });
+		/**
+		 * |   BB
+		 * |   BB A
+		 * |   BBAAA
+		 * |
+		 */
+		it('should block movements if there are other blocking shapes', () => {
+			const shapeA = createTestShape({ posX: 5, poxY: 5 });
+			const shapeB = createTestShape({
+				posX: 3,
+				posY: 4,
+				type: [
+					[1, 1],
+					[1, 1],
+					[1, 1]
+				]
+			});
+			const action = isBlockedFromLeft({
+				shape: shapeA,
+				sim: { ...shapeA, posX: shapeA.posX - 1 },
+				shapes: [[shapeA, shapeB]],
+				action: ShapeActionName.MOVE_LEFT
+			});
+			assert.equal(action, WORLD_ACTION.BLOCK_SHAPE_ACTION);
+		});
 
-    /**
-     * |   B
-     * |   BB A
-     * |   B AAA
-     * |
-     */
-    it("should block movements only if the filled blocks overlap", () => {
-      const shapeA = createTestShape({ posX: 5, poxY: 5 });
-      const shapeB = createTestShape({
-        posX: 3,
-        posY: 4,
-        type: [
-          [1, 0],
-          [1, 1],
-          [1, 0],
-        ],
-      });
-      const action = isBlockedFromLeft({
-        shape: shapeA,
-        sim: { ...shapeA, posX: shapeA.posX - 1 },
-        shapes: [[shapeA, shapeB]],
-        action: ShapeActionName.MOVE_LEFT,
-      });
-      assert.equal(action, null);
-    });
-  });
+		/**
+		 * |   B
+		 * |   BB A
+		 * |   B AAA
+		 * |
+		 */
+		it('should block movements only if the filled blocks overlap', () => {
+			const shapeA = createTestShape({ posX: 5, poxY: 5 });
+			const shapeB = createTestShape({
+				posX: 3,
+				posY: 4,
+				type: [
+					[1, 0],
+					[1, 1],
+					[1, 0]
+				]
+			});
+			const action = isBlockedFromLeft({
+				shape: shapeA,
+				sim: { ...shapeA, posX: shapeA.posX - 1 },
+				shapes: [[shapeA, shapeB]],
+				action: ShapeActionName.MOVE_LEFT
+			});
+			assert.equal(action, null);
+		});
+	});
 });
 ```
 

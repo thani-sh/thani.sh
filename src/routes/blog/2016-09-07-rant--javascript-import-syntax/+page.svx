@@ -1,6 +1,6 @@
 ---
-title: Rant: JavaScript import syntax
-description: The import syntax on javascript looks damn ugly when many items from a module. Take this example piece of code form a typical GraphQL code:,
+title: Rant - JavaScript import syntax
+description: The import syntax on javascript looks damn ugly when many items from a module. Take this example piece of code form a typical GraphQL code.
 date: 2016-09-07
 tags: ['js']
 layout: 'blog'

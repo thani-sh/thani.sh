@@ -1,6 +1,6 @@
 ---
 title: ‘Hello World' to MeteorJS
-description: In this tutorial, I'll try to walk you through building a simple  realtime wall (like a guestbook) where anyone can post messages. And  let's try to do this without using any magic.,
+description: In this tutorial, I'll try to walk you through building a simple realtime wall (like a guestbook) where anyone can post messages.
 date: 2014-05-02
 tags: ['meteor']
 layout: 'blog'
@@ -17,27 +17,24 @@ In this tutorial, I'll try to walk you through building a simple realtime wall (
 
 Just go to the directory you want to create the app and create a new meteor project using following command.
 
-```
+```bash
 meteor create the-wall
-
 ```
 
 Feel free to run the meteor app although we haven't even started coding it yet. It's okay to keep it running even while you're coding.
 
-```
+```bash
 cd the-wall
 meteor
-
 ```
 
 ### Remove the magic
 
 We're not going to use any magical features of Meteor. So, let's remove them.
 
-```
+```bash
 meteor remove insecure
 meteor remove autopublish
-
 ```
 
 ### Create a collection
@@ -46,14 +43,13 @@ In meteor, we'll be keeping most of our realtime data in collections. Create a n
 
 posts/collections/posts.js
 
-```
+```js
 Posts = new Meteor.Collection('posts');
 
 Posts.allow({
   insert: function () { return true },
   remove: function () { return false }
 });
-
 ```
 
 ### Publish the collection
@@ -62,19 +58,18 @@ Data collections must be first published before they can be accessed by clients.
 
 posts/server/publications/latestPosts.js
 
-```
+```js
 Meteor.publish('latestPosts', function () {
   var yesterday = new Date().getTime() - 1000*60*60*24;
   return Posts.find({created: {$gt: yesterday}});
 });
-
 ```
 
 Publishing happens server side therefor we can place the code inside a directory called `server`. For more information about meteor directories, please read [Organizing Meteor files](#).
 
 Let's add some example posts so we can check if everything works. Go to `localhost:3000` using a browser (I guess its either Firefox or Chrome). Bring up the developer console and enter the following.
 
-```
+```js
 var twoDaysAgo = new Date().getTime() - 1000*60*60*24*2;
 Posts.insert({text: "Two Days Ago", created: twoDaysAgo});
 
@@ -83,40 +78,35 @@ Posts.insert({text: "Two Hours Ago", created: twoHoursAgo});
 
 var now = new Date().getTime();
 Posts.insert({text: "Now", created: now});
-
 ```
 
 ### Subscribe and fetch posts
 
 If you try fetching them from the database, it won't work because first we must subscribe to a publication. If you try to fetch anyways, it'll return an empty array.
 
-```
+```js
 Posts.find().fetch()
 => []
-
 ```
 
 First you must subscribe to the publication and wait until it's ready.
 
-```
+```js
 var sub = Meteor.subscribe('latestPosts');
-
 ```
 
 After some time, the subscription will be ready. You can check it using the ready method of the object returned by Meteor.subscribe().
 
-```
+```js
 sub.ready()
 => true
-
 ```
 
 Finally, you can access posts from the client.
 
-```
+```js
 Posts.find().fetch().toString()
 => "[object Object],[object Object]"
-
 ```
 
 You'll notice that although there are 3 docs in the collection, only 2 gets to the client through this publication/subscription. This happens because we have limited docs sent to the client when publishing them.
@@ -127,7 +117,7 @@ Earlier we added posts from the client side and we set the created time manually
 
 posts/server/methods/saveMethod.js
 
-```
+```js
 Meteor.methods({
   addPost: function (text) {
     check(text, String);
@@ -137,14 +127,12 @@ Meteor.methods({
     });
   }
 });
-
 ```
 
 And we can make sure this works by calling the method form the client. Try running this command on browser console.
 
-```
+```js
 Meteor.call('addPost', 'Added using method');
-
 ```
 
 ## Finally the UI
@@ -155,45 +143,42 @@ Let's just wrap things up with a simple UI.
 
 client/index.html
 
-```
+```handlebars
 <body>
   <div id="wrapper">
     {{> newPost}}
     {{> postsList}}
   </div>
 </body>
-
 ```
 
 client/index.css
 
-```
+```css
 #wrapper {
   max-width: 900px;
   margin: 5em auto;
   padding: 0 5em;
   font-family: sans-serif;
 }
-
 ```
 
 ### Form to add new post
 
 posts/client/newPost.html
 
-```
+```handlebars
 <template name="newPost">
   <div id="newPost">
     <textarea autofocus id="newPostText"></textarea>
     <button id="newPostButton">Save Post</button>
   </div>
 </template>
-
 ```
 
 posts/client/newPost.css
 
-```
+```js
 #newPost textarea {
   display: block;
   width: 100%;
@@ -211,12 +196,11 @@ posts/client/newPost.css
   border: 1px solid rgba(0,0,0,0.1);
   outline: none;
 }
-
 ```
 
 posts/client/newPost.js
 
-```
+```js
 Template.newPost.events({
   'click #newPostButton': function (e) {
     var textarea = $('#newPostText');
@@ -225,14 +209,13 @@ Template.newPost.events({
     textarea.val('');
   }
 });
-
 ```
 
 ### List Posts
 
 posts/client/postsList.html
 
-```
+```handlebars
 <template name="postsList">
   <ul id="postsList">
   {{#each posts}}
@@ -240,12 +223,11 @@ posts/client/postsList.html
   {{/each}}
   </ul>
 </template>
-
 ```
 
 posts/client/postsList.css
 
-```
+```css
 #postsList {
   padding: 0;
 }
@@ -258,12 +240,11 @@ posts/client/postsList.css
   margin: 1em 0;
   border: 1px solid rgba(0,0,0,0.1);
 }
-
 ```
 
 posts/client/postsList.js
 
-```
+```js
 Meteor.subscribe('latestPosts');
 
 Template.postsList.posts = function () {

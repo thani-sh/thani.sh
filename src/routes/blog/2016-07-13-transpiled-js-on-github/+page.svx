@@ -1,12 +1,12 @@
 ---
 title: Transpiled JS on Github?
-description: If you're maintaining a javascript project on Github there's a good chance you're using a transpiler. Most developers don't publish transpiled code to Github because it makes your pull requests look messed up and it's difficult to keep source and transpiled code in sync.,
+description: If you're maintaining a javascript project on Github there's a good chance you're using a transpiler to convert it to a format usable be older platforms and to minify it.
 date: 2016-07-13
 tags: ['github', 'js']
 layout: 'blog'
 ---
 
-If you're maintaining a javascript project on Github there's a good chance you're using a transpiler. Most developers don't publish transpiled code to Github because it makes your pull requests look messed up and it's difficult to keep source and transpiled code in sync.
+If you're maintaining a javascript project on Github there's a good chance you're using a transpiler to convert it to a format usable be older platforms and to minify it. Most developers don't publish transpiled code to Github because it makes your pull requests look messed up and it's difficult to keep source and transpiled code in sync.
 
 ### Why would anyone publish transpiled code anyways?
 

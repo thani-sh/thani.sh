@@ -1,6 +1,6 @@
 ---
 title: Masking GraphQL Errors
-description: The way **graphql-js** and **express-graphql** handle errors is has some issues. Consider this example server which has a bug in a resolve function.,
+description: The way graphql-js and express-graphql handle errors is has some issues. Consider this example server which has a bug in a resolve function.
 date: 2016-01-03
 tags: ['graphql', 'js']
 layout: 'blog'

@@ -1,6 +1,6 @@
 ---
 title: Async tasks sequentially
-description: Let's check this badly written example first. The sequence below will run each step asynchronously.,
+description: Let's check this badly written example first. The sequence below will run each step asynchronously.
 date: 2017-01-09
 tags: ['js']
 layout: 'blog'

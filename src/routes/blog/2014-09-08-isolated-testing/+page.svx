@@ -1,6 +1,6 @@
 ---
 title: Isolated Testing
-description: Just thought of sharing something about writing tests with  JavaScript. Usually, it's best to keep tests simple and test just one  thing per test (the _thing_ is most of the time just a _function_).,
+description: Just thought of sharing something about writing tests with JavaScript. Usually, it's best to keep tests simple and test just one thing per test.
 date: 2014-09-08
 tags: ['js']
 layout: 'blog'
