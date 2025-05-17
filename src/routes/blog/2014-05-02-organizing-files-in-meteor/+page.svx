@@ -58,7 +58,6 @@ And the most important thing is that you can use `client` and `server` inside ot
 +---search/
     +---server/
         +---searchPostsMethod.js
-
 ```
 
 In above example, the project contains 3 modules blog, user and search.
@@ -69,5 +68,3 @@ In above example, the project contains 3 modules blog, user and search.
 - Gallery sub module only has client side code.
 - Posts sub-module has both client and server side code.
 - Posts sub-module also has a file common to both server and client.
-
-Original Post: [https://mnmtanish.svbtle.com/organizing-files-in-meteor](https://mnmtanish.svbtle.com/organizing-files-in-meteor)

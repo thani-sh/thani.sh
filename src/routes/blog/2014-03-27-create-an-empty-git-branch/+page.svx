@@ -26,5 +26,3 @@ If you create branch in Github it'll create the branch from **master** (which is
 - Github Pages
 
 I learned this a while ago from a [Github Post](https://help.github.com/articles/creating-project-pages-manually).
-
-Original Post: [https://mnmtanish.svbtle.com/create-an-empty-git-branch](https://mnmtanish.svbtle.com/create-an-empty-git-branch)

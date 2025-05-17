@@ -269,7 +269,4 @@ Meteor.subscribe('latestPosts');
 Template.postsList.posts = function () {
   return Posts.find();
 }
-
 ```
-
-Original Post: [https://mnmtanish.svbtle.com/another-hello-world-to-meteorjs](https://mnmtanish.svbtle.com/another-hello-world-to-meteorjs)

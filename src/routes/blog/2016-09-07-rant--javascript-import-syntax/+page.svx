@@ -8,7 +8,7 @@ layout: 'blog'
 
 The import syntax on javascript looks damn ugly when many items from a module. Take this example piece of code form a typical GraphQL code:
 
-```
+```js
 import {
   GraphQLObjectType,
   GraphQLString,
@@ -21,7 +21,7 @@ import {
 
 The most important part of the statement, the module gets overshadowed by the list of items we're importing from it. The module name would stand out more if we write it like this (_warning: fake code ahead_).
 
-```
+```js
 from 'graphql' import {
   GraphQLObjectType,
   GraphQLString,

@@ -23,5 +23,3 @@ _e.g. Android is fork of Linux which started from Linux. But now it's something 
 ### Fork to fill your Github profile with something
 
 This is just silly. I have seen some people (especially IT students) do that when they prepare for interviews. It is true that tech companies are now starting to consider your Github profile as much as your resume. Instead of unnecessary forking, it's always better to create new repositories for small projects we do during studies. Even if it looks small for us, for someone maybe else that very piece of code is what they may have been looking for.
-
-Original Post: [https://mnmtanish.svbtle.com/when-not-to-fork-on-github](https://mnmtanish.svbtle.com/when-not-to-fork-on-github)

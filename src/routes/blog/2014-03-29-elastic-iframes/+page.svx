@@ -94,5 +94,3 @@ And this one inside the parent page scripts to prepare the jschannel, wait for m
 ```
 
 Is this all really necessary? We can make the code much shorter if we use window.postMessage directly but if you're using iframes, most probably you'll need to use if for more than changing the height. Mozilla jschannel can help you when it comes to organizing postMessage channels.
-
-Original Post: [https://mnmtanish.svbtle.com/elastic-iframes-autogrow-height](https://mnmtanish.svbtle.com/elastic-iframes-autogrow-height)
