@@ -502,7 +502,7 @@ const createGameRules = (options) => {
 The code we have written so far brings us to this:
 
 <GameIframe
-  src="/blog/2020-12-13-multiplayer-tetris-game-part-1/embeds/finished"
+  src="/blog/2020-12-13-multiplayer-tetris-game-part-1/embeds/finished/index.html"
   height="400px"
 />
 
