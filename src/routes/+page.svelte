@@ -6,17 +6,17 @@
 
 <div class="container mx-auto p-4">
 	<!-- Hero Section -->
-	<div class="hero py-32">
+	<div class="hero pt-16 pb-4 lg:py-32">
 		<div class="hero-content text-center">
 			<div>
 				<h1 class="mb-4 text-6xl font-bold">thani.sh</h1>
-				<p class="mb-6 text-lg">dd if=/dev/head of=/dev/blog</p>
+				<p class="text-lg">dd if=/dev/head of=/dev/blog</p>
 			</div>
 		</div>
 	</div>
 
 	<!-- Recent Posts Section -->
-	<section class="py-16">
+	<section>
 		<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
 			{#each data.posts as post (post.slug)}
 				<a
