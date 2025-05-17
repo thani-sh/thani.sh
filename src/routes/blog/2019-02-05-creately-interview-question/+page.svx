@@ -1,22 +1,10 @@
-import { BlogPostLayout } from "../../../shared/templates-mdx/BlogPostLayout.jsx";
-
-export const meta = {
-  title: "Solving Interview Problems",
-  description:
-    "Sometimes, we get to solve programming questions on site during software engineering interviews. This is one of the questions I used to ask from those who have applied for software engineering positions at Creately.",
-  intro: (
-    <section>
-      <p>
-        Sometimes, we get to solve programming questions on site during software
-        engineering interviews. This is one of the questions I used to ask from
-        those who have applied for software engineering positions at Creately.
-      </p>
-    </section>
-  ),
-  date: "2019-02-05",
-  tags: ["creately"],
-  layout: BlogPostLayout,
-};
+---
+title: Solving Interview Problems
+description: Sometimes, we get to solve programming questions on site during software engineering interviews. This is one of the questions I used to ask from those who have applied for software engineering positions at Creately.,
+date: 2019-02-05
+tags: ['creately']
+layout: 'blog'
+---
 
 Sometimes, we get to solve programming questions on site during software engineering interviews. This is one of the questions I used to ask from those who have applied for software engineering positions at Creately.
 

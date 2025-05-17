@@ -1,25 +1,10 @@
-import { BlogPostLayout } from "../../../shared/templates-mdx/BlogPostLayout.jsx";
-
-export const meta = {
-  title: "Go for Node developers",
-  description:
-    "I'm developing Node apps for years and started working with Go last  month. So far, I like it as much as I like Node. So I hope to blog some  quick tips about Go (aka Golang) for Node developers starting with the  $GOPATH. I'll start with some boring stuff and quickly move on to  something useful. If you haven't tried go yet, [this](https://golang.org/doc/code.html) is a good page to start.",
-  intro: (
-    <section>
-      <p>
-        I'm developing Node apps for years and started working with Go last
-        month. So far, I like it as much as I like Node. So I hope to blog some
-        quick tips about Go (aka Golang) for Node developers starting with the
-        $GOPATH. I'll start with some boring stuff and quickly move on to
-        something useful. If you haven't tried go yet,
-        [this](https://golang.org/doc/code.html) is a good page to start.
-      </p>
-    </section>
-  ),
-  date: "2015-04-15",
-  tags: ["node", "go"],
-  layout: BlogPostLayout,
-};
+---
+title: Go for Node developers
+description: I'm developing Node apps for years and started working with Go last  month. So far, I like it as much as I like Node. So I hope to blog some  quick tips about Go (aka Golang) for Node developers starting with the  $GOPATH. I'll start with some boring stuff and quickly move on to  something useful. If you haven't tried go yet, [this](https://golang.org/doc/code.html) is a good page to start.,
+date: 2015-04-15
+tags: ['node', 'go']
+layout: 'blog'
+---
 
 I'm developing Node apps for years and started working with Go last month. So far, I like it as much as I like Node. So I hope to blog some quick tips about Go (aka Golang) for Node developers starting with the $GOPATH. I'll start with some boring stuff and quickly move on to something useful. If you haven't tried go yet, [this](https://golang.org/doc/code.html) is a good page to start.
 

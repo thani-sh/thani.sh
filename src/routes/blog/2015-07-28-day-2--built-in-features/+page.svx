@@ -1,22 +1,10 @@
-import { BlogPostLayout } from "../../../shared/templates-mdx/BlogPostLayout.jsx";
-
-export const meta = {
-  title: "Day 2: Built-in Features",
-  description:
-    "This tutorial consists of a number of example go programs demonstrating each feature. It is recommended to try some of them on the Go playground or on your local machine.",
-  intro: (
-    <section>
-      <p>
-        This tutorial consists of a number of example go programs demonstrating
-        each feature. It is recommended to try some of them on the Go playground
-        or on your local machine.
-      </p>
-    </section>
-  ),
-  date: "2015-07-28",
-  tags: ["go"],
-  layout: BlogPostLayout,
-};
+---
+title: Day 2: Built-in Features
+description: This tutorial consists of a number of example go programs demonstrating each feature. It is recommended to try some of them on the Go playground or on your local machine.,
+date: 2015-07-28
+tags: ['go']
+layout: 'blog'
+---
 
 This tutorial consists of a number of example go programs demonstrating each feature. It is recommended to try some of them on the Go playground or on your local machine.
 

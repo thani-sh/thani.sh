@@ -1,22 +1,10 @@
-import { BlogPostLayout } from "../../../shared/templates-mdx/BlogPostLayout.jsx";
-
-export const meta = {
-  title: "Elastic Iframes",
-  description:
-    "Sometimes it become necessary to use iframes when building some web  applications. Often we have them hidden but sometimes iframes can be  useful visible too.",
-  intro: (
-    <section>
-      <p>
-        Sometimes it become necessary to use iframes when building some web
-        applications. Often we have them hidden but sometimes iframes can be
-        useful visible too.
-      </p>
-    </section>
-  ),
-  date: "2014-03-29",
-  tags: ["js"],
-  layout: BlogPostLayout,
-};
+---
+title: Elastic Iframes
+description: Sometimes it become necessary to use iframes when building some web  applications. Often we have them hidden but sometimes iframes can be  useful visible too.,
+date: 2014-03-29
+tags: ['js']
+layout: 'blog'
+---
 
 Sometimes it become necessary to use iframes when building some web applications. Often we have them hidden but sometimes iframes can be useful visible too.
 

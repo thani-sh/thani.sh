@@ -1,18 +1,10 @@
-import { BlogPostLayout } from "../../../shared/templates-mdx/BlogPostLayout.jsx";
-
-export const meta = {
-  title: "Limit Go Benchmark b.N",
-  description:
-    "**TLDR** - Operations count (b.N) can be set inside the function.",
-  intro: (
-    <section>
-      <p>**TLDR** - Operations count (b.N) can be set inside the function.</p>
-    </section>
-  ),
-  date: "2015-07-23",
-  tags: ["go"],
-  layout: BlogPostLayout,
-};
+---
+title: Limit Go Benchmark b.N
+description: **TLDR** - Operations count (b.N) can be set inside the function.,
+date: 2015-07-23
+tags: ['go']
+layout: 'blog'
+---
 
 **TLDR** - Operations count (b.N) can be set inside the function.
 

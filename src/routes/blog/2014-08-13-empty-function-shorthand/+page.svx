@@ -1,23 +1,10 @@
-import { BlogPostLayout } from "../../../shared/templates-mdx/BlogPostLayout.jsx";
-
-export const meta = {
-  title: "Empty Function Shorthand",
-  description:
-    "JavaScript is an interesting language and so far my favorite. Maybe  it's just me but I find stuff some people complain about javascript such  as _automatic semicolon insertion, the way javascript scoping works and function/variable hoisting_ to be some of its best features.",
-  intro: (
-    <section>
-      <p>
-        JavaScript is an interesting language and so far my favorite. Maybe it's
-        just me but I find stuff some people complain about javascript such as
-        _automatic semicolon insertion, the way javascript scoping works and
-        function/variable hoisting_ to be some of its best features.
-      </p>
-    </section>
-  ),
-  date: "2014-08-13",
-  tags: ["js"],
-  layout: BlogPostLayout,
-};
+---
+title: Empty Function Shorthand
+description: JavaScript is an interesting language and so far my favorite. Maybe  it's just me but I find stuff some people complain about javascript such  as _automatic semicolon insertion, the way javascript scoping works and function/variable hoisting_ to be some of its best features.,
+date: 2014-08-13
+tags: ['js']
+layout: 'blog'
+---
 
 JavaScript is an interesting language and so far my favorite. Maybe it's just me but I find stuff some people complain about javascript such as _automatic semicolon insertion, the way javascript scoping works and function/variable hoisting_ to be some of its best features.
 

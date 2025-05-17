@@ -1,22 +1,10 @@
-import { BlogPostLayout } from "../../../shared/templates-mdx/BlogPostLayout.jsx";
-
-export const meta = {
-  title: "Isolated Testing",
-  description:
-    "Just thought of sharing something about writing tests with  JavaScript. Usually, it's best to keep tests simple and test just one  thing per test (the _thing_ is most of the time just a _function_).",
-  intro: (
-    <section>
-      <p>
-        Just thought of sharing something about writing tests with JavaScript.
-        Usually, it's best to keep tests simple and test just one thing per test
-        (the _thing_ is most of the time just a _function_).
-      </p>
-    </section>
-  ),
-  date: "2014-09-08",
-  tags: ["js"],
-  layout: BlogPostLayout,
-};
+---
+title: Isolated Testing
+description: Just thought of sharing something about writing tests with  JavaScript. Usually, it's best to keep tests simple and test just one  thing per test (the _thing_ is most of the time just a _function_).,
+date: 2014-09-08
+tags: ['js']
+layout: 'blog'
+---
 
 Just thought of sharing something about writing tests with JavaScript. Usually, it's best to keep tests simple and test just one thing per test (the _thing_ is most of the time just a _function_).
 

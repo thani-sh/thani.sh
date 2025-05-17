@@ -1,21 +1,10 @@
-import { BlogPostLayout } from "../../../shared/templates-mdx/BlogPostLayout.jsx";
-
-export const meta = {
-  title: "Async tasks sequentially",
-  description:
-    "Let's check this badly written example first. The sequence below will run each step asynchronously.",
-  intro: (
-    <section>
-      <p>
-        Let's check this badly written example first. The sequence below will
-        run each step asynchronously.
-      </p>
-    </section>
-  ),
-  date: "2017-01-09",
-  tags: ["js"],
-  layout: BlogPostLayout,
-};
+---
+title: Async tasks sequentially
+description: Let's check this badly written example first. The sequence below will run each step asynchronously.,
+date: 2017-01-09
+tags: ['js']
+layout: 'blog'
+---
 
 Let's check this badly written example first. The sequence below will run each step asynchronously.
 

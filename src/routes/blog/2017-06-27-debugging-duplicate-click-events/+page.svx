@@ -1,23 +1,15 @@
-import { BlogPostLayout } from "../../../shared/templates-mdx/BlogPostLayout.jsx";
+---
+title: Duplicate click events
+description: While trying to debug this issue, we found out a couple of interesting things about how Angular manages event handlers.,
+date: 2017-06-27
+tags: ['js', 'angular']
+layout: 'blog'
+---
+
+<script>
 import img1 from "./images/1-D2GJjRg5Ss_4KcskGrmN-Q.png";
 import img2 from "./images/1-cwXIknjf3--tjO2QSSo3MQ.png";
-
-export const meta = {
-  title: "Duplicate click events",
-  description:
-    "While trying to debug this issue, we found out a couple of interesting things about how Angular manages event handlers.",
-  intro: (
-    <section>
-      <p>
-        While trying to debug this issue, we found out a couple of interesting
-        things about how Angular manages event handlers.
-      </p>
-    </section>
-  ),
-  date: "2017-06-27",
-  tags: ["js", "angular"],
-  layout: BlogPostLayout,
-};
+</script>
 
 While trying to debug this issue, we found out a couple of interesting things about how Angular manages event handlers.
 

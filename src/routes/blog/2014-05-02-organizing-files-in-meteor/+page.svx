@@ -1,23 +1,10 @@
-import { BlogPostLayout } from "../../../shared/templates-mdx/BlogPostLayout.jsx";
-
-export const meta = {
-  title: "Organizing files in Meteor",
-  description:
-    "Starting hacking on a project with Meteor is lots of fun. But things  can become a mess very easily. Meteor does not have too much  restrictions on how to organize our project files but it'll be useful to  know some of its ways.",
-  intro: (
-    <section>
-      <p>
-        Starting hacking on a project with Meteor is lots of fun. But things can
-        become a mess very easily. Meteor does not have too much restrictions on
-        how to organize our project files but it'll be useful to know some of
-        its ways.
-      </p>
-    </section>
-  ),
-  date: "2014-05-02",
-  tags: ["meteor"],
-  layout: BlogPostLayout,
-};
+---
+title: Organizing files in Meteor
+description: Starting hacking on a project with Meteor is lots of fun. But things  can become a mess very easily. Meteor does not have too much  restrictions on how to organize our project files but it'll be useful to  know some of its ways.,
+date: 2014-05-02
+tags: ['meteor']
+layout: 'blog'
+---
 
 Starting hacking on a project with Meteor is lots of fun. But things can become a mess very easily. Meteor does not have too much restrictions on how to organize our project files but it'll be useful to know some of its ways.
 

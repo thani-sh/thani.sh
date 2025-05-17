@@ -40,6 +40,7 @@
 	},
 	"packageManager": "yarn@4.9.1",
 	"dependencies": {
+		"@bitmachina/highlighter": "1.0.0-alpha.6",
 		"@lucide/svelte": "^0.507.0"
 	}
 }

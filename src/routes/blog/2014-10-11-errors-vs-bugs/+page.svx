@@ -1,24 +1,10 @@
-import { BlogPostLayout } from "../../../shared/templates-mdx/BlogPostLayout.jsx";
-
-export const meta = {
-  title: "Errors vs. Bugs",
-  description:
-    "One of the most important things I learned during past few months at  MeteorHacks is the difference between errors and bugs and how they  should be handled. I also found this [awesome article](https://www.joyent.com/developers/node/design/errors) on Joyent website which talks about error handling in node.",
-  intro: (
-    <section>
-      <p>
-        One of the most important things I learned during past few months at
-        MeteorHacks is the difference between errors and bugs and how they
-        should be handled. I also found this [awesome
-        article](https://www.joyent.com/developers/node/design/errors) on Joyent
-        website which talks about error handling in node.
-      </p>
-    </section>
-  ),
-  date: "2014-10-11",
-  tags: ["js", "errors"],
-  layout: BlogPostLayout,
-};
+---
+title: Errors vs. Bugs
+description: One of the most important things I learned during past few months at  MeteorHacks is the difference between errors and bugs and how they  should be handled. I also found this [awesome article](https://www.joyent.com/developers/node/design/errors) on Joyent website which talks about error handling in node.,
+date: 2014-10-11
+tags: ['js', 'errors']
+layout: 'blog'
+---
 
 One of the most important things I learned during past few months at MeteorHacks is the difference between errors and bugs and how they should be handled. I also found this [awesome article](https://www.joyent.com/developers/node/design/errors) on Joyent website which talks about error handling in node.
 

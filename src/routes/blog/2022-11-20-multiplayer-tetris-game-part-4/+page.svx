@@ -1,30 +1,14 @@
-import { BlogPostLayout } from "../../../shared/templates-mdx/BlogPostLayout.jsx";
-import { GameIframe } from "./components/GameIframe";
+---
+title: Multiplayer Tetris Game (part 4)
+description: This tutorial continues where we left off on part 3. We will add some tests to make sure the game is working as expected.,
+date: 2022-11-20
+tags: ['js']
+layout: 'blog'
+---
 
-export const meta = {
-  title: "Multiplayer Tetris Game (part 4)",
-  description:
-    "This tutorial continues where we left off on part 3. We will add some tests to make sure the game is working as expected.",
-  intro: (
-    <section>
-      <p>
-        This tutorial continues where we left off on part 3. We will add some
-        tests to make sure the game is working as expected.
-      </p>
-      <p>
-        Did it work? you can try the updated game here (Instructions: click to
-        focus and use ↑←↓→ keys and WASD keys)
-      </p>
-      <GameIframe
-        src="/blog/2022-11-20-multiplayer-tetris-game-part-4/embeds/finished"
-        height="450px"
-      />
-    </section>
-  ),
-  date: "2022-11-20",
-  tags: ["js"],
-  layout: BlogPostLayout,
-};
+<script>
+import { GameIframe } from "./components/GameIframe";
+</script>
 
 ## Testing the game
 

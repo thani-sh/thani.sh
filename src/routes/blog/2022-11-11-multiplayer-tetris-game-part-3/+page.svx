@@ -1,31 +1,14 @@
-import { BlogPostLayout } from "../../../shared/templates-mdx/BlogPostLayout.jsx";
-import { GameIframe } from "./components/GameIframe";
+---
+title: Multiplayer Tetris Game (part 3)
+description: This tutorial continues where we left off on part 2. We will split the code into multiple files to make it easier to maintain and implement a few more game rules.,
+date: 2022-11-11
+tags: ['js']
+layout: 'blog'
+---
 
-export const meta = {
-  title: "Multiplayer Tetris Game (part 3)",
-  description:
-    "This tutorial continues where we left off on part 2. We will split the code into multiple files to make it easier to maintain and implement a few more game rules.",
-  intro: (
-    <section>
-      <p>
-        This tutorial continues where we left off on part 2. We will split the
-        code into multiple files to make it easier to maintain and implement a
-        few more game rules.
-      </p>
-      <p>
-        Did it work? you can try the updated game here (Instructions: click to
-        focus and use ↑←↓→ keys and WASD keys)
-      </p>
-      <GameIframe
-        src="/blog/2022-11-11-multiplayer-tetris-game-part-3/embeds/finished"
-        height="450px"
-      />
-    </section>
-  ),
-  date: "2022-11-11",
-  tags: ["js"],
-  layout: BlogPostLayout,
-};
+<script>
+import { GameIframe } from "./components/GameIframe";
+</script>
 
 ## Refactoring the code
 

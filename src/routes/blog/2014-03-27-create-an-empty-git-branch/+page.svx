@@ -1,21 +1,10 @@
-import { BlogPostLayout } from "../../../shared/templates-mdx/BlogPostLayout.jsx";
-
-export const meta = {
-  title: "Create an empty git branch",
-  description:
-    "It's really easy to create a new empty git branch with no parents (AKA orphan branches). First create an orphan branch with this command.",
-  intro: (
-    <section>
-      <p>
-        It's really easy to create a new empty git branch with no parents (AKA
-        orphan branches). First create an orphan branch with this command.
-      </p>
-    </section>
-  ),
-  date: "2014-03-27",
-  tags: ["git", "github"],
-  layout: BlogPostLayout,
-};
+---
+title: Create an empty git branch
+description: It's really easy to create a new empty git branch with no parents (AKA orphan branches). First create an orphan branch with this command.,
+date: 2014-03-27
+tags: ['git', 'github']
+layout: 'blog'
+---
 
 It's really easy to create a new empty git branch with no parents (AKA orphan branches). First create an orphan branch with this command.
 

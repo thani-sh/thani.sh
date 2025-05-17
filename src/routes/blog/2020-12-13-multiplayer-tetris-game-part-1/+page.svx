@@ -1,24 +1,15 @@
-import { BlogPostLayout } from "../../../shared/templates-mdx/BlogPostLayout.jsx";
+---
+title: Multiplayer Tetris Game (part 1)
+description: A tutorial about writing a multiplayer game from scratch. Starting from solidifying the requirements and continues all the way up to creating a working prototype with vanilla js.,
+date: 2020-12-13
+tags: ['js']
+layout: 'blog'
+---
+
+<script>
 import { GameIframe } from "./components/GameIframe";
 import img1 from "./images/basic-components.png";
-
-export const meta = {
-  title: "Multiplayer Tetris Game (part 1)",
-  description:
-    "A tutorial about writing a multiplayer game from scratch. Starting from solidifying the requirements and continues all the way up to creating a working prototype with vanilla js.",
-  intro: (
-    <section>
-      <p>
-        A tutorial about writing a multiplayer game from scratch. Starting from
-        solidifying the requirements and continues all the way up to creating a
-        working prototype with vanilla js.
-      </p>
-    </section>
-  ),
-  date: "2020-12-13",
-  tags: ["js"],
-  layout: BlogPostLayout,
-};
+</script>
 
 ## Before We Start
 
