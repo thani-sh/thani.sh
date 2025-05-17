@@ -1,5 +1,5 @@
 import { mdsvex, escapeSvelte } from 'mdsvex';
-import adapter from '@sveltejs/adapter-cloudflare';
+import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
@@ -11,7 +11,7 @@ function getAbsolutePath(relativePath) {
 	return url.pathname;
 }
 
-const theme = 'github-dark';
+const theme = 'one-dark-pro';
 const highlighter = await createHighlighter({
 	themes: [theme],
 	langs: ['javascript', 'typescript', 'go', 'bash', 'json', 'html', 'markdown']
@@ -34,7 +34,14 @@ const config = {
 			}
 		})
 	],
-	kit: { adapter: adapter() },
+	kit: {
+		adapter: adapter({
+			strict: true,
+			pages: 'build',
+			assets: 'build',
+			fallback: 'index.html'
+		})
+	},
 	extensions: ['.svelte', '.svx']
 };
 

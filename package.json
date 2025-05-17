@@ -14,11 +14,10 @@
 		"lint": "prettier --check . && eslint ."
 	},
 	"devDependencies": {
-		"@bitmachina/highlighter": "1.0.0-alpha.6",
 		"@eslint/compat": "^1.2.5",
 		"@eslint/js": "^9.18.0",
 		"@lucide/svelte": "^0.507.0",
-		"@sveltejs/adapter-cloudflare": "^7.0.0",
+		"@sveltejs/adapter-static": "^3.0.8",
 		"@sveltejs/kit": "^2.16.0",
 		"@sveltejs/vite-plugin-svelte": "^5.0.0",
 		"@tailwindcss/typography": "^0.5.15",
@@ -33,7 +32,9 @@
 		"prettier-plugin-svelte": "^3.3.3",
 		"prettier-plugin-tailwindcss": "^0.6.11",
 		"rehype-autolink-headings": "^7.1.0",
+		"rehype-pretty-code": "^0.14.1",
 		"rehype-slug": "^6.0.0",
+		"shiki": "^3.4.2",
 		"svelte": "^5.0.0",
 		"svelte-check": "^4.0.0",
 		"tailwindcss": "^4.0.0",
@@ -42,9 +43,5 @@
 		"vite": "^6.2.6",
 		"wrangler": "^4.14.1"
 	},
-	"packageManager": "yarn@4.9.1",
-	"dependencies": {
-		"rehype-pretty-code": "^0.14.1",
-		"shiki": "^3.4.2"
-	}
+	"packageManager": "yarn@4.9.1"
 }
