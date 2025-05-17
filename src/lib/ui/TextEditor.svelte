@@ -28,7 +28,9 @@
 					tools: {
 						header: (await import('@editorjs/header')).default,
 						list: (await import('@editorjs/list')).default,
-						code: (await import('@calumk/editorjs-codecup')).default
+						code: (await import('@calumk/editorjs-codecup')).default,
+						delimiter: (await import('@editorjs/delimiter')).default,
+						inlineCode: (await import('@editorjs/inline-code')).default
 					},
 					onChange: async () => {
 						try {

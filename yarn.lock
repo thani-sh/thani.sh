@@ -128,6 +128,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@editorjs/delimiter@npm:^1.4.2":
+  version: 1.4.2
+  resolution: "@editorjs/delimiter@npm:1.4.2"
+  dependencies:
+    "@codexteam/icons": "npm:^0.3.2"
+  checksum: 10c0/635e96097529484e3db69b565de6dd153c5b4564906f1e4ad5883c3f97236badbc2b964a512a7456f0f3819eac0809e061f4a5a0e27b49054b28b2e8e13b1d7c
+  languageName: node
+  linkType: hard
+
 "@editorjs/editorjs@npm:^2.29.1, @editorjs/editorjs@npm:^2.30.8":
   version: 2.30.8
   resolution: "@editorjs/editorjs@npm:2.30.8"
@@ -142,6 +151,15 @@ __metadata:
     "@codexteam/icons": "npm:^0.0.5"
     "@editorjs/editorjs": "npm:^2.29.1"
   checksum: 10c0/c208d2ea852c0e75b09a03ce08db558249c0e1efd17459f4adc80de9c30963b69129f744764769047e1766403e2e0fa249a5086eefdbcd5f3a082fbcd3ee4ec6
+  languageName: node
+  linkType: hard
+
+"@editorjs/inline-code@npm:^1.5.1":
+  version: 1.5.1
+  resolution: "@editorjs/inline-code@npm:1.5.1"
+  dependencies:
+    "@codexteam/icons": "npm:^0.3.2"
+  checksum: 10c0/3d58da54fd10e40ca7309ddcccc23c512ef1a8148c583d2ee3f903d2b812fca38d73bb80855bf262fa96a19908f45c89940eb3e0de94772e885236edf81cf36f
   languageName: node
   linkType: hard
 
@@ -5354,8 +5372,10 @@ __metadata:
   resolution: "thani.sh@workspace:."
   dependencies:
     "@calumk/editorjs-codecup": "npm:^1.3.0"
+    "@editorjs/delimiter": "npm:^1.4.2"
     "@editorjs/editorjs": "npm:^2.30.8"
     "@editorjs/header": "npm:^2.8.8"
+    "@editorjs/inline-code": "npm:^1.5.1"
     "@editorjs/list": "npm:^2.0.6"
     "@eslint/compat": "npm:^1.2.5"
     "@eslint/js": "npm:^9.18.0"
