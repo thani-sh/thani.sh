@@ -18,15 +18,15 @@
 	<!-- Recent Posts Section -->
 	<section class="py-16">
 		<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-			{#each data.posts as post (post.id)}
+			{#each data.posts as post (post.slug)}
 				<a
 					href="/blog/{post.slug}"
 					class="card card-border transition-shadow duration-300 hover:shadow-lg"
 				>
 					<div class="card-body">
-						<h2 class="card-title">{post.heading}</h2>
+						<h2 class="card-title">{post.title}</h2>
 						<p class="text-base-content/70 text-sm">
-							Posted on {new Date(post.created_at).toLocaleDateString('en-US', {
+							Posted on {new Date(post.date).toLocaleDateString('en-US', {
 								year: 'numeric',
 								month: 'short',
 								day: 'numeric'

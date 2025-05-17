@@ -7,7 +7,7 @@ layout: 'blog'
 ---
 
 <script>
-import { GameIframe } from "./components/GameIframe";
+import { GameIframe } from "$lib/ui";
 import img1 from "./images/basic-components.png";
 </script>
 

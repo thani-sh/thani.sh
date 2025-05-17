@@ -6,10 +6,6 @@ tags: ['js']
 layout: 'blog'
 ---
 
-<script>
-import { GameIframe } from "./components/GameIframe";
-</script>
-
 ## Fixing Bugs in the code
 
 It turns out, the "T" shape passes through other shapes unless the block on the bottom touches. Let's have a look at one of the requirements we started with on part 1.

@@ -7,8 +7,7 @@ import rehypePrettyCode from 'rehype-pretty-code';
 import { createHighlighter } from 'shiki';
 
 function getAbsolutePath(relativePath) {
-	const url = new URL(relativePath, import.meta.url);
-	return url.pathname;
+	return new URL(relativePath, import.meta.url).pathname;
 }
 
 const theme = 'one-dark-pro';
@@ -30,7 +29,7 @@ const config = {
 				}
 			},
 			layout: {
-				blog: getAbsolutePath('./src/routes/blog/(layouts)/blog.svelte')
+				blog: getAbsolutePath('./src/lib/layout/blog.svelte')
 			}
 		})
 	],

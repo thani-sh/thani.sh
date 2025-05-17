@@ -6,10 +6,6 @@ tags: ['js']
 layout: 'blog'
 ---
 
-<script>
-import { GameIframe } from "./components/GameIframe";
-</script>
-
 ## Refactoring the code
 
 First of all, do we need to refactor the game code? why?

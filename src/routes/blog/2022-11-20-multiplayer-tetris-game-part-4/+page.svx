@@ -6,10 +6,6 @@ tags: ['js']
 layout: 'blog'
 ---
 
-<script>
-import { GameIframe } from "./components/GameIframe";
-</script>
-
 ## Testing the game
 
 What do we need to test? and why?
