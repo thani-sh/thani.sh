@@ -10,7 +10,7 @@
 		<div class="hero-content text-center">
 			<div>
 				<h1 class="mb-4 text-6xl font-bold">thani.sh</h1>
-				<p class="text-lg">dd if=/dev/head of=/dev/blog</p>
+				<p class="inline-block rounded-md font-mono text-lg">dd if=/dev/head of=/dev/blog</p>
 			</div>
 		</div>
 	</div>
