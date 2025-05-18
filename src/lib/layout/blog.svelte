@@ -1,15 +1,17 @@
 <script lang="ts">
+	import { ChevronLeft, SquarePen } from '@lucide/svelte';
+
 	export let title: string;
-	export let description: string;
 	export let date: string;
 	export let tags: string[];
 
-	const props = {
-		title,
-		description,
-		date,
-		tags
-	};
+	import { browser } from '$app/environment';
+	import { page } from '$app/state';
+
+	// Get the last path segment from the URL
+	$: slug = browser
+		? window.location.pathname.split('/').filter(Boolean).pop() || ''
+		: page?.url?.pathname.split('/').filter(Boolean).pop() || '';
 
 	// Format date to only show the date part (YYYY-MM-DD or locale string)
 	$: formattedDate = date
@@ -20,6 +22,17 @@
 			})
 		: '';
 </script>
+
+<a href="/" class="btn btn-circle btn-ghost absolute top-4 left-4">
+	<ChevronLeft class="h-4 w-4" />
+</a>
+
+<a
+	href="https://github.com/thani-sh/thani.sh/edit/main/src/routes/blog/{slug}/%2Bpage.svx"
+	class="btn btn-circle btn-ghost absolute top-4 right-4 hidden lg:flex"
+>
+	<SquarePen class="h-4 w-4" />
+</a>
 
 <header class="mb-4 flex flex-col items-start gap-2 lg:mb-8">
 	<h1 class="text-xl leading-tight font-medium lg:text-4xl">{title}</h1>
