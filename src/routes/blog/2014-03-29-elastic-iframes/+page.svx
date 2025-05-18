@@ -8,21 +8,21 @@ layout: 'blog'
 
 Sometimes it become necessary to use iframes when building some web applications. Often we have them hidden but sometimes iframes can be useful visible too.
 
-For Node Knockout 2013, I was working with Meteorhacks on [Open Comment Box](meteorhacks.2013.nodeknockout.com). It's like a self-hosted Disqus alternative. We kept the comments view inside an iframe to make sure it doesn't clash with main website styles and for security reasons. The comment system is real-time. So, comments visible changes frequently and it required the iframe containing these comments to resize in order to avoid scrollbars.
+For Node Knockout 2013, I was working with Meteorhacks on Open Comment Box (meteorhacks.2013.nodeknockout.com). It's like a self-hosted Disqus alternative. We kept the comments view inside an iframe to make sure it doesn't clash with main website styles and for security reasons. The comment system is real-time. So, comments visible changes frequently and it required the iframe containing these comments to resize in order to avoid scrollbars.
 
 If we're on the same origin, one of the things we can do is to continually check if the **scrollHeight** of the child frame document body changes and update the iframe height.
 
 ```js
 (function (iframe) {
-  var prevHeight = null;
+	var prevHeight = null;
 
-  setInterval(function () {
-    if (prevHeight !== iframe.contentDocument.body.scrollHeight) {
-      prevHeight = iframe.contentDocument.body.scrollHeight;
-      iframe.style.height = prevHeight + "px";
-    }
-  });
-})(document.getElementById("iframe"));
+	setInterval(function () {
+		if (prevHeight !== iframe.contentDocument.body.scrollHeight) {
+			prevHeight = iframe.contentDocument.body.scrollHeight;
+			iframe.style.height = prevHeight + 'px';
+		}
+	});
+})(document.getElementById('iframe'));
 ```
 
 Because of security approaches taken by modern web browsers, this will not work if you have the iframe and parent window in different origins. This is a security enhancement, not a bug so can't much expect it to get _fixed_ in the future.
@@ -41,30 +41,30 @@ And this snippet inside the child frame page scripts which creates the jschannel
 
 ```js
 (function () {
-  function DO_NOTHING() {}
+	function DO_NOTHING() {}
 
-  var channel = null;
-  var prevHeight = null;
+	var channel = null;
+	var prevHeight = null;
 
-  document.addEventListener("DOMContentLoaded", function () {
-    channel = Channel.build({
-      window: window.parent,
-      origin: "*",
-      scope: "test_scope",
-    });
-    setInterval(watchDocumentHeight, 250);
-  });
+	document.addEventListener('DOMContentLoaded', function () {
+		channel = Channel.build({
+			window: window.parent,
+			origin: '*',
+			scope: 'test_scope'
+		});
+		setInterval(watchDocumentHeight, 250);
+	});
 
-  function watchDocumentHeight() {
-    if (prevHeight !== document.body.scrollHeight) {
-      channel.call({
-        method: "resize",
-        params: document.body.scrollHeight,
-        success: DO_NOTHING,
-      });
-      prevHeight = document.body.scrollHeight;
-    }
-  }
+	function watchDocumentHeight() {
+		if (prevHeight !== document.body.scrollHeight) {
+			channel.call({
+				method: 'resize',
+				params: document.body.scrollHeight,
+				success: DO_NOTHING
+			});
+			prevHeight = document.body.scrollHeight;
+		}
+	}
 })();
 ```
 
@@ -72,25 +72,25 @@ And this one inside the parent page scripts to prepare the jschannel, wait for m
 
 ```js
 (function (iframe) {
-  var channel = null;
+	var channel = null;
 
-  document.addEventListener("DOMContentLoaded", function () {
-    channel = Channel.build({
-      window: iframe.contentWindow,
-      origin: "*",
-      scope: "test_scope",
-      onReady: onChannelReady,
-    });
-  });
+	document.addEventListener('DOMContentLoaded', function () {
+		channel = Channel.build({
+			window: iframe.contentWindow,
+			origin: '*',
+			scope: 'test_scope',
+			onReady: onChannelReady
+		});
+	});
 
-  function onChannelReady() {
-    channel.bind("resize", onResize);
-  }
+	function onChannelReady() {
+		channel.bind('resize', onResize);
+	}
 
-  function onResize(trans, data) {
-    iframe.style.height = data + "px";
-  }
-})(document.getElementById("iframe"));
+	function onResize(trans, data) {
+		iframe.style.height = data + 'px';
+	}
+})(document.getElementById('iframe'));
 ```
 
 Is this all really necessary? We can make the code much shorter if we use window.postMessage directly but if you're using iframes, most probably you'll need to use if for more than changing the height. Mozilla jschannel can help you when it comes to organizing postMessage channels.

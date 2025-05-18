@@ -1,5 +1,5 @@
 import { mdsvex, escapeSvelte } from 'mdsvex';
-import adapter from '@sveltejs/adapter-static';
+import adapter from '@sveltejs/adapter-cloudflare';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
@@ -33,14 +33,7 @@ const config = {
 			}
 		})
 	],
-	kit: {
-		adapter: adapter({
-			strict: true,
-			pages: 'build',
-			assets: 'build',
-			fallback: 'index.html'
-		})
-	},
+	kit: { adapter: adapter() },
 	extensions: ['.svelte', '.svx']
 };
 

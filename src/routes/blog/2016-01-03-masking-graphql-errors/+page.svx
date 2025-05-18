@@ -13,7 +13,7 @@ import img2 from "./images/1-MwdytBP91MwjN6m7IKMjRA.png";
 
 The way **graphql-js** and **express-graphql** handle errors is has some issues. Consider this example server which has a bug in a resolve function.
 
-When the query “\{ users \}” is executed, the server will respond with the error message “User.find is not a function”. There are several problems with this behavior:
+When the query " users " is executed, the server will respond with the error message “User.find is not a function”. There are several problems with this behavior:
 
 ### [ 1 ] Error stacktraces are hidden
 

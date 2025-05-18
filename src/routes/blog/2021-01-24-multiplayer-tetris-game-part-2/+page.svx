@@ -14,10 +14,7 @@ This tutorial validates the design we used to write code on part 1. We will try 
 
 Did it work? you can try the updated game here (Instructions: click to focus and use ↑←↓→ keys and WASD keys)
 
-<GameIframe
-	src="/blog/2021-01-24-multiplayer-tetris-game-part-2/embeds/finished/index.html"
-	height="400px"
-/>
+<GameIframe src="/" height="400px" />
 
 ## Fixing Bugs in the code
 
