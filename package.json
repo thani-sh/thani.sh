@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
-		"build": "yarn build:embed && yarn build:index && yarn build:svkit",
+		"build": "svelte-kit sync && yarn build:embed && yarn build:index && yarn build:svkit",
 		"build:index": "node .scripts/build-index.js",
 		"build:embed": "bash .scripts/build-embed.sh",
 		"build:svkit": "vite build",
