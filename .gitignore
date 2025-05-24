@@ -6,7 +6,10 @@ node_modules
 .netlify
 .wrangler
 /.svelte-kit
+/.parcel-cache
+/.wrangler
 /build
+/static/blog
 
 # OS
 .DS_Store

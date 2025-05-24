@@ -14,7 +14,7 @@ This tutorial continues where we left off on part 3. We will add some tests to m
 
 Did it work? you can try the updated game here (Instructions: click to focus and use ↑←↓→ keys and WASD keys)
 
-<GameIframe src="/_blank" height="400px" />
+<GameIframe src="/blog/2022-11-20-multiplayer-tetris-game-part-4/embed-poc/index.html" height="400px" />
 
 ## Testing the game
 
