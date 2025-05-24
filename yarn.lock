@@ -24,16 +24,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cloudflare/unenv-preset@npm:2.3.1":
-  version: 2.3.1
-  resolution: "@cloudflare/unenv-preset@npm:2.3.1"
+"@cloudflare/unenv-preset@npm:2.3.2":
+  version: 2.3.2
+  resolution: "@cloudflare/unenv-preset@npm:2.3.2"
   peerDependencies:
-    unenv: 2.0.0-rc.15
-    workerd: ^1.20250320.0
+    unenv: 2.0.0-rc.17
+    workerd: ^1.20250508.0
   peerDependenciesMeta:
     workerd:
       optional: true
-  checksum: 10c0/cd8c44609f1a88989b28943710dfeb6b29d3f840e29e312a13e821eb7e92593bd26dd3d314770511b0263309fd1bf7b1d5516c43aedad1e4ebf6e3a3ffcf057d
+  checksum: 10c0/6c821bf8e903e7698ef8b23fa43fff1dffc95014879a9fa4880d745b272ae9f164021b4102a4eef4ae82c698a1d629b5661a745cd309eda7920a64dfbb9a5438
   languageName: node
   linkType: hard
 
@@ -73,9 +73,9 @@ __metadata:
   linkType: hard
 
 "@cloudflare/workers-types@npm:^4.20250507.0":
-  version: 4.20250517.0
-  resolution: "@cloudflare/workers-types@npm:4.20250517.0"
-  checksum: 10c0/97409d1856d3b92d363f6283a70d752592df6789b63fcdc126d733faf273cf7c967d94bad3f91e01440111f7d532c747b86cc1d93cd6ea20f2a4f47a0a696056
+  version: 4.20250524.0
+  resolution: "@cloudflare/workers-types@npm:4.20250524.0"
+  checksum: 10c0/81dff31c4611ebee0e0f96df666c5caf5de72dd566536a2124eaf4290587e8d995c0c6af8fe9f457a3b55e3ec2787ebd5f9a4f2cbf56391359fda96f2daa7073
   languageName: node
   linkType: hard
 
@@ -998,8 +998,8 @@ __metadata:
   linkType: hard
 
 "@sveltejs/kit@npm:^2.16.0":
-  version: 2.21.0
-  resolution: "@sveltejs/kit@npm:2.21.0"
+  version: 2.21.1
+  resolution: "@sveltejs/kit@npm:2.21.1"
   dependencies:
     "@sveltejs/acorn-typescript": "npm:^1.0.5"
     "@types/cookie": "npm:^0.6.0"
@@ -1019,7 +1019,7 @@ __metadata:
     vite: ^5.0.3 || ^6.0.0
   bin:
     svelte-kit: svelte-kit.js
-  checksum: 10c0/1378a70e14c4d7e9bf1a78490839cd4c92d481a6472ba55d21fbe203c846ae008f72c32d67ff3fdb8ff0f0d05700143c40f07ca6c030febccf206e23f835d393
+  checksum: 10c0/9273d0f0f726b44b33d3e29e633ce13577fe362c707ce72349ca5a2f9eca9fde93e878822da1ae466d64c68b35a7217cbb85f4cdba3b7ef55d790bff9d8cb8bb
   languageName: node
   linkType: hard
 
@@ -1282,11 +1282,11 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:^22.15.18":
-  version: 22.15.18
-  resolution: "@types/node@npm:22.15.18"
+  version: 22.15.21
+  resolution: "@types/node@npm:22.15.21"
   dependencies:
     undici-types: "npm:~6.21.0"
-  checksum: 10c0/e23178c568e2dc6b93b6aa3b8dfb45f9556e527918c947fe7406a4c92d2184c7396558912400c3b1b8d0fa952ec63819aca2b8e4d3545455fc6f1e9623e09ca6
+  checksum: 10c0/f092bbccda2131c2b2c8f720338080aa0ef1d928f5f1062c03954a4f7dafa7ee3ed29bc3e51bd4e2584473b3d943c637a2b39ad7174898970818270187cf10c1
   languageName: node
   linkType: hard
 
@@ -1758,9 +1758,9 @@ __metadata:
   linkType: hard
 
 "daisyui@npm:^5.0.35":
-  version: 5.0.35
-  resolution: "daisyui@npm:5.0.35"
-  checksum: 10c0/dadaaa689ac1574f9c756c645e9d04d2de461747017665e31b7391ca2a63dcb13804e78ed4632f74417bdaf38c946766df330aab17f3e9f6ec5aeded6791f618
+  version: 5.0.37
+  resolution: "daisyui@npm:5.0.37"
+  checksum: 10c0/6003e110b95178b9ce95da3fd158df55e3cb1219e0502003210d9d12f2651446e7250fb1090250c7eb1aa3bc4d7c63c3653a6bf9eaab4433f85df32d1e2c8b27
   languageName: node
   linkType: hard
 
@@ -2000,8 +2000,8 @@ __metadata:
   linkType: hard
 
 "eslint-plugin-svelte@npm:^3.0.0":
-  version: 3.8.1
-  resolution: "eslint-plugin-svelte@npm:3.8.1"
+  version: 3.9.0
+  resolution: "eslint-plugin-svelte@npm:3.9.0"
   dependencies:
     "@eslint-community/eslint-utils": "npm:^4.6.1"
     "@jridgewell/sourcemap-codec": "npm:^1.5.0"
@@ -2019,7 +2019,7 @@ __metadata:
   peerDependenciesMeta:
     svelte:
       optional: true
-  checksum: 10c0/99663e8735a270b34bd85346de7b9f3511a547da980d91ff22e2aed6781f42953e52295ce6a2ea54d75a6def42837e0a8437b4750dd2dd3fc8bd5a7e17430a6b
+  checksum: 10c0/f2cd4e0bf15e4a6ad4e4b584a6c0169d3e6a99d5713fce4eb7ff6e4fe78e7475b9249dcfe6cabd5b2f63b0b5e4792d880a83c9cc194c916a9cb736e014a18e73
   languageName: node
   linkType: hard
 
@@ -3057,15 +3057,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"miniflare@npm:4.20250508.2":
-  version: 4.20250508.2
-  resolution: "miniflare@npm:4.20250508.2"
+"miniflare@npm:4.20250508.3":
+  version: 4.20250508.3
+  resolution: "miniflare@npm:4.20250508.3"
   dependencies:
     "@cspotcode/source-map-support": "npm:0.8.1"
     acorn: "npm:8.14.0"
     acorn-walk: "npm:8.3.2"
     exit-hook: "npm:2.2.1"
     glob-to-regexp: "npm:0.4.1"
+    sharp: "npm:^0.33.5"
     stoppable: "npm:1.1.0"
     undici: "npm:^5.28.5"
     workerd: "npm:1.20250508.0"
@@ -3074,7 +3075,7 @@ __metadata:
     zod: "npm:3.22.3"
   bin:
     miniflare: bootstrap.js
-  checksum: 10c0/b4bf0930145f09a3fff85a2cff8e5795deaa148832bf337f1abfe2321fded3627e8bd0eb2d07cc2a5d398bc47baa0d2510a288982120ff8e4b3d696d2cb05608
+  checksum: 10c0/9a4a69e23e22389551786324e25fd28bb2684bedc024fbbd7477980c625c0960e62af095ca3ad91b9c5e443e57e452c3bad983bdcce8a41e6102639e6b609d88
   languageName: node
   linkType: hard
 
@@ -4174,8 +4175,8 @@ __metadata:
   linkType: hard
 
 "svelte@npm:^5.0.0":
-  version: 5.30.2
-  resolution: "svelte@npm:5.30.2"
+  version: 5.33.1
+  resolution: "svelte@npm:5.33.1"
   dependencies:
     "@ampproject/remapping": "npm:^2.3.0"
     "@jridgewell/sourcemap-codec": "npm:^1.5.0"
@@ -4191,7 +4192,7 @@ __metadata:
     locate-character: "npm:^3.0.0"
     magic-string: "npm:^0.30.11"
     zimmerframe: "npm:^1.1.2"
-  checksum: 10c0/be6502209889c3b1d20773d10568da487116dd2130c0644562b4b4f4344330d09f7e8a8fabf4f860f7cc2e6398b20a1cb09b3296008e65850fb1a9f17a1c0558
+  checksum: 10c0/d596db7e78e18942810056a7434fd42cbbbed3f5ece7885a2046c34c3e7b63259b75c949c84d08383f0a5eb8bd948b266ab9f4b1f7e8f4a92410719a0840fe94
   languageName: node
   linkType: hard
 
@@ -4203,9 +4204,9 @@ __metadata:
   linkType: hard
 
 "tapable@npm:^2.2.0":
-  version: 2.2.1
-  resolution: "tapable@npm:2.2.1"
-  checksum: 10c0/bc40e6efe1e554d075469cedaba69a30eeb373552aaf41caeaaa45bf56ffacc2674261b106245bd566b35d8f3329b52d838e851ee0a852120acae26e622925c9
+  version: 2.2.2
+  resolution: "tapable@npm:2.2.2"
+  checksum: 10c0/8ad130aa705cab6486ad89e42233569a1fb1ff21af115f59cebe9f2b45e9e7995efceaa9cc5062510cdb4ec673b527924b2ab812e3579c55ad659ae92117011e
   languageName: node
   linkType: hard
 
@@ -4358,7 +4359,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ufo@npm:^1.5.4":
+"ufo@npm:^1.6.1":
   version: 1.6.1
   resolution: "ufo@npm:1.6.1"
   checksum: 10c0/5a9f041e5945fba7c189d5410508cbcbefef80b253ed29aa2e1f8a2b86f4bd51af44ee18d4485e6d3468c92be9bf4a42e3a2b72dcaf27ce39ce947ec994f1e6b
@@ -4381,16 +4382,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unenv@npm:2.0.0-rc.15":
-  version: 2.0.0-rc.15
-  resolution: "unenv@npm:2.0.0-rc.15"
+"unenv@npm:2.0.0-rc.17":
+  version: 2.0.0-rc.17
+  resolution: "unenv@npm:2.0.0-rc.17"
   dependencies:
     defu: "npm:^6.1.4"
     exsolve: "npm:^1.0.4"
     ohash: "npm:^2.0.11"
     pathe: "npm:^2.0.3"
-    ufo: "npm:^1.5.4"
-  checksum: 10c0/502ebfe01b8131e722173b4cf033dbabae3e76fbe0dee093dc53d40a43028e07c59f2cb1eb96c1ed82fe04b9eb75553a8e33d243f5ef8828bde71e6a818e1a8a
+    ufo: "npm:^1.6.1"
+  checksum: 10c0/029ae051cf2f79d3946976b32010a6aaaa87c8783a01dc088046247e34cb40962e19d96b465df5728e6ed262da89df342c1db1d05c2c28851825a74b93b90039
   languageName: node
   linkType: hard
 
@@ -4708,18 +4709,18 @@ __metadata:
   linkType: hard
 
 "wrangler@npm:^4.15.2":
-  version: 4.15.2
-  resolution: "wrangler@npm:4.15.2"
+  version: 4.16.1
+  resolution: "wrangler@npm:4.16.1"
   dependencies:
     "@cloudflare/kv-asset-handler": "npm:0.4.0"
-    "@cloudflare/unenv-preset": "npm:2.3.1"
+    "@cloudflare/unenv-preset": "npm:2.3.2"
     blake3-wasm: "npm:2.1.5"
     esbuild: "npm:0.25.4"
     fsevents: "npm:~2.3.2"
-    miniflare: "npm:4.20250508.2"
+    miniflare: "npm:4.20250508.3"
     path-to-regexp: "npm:6.3.0"
     sharp: "npm:^0.33.5"
-    unenv: "npm:2.0.0-rc.15"
+    unenv: "npm:2.0.0-rc.17"
     workerd: "npm:1.20250508.0"
   peerDependencies:
     "@cloudflare/workers-types": ^4.20250508.0
@@ -4734,7 +4735,7 @@ __metadata:
   bin:
     wrangler: bin/wrangler.js
     wrangler2: bin/wrangler.js
-  checksum: 10c0/40ed5486f584b6d18316f92082a1a7f0c369bd104a175325834c7fef9331cfc3a89f816c8abee6d4791bb37ed0595e4dc689956f2cd993f824cb67e5109afff4
+  checksum: 10c0/74fdd871fd7bc82ca331aca0af4d4bbc9155645041ce4bba7014286970a5077e796cb27161043b55e97bbba72c00a54454f75065c5e02a247f898516b8b478c7
   languageName: node
   linkType: hard
 
