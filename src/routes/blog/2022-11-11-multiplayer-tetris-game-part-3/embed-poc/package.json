@@ -6,9 +6,6 @@
 	"scripts": {
 		"build": "parcel build src/index.html --dist-dir ../../../../../static/blog/2022-11-11-multiplayer-tetris-game-part-3/embed-poc --public-url /blog/2022-11-11-multiplayer-tetris-game-part-3/embed-poc/"
 	},
-	"dependencies": {
-		"pixi.js": "^6.5.10"
-	},
 	"devDependencies": {
 		"parcel": "^2.15.1"
 	}

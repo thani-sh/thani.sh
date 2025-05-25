@@ -14,7 +14,7 @@ This tutorial continues where we left off on part 2. We will split the code into
 
 Did it work? you can try the updated game here (Instructions: click to focus and use ↑←↓→ keys and WASD keys)
 
-<GameIframe src="/blog/2022-11-11-multiplayer-tetris-game-part-3/embed-poc/index.html" height="400px" />
+<GameIframe src="/blog/2022-11-11-multiplayer-tetris-game-part-3/embed-poc/index.html" height="450px" />
 
 ## Refactoring the code
 
