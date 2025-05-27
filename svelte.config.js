@@ -29,7 +29,8 @@ const config = {
 				}
 			},
 			layout: {
-				blog: getAbsolutePath('./src/lib/layout/blog.svelte')
+				blog: getAbsolutePath('./src/lib/layout/blog.svelte'),
+				page: getAbsolutePath('./src/lib/layout/page.svelte')
 			}
 		})
 	],

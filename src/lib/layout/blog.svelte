@@ -1,12 +1,11 @@
 <script lang="ts">
 	import { ChevronLeft, SquarePen } from '@lucide/svelte';
+	import { browser } from '$app/environment';
+	import { page } from '$app/state';
 
 	export let title: string;
 	export let date: string;
 	export let tags: string[];
-
-	import { browser } from '$app/environment';
-	import { page } from '$app/state';
 
 	// Get the last path segment from the URL
 	$: slug = browser
@@ -44,10 +43,12 @@
 </main>
 
 <footer class="mt-8">
-	<div class="flex flex-wrap items-center gap-2">
-		<span class="font-semibold">Tags:</span>
-		{#each tags as tag}
-			<span class="rounded bg-white/10 px-2 py-1 text-xs font-medium">{tag}</span>
-		{/each}
-	</div>
+	{#if tags.length > 0}
+		<div class="flex flex-wrap items-center gap-2">
+			<span class="font-semibold">Tags:</span>
+			{#each tags as tag}
+				<span class="rounded bg-white/10 px-2 py-1 text-xs font-medium">{tag}</span>
+			{/each}
+		</div>
+	{/if}
 </footer>
