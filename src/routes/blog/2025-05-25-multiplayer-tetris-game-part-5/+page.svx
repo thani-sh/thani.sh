@@ -1,0 +1,184 @@
+---
+title: Multiplayer Tetris Game (part 5)
+description: We can take our game a step forward by allowing users to play from multiple devices. This time, let's try to use some AI agents to do the coding.
+date: 2025-05-25
+tags: ['js', 'ai']
+layout: 'blog'
+---
+
+I'm used to write code by hand and often paying too much attention to how the code itself looks. Let's see whether we can make AI agents do exactly what we need and eventually build a multiplayer game that supports multiple devices. I'm using Github Copilot on Visual Studio Code. Let's experiment with a few models available on Copilot and see whether they produce anything useful when asked to evaluate our system design.
+
+## Evaluating our design
+
+Let's see what AI agents "think" about our current architecture and whether they come up with anything interesting. The prompt I'd like to try is below and we will add all blog posts in this series, and ADRs and the latest code up to this point as context.
+
+> **Prompt:** As an expert software architecture consultant. Understand and evaluate the architecture of the multi player tetris game described on these blog posts, ADRs and proof of concept code. Explain your evaluation thought process and at the end suggest what can be improved in 3-5 sentences.
+
+Is this a good prompt? I have no idea. I guess I'm just going with vibes. The question is quite open and we are not suggesting anything specific for adding support for multiple devices. Here are general suggestions from several models available on Github Copilot in Visual Studio Code.
+
+**GPT-4.1**
+
+> Your architecture is robust for local multiplayer and well-structured for maintainability and extensibility. To improve, focus on abstracting input sources, serializing and synchronizing game state, and introducing a networking layer to support multi-device multiplayer. Adding integration tests and optimizing performance-critical sections will further future-proof the codebase. This will enable the game to scale from local to remote multiplayer with minimal disruption to the core logic.
+> [Full Response](/blog/2025-05-25-multiplayer-tetris-game-part-5/children/architecture-review-gpt-4.1/)
+
+**Gemini 2.5 Pro**
+
+> To improve, consider further modularizing the core game logic, potentially extracting state management into a more defined module to prepare for complexities like network synchronization. Abstracting input handling away from direct keyboard events will be beneficial for supporting different input methods or networked play. Finally, formalizing the game state into a serializable format will be essential if you plan to expand to multi-device multiplayer, enabling easier transmission and synchronization across clients.
+> [Full Response](/blog/2025-05-25-multiplayer-tetris-game-part-5/children/architecture-review-gemini-2.5-pro/)
+
+**Claude 3.7 Sonnet**
+
+> The architecture is well-structured for a client-side game but could be improved by implementing a more robust state management system, centralizing configuration, providing better abstractions for input handling, and preparing for potential network play by separating client/server concerns. Additionally, optimizing performance for rendering and collision detection would be beneficial for scaling to more complex game scenarios.
+> [Full Response](/blog/2025-05-25-multiplayer-tetris-game-part-5/children/architecture-review-claude-3.7-sonnet/)
+
+Here's a table from above summaries (generated using GPT-4.1).
+
+| Main Point                                                                              | GPT-4.1 | Gemini 2.5 Pro | Claude 3.7 Sonnet |
+| --------------------------------------------------------------------------------------- | :-----: | :------------: | :---------------: |
+| Abstract input sources/handling away from direct keyboard events                        |   ✔    |       ✔       |        ✔         |
+| Serialize/formalize game state for synchronization and network play                     |   ✔    |       ✔       |        ✔         |
+| Introduce networking layer/separate client/server concerns for multi-device multiplayer |   ✔    |       ✔       |        ✔         |
+| Optimize performance-critical sections (e.g., rendering, collision detection)           |   ✔    |                |        ✔         |
+
+Just from a glance, we can see that all 3 models are recommending better abstraction for input and networking and a serializable game state. But does it make sense? do we really need to abstract some parts of the code to support player input from other devices or make any changes to support serialization? we'll take a look at these suggestions in a follow-up blog post but let's assume these are correct and continue.
+
+---
+
+## Implementing these changes
+
+Next, let's see if the models are good enough to come up with a plan to implement these changes. We will be using GPT-4.1 from now on unless it mentions otherwise.
+
+> **Prompt:** As an expert software architecture consultant hired to add multiple device support to a split screen multi player game. Understand and evaluate the architecture of the multi player tetris game described on these blog posts, ADRs, architecture reviews and proof of concept code. List down the main components of the new system, their responsibilities and where would they live (eg: client or server). Come up with a step by step execution plan to implement this new requirement.
+
+You can read the [full response](/blog/2025-05-25-multiplayer-tetris-game-part-5/children/implementation-steps-gpt-4.1/) here and once again we are going to assume the response is correct and continue. Let's see how far we can go on vibes.
+
+```md
+| Component                 | Responsibility                                                           | Location      |
+| ------------------------- | ------------------------------------------------------------------------ | ------------- |
+| **Game State Manager**    | Holds the canonical game state, applies actions, serializes/deserializes | Server        |
+| **Networking Layer**      | Handles communication (e.g., WebSocket) between clients and server       | Client/Server |
+| **Input Handler**         | Captures and abstracts player input (keyboard, touch, etc.)              | Client        |
+| **Game Renderer**         | Renders the game state to the screen                                     | Client        |
+| **Synchronization Logic** | Ensures clients are in sync with server state, handles reconciliation    | Client        |
+| **Session/Lobby Manager** | Manages player sessions, game rooms, and player assignment               | Server        |
+| **Authentication (opt.)** | Identifies players and manages access                                    | Server/Client |
+```
+
+Let's write an ADR that describe how we are going to split code across the client and the server.
+
+> **Prompt:** As an expert software architecture consultant hired to add multiple device support to a split screen multi player game. Carefully read given architecture review documents and proposed implementation steps. Write an ADR in markdown that describe how the components are split between the client and the server. Follow the style used by other ADRs in the app.
+
+```md
+# 04. Client vs. server components
+
+Date: 2025-05-25
+
+## Status
+
+Proposed
+
+## Context
+
+To support multiplayer gameplay across multiple devices, the architecture must be adapted to split responsibilities between a client (running on each player's device) and a server (coordinating game state and player actions). The current implementation is single-process and single-device, with all game logic, rendering, and input handling running in the browser. Supporting multiple devices requires a clear separation of concerns and communication protocol between client and server.
+
+## Decision
+
+- **Client responsibilities:**
+  - Capture player input (keyboard, touch, etc.) and send actions to the server.
+  - Render the game state as received from the server using PixiJS.
+  - Display points, game over, and other UI elements.
+  - Maintain minimal local state (only for rendering and input buffering).
+- **Server responsibilities:**
+  - Maintain the authoritative game state, including all players, shapes, and world rules.
+  - Apply game rules, process player actions, and advance the game (e.g., via a server-side ticker).
+  - Broadcast updated game state to all connected clients after each tick or action.
+  - Handle player join/leave and synchronize new clients with the current game state.
+- **Communication:**
+  - Use WebSockets for real-time, bidirectional communication between clients and server.
+  - Define a protocol for sending player actions (from client to server) and game state updates (from server to clients).
+
+## Consequences
+
+- The game logic and world state must be refactored to run on the server, with the client acting as a thin view/controller.
+- The renderer and input modules remain on the client, but are decoupled from the game world logic.
+- Network latency and synchronization must be considered; the server is the source of truth for all game state.
+- Enables true multiplayer gameplay across devices, but increases complexity in state management and error handling.
+```
+
+Next, let's write another ADR for the Websocket API.
+
+> **Prompt:** As an expert software architecture consultant hired to add multiple device support to a split screen multi player game. Carefully read given architecture review documents and proposed implementation steps. Design a Websocket based API that can be used to send player actions to the server and state changes to the client. Use the client side code to determine what message types should be supported. Write an ADR in markdown that describes the API. Follow the style used by other ADRs in the app.
+
+```md
+# 05. WebSocket API for Multiplayer Support
+
+Date: 2025-05-25
+
+## Status
+
+Accepted
+
+## Context
+
+To enable multiplayer gameplay across multiple devices, the game must support real-time communication between clients and a central server. The server is responsible for maintaining the authoritative game state, processing player actions, and broadcasting state updates. Clients capture player input and render the game state as received from the server. A WebSocket-based protocol is required to support low-latency, bidirectional communication for this architecture.
+
+## Decision
+
+- **Protocol:** Use WebSockets for real-time, bidirectional communication between clients and the server.
+- **Message Format:** All messages are JSON objects with a `type` field indicating the message type. Additional fields depend on the message type.
+- **Client-to-Server Messages:**
+  - `join`: Sent when a client connects. Includes player info (e.g., color, name).
+  - `action`: Sent when a player performs an action (move, rotate, etc.). Includes player ID and action name.
+- **Server-to-Client Messages:**
+  - `state`: Broadcast after each tick or action. Contains the full authoritative game state (shapes, positions, scores, etc.).
+  - `player_joined`: Notifies clients when a new player joins.
+  - `player_left`: Notifies clients when a player disconnects.
+  - `game_over`: Notifies clients when the game ends.
+
+### Message Schemas
+
+#### Client → Server
+
+- **join**
+  `{ "type": "join", "player": { "name": "string", "color": "number" } }`
+
+- **action**
+  `{ "type": "action", "playerId": "string", "action": "MOVE_LEFT" | "MOVE_RIGHT" | "MOVE_DOWN" | "ROTATE" }`
+
+#### Server → Client
+
+- **state**
+  `{ "type": "state", "players": [...], "shapes": [...], "scores": {...}, "tick": "number" }`
+
+- **player_joined**
+  `{"type": "player_joined", "player": { "id": "string", "name": "string", "color": "number" }}`
+
+- **player_left**
+  `{ "type": "player_left", "playerId": "string" }`
+
+- **game_over**
+  `{ "type": "game_over", "reason": "string" }`
+
+## Consequences
+
+- Enables real-time multiplayer gameplay across devices.
+- The server is the single source of truth for game state, reducing cheating and desync.
+- The protocol is extensible for future features (e.g., chat, spectators).
+- Requires careful handling of network latency and error cases.
+
+---
+
+_See also: [04-client-server-components.md](./04-client-server-components.md)_
+```
+
+Finally, let's try to generate the server code with the info we have so far.
+
+> **Prompt:** As an expert software engineer hired to add multiple device support to a split screen multi player game. Carefully read given architecture review documents, proposed implementation steps, ADRs and the shared-screen version of the game code. First generate code for a websocket server unsder a new "server" directory beside the client directory. Use NodeJS, Typescript and ts-node. Follow the API described on ADR#5. Move all the game logic from the shared-screen version of the game to the server except the renderer. Replace the renderer on the server with a "rendererProxy" that would send messages to clients.
+> **Prompt:** Update the client code to use the new server, remove any files that are no longer needed.
+
+It did generate _something_ and in my opinion it kinda sucks and it doesn't work. Let's try again with some suggestions to help it where it previously messed up.
+
+> **Prompt:** As an expert software engineer hired to add multiple device support to a split screen multi player game. Carefully read given architecture review documents, proposed implementation steps, ADRs and the shared-screen version of the game code. First generate code for a websocket server unsder a new "server" directory beside the client directory. Use NodeJS, Typescript and ts-node. Follow the API described on ADR#5. _Move_ all the game logic from the shared-screen version of the game to the server except the renderer, the client should only have code for connecting to the server and to render the game. Replace the renderer on the server with a renderer proxy that would send messages to clients. Please follow code style currently in use. Use new package.json file for the server. Do not import code from the client package, copy or move them instead.
+> **Prompt:** Update the client code to use the new server, remove any files that are no longer needed.
+
+The code quality didn't improve much, it still doesn't work but at least it creates a websocket connection. Let's pause for now and try this again with a follow up blog post.

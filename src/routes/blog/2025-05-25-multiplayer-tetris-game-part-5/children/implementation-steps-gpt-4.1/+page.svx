@@ -1,0 +1,67 @@
+---
+title: Implementation steps - GPT-4.1
+parent: 2025-05-25-multiplayer-tetris-game-part-5
+layout: 'page'
+---
+
+Based on your multiplayer Tetris game’s current architecture (as described in your blog posts, ADRs, and architecture reviews), here’s an expert evaluation and a concrete plan for adding multi-device support:
+
+---
+
+## Main Components of the New System
+
+| Component                | Responsibility                                                                 | Location      |
+|--------------------------|-------------------------------------------------------------------------------|---------------|
+| **Game State Manager**   | Holds the canonical game state, applies actions, serializes/deserializes      | Server        |
+| **Networking Layer**     | Handles communication (e.g., WebSocket) between clients and server            | Client/Server |
+| **Input Handler**        | Captures and abstracts player input (keyboard, touch, etc.)                   | Client        |
+| **Game Renderer**        | Renders the game state to the screen                                          | Client        |
+| **Synchronization Logic**| Ensures clients are in sync with server state, handles reconciliation         | Client        |
+| **Session/Lobby Manager**| Manages player sessions, game rooms, and player assignment                    | Server        |
+| **Authentication (opt.)**| Identifies players and manages access                                         | Server/Client |
+
+---
+
+## Step-by-Step Execution Plan
+
+1. **Abstract Input Handling**
+   - Refactor input code to support multiple input sources (keyboard, touch, network).
+   - Ensure all player actions are represented as serializable events.
+
+2. **Formalize Game State**
+   - Define a serializable game state structure (e.g., JSON).
+   - Implement functions to serialize/deserialize the full game state.
+
+3. **Extract Core Game Logic**
+   - Move all game rules, state transitions, and validation into pure functions/modules that can run on both client and server.
+
+4. **Implement Networking Layer**
+   - Add a WebSocket (or similar) server to broadcast game state and receive player actions.
+   - On the client, connect to the server and send/receive messages.
+
+5. **Centralize Game State on Server**
+   - Server becomes the source of truth for game state.
+   - Clients send input events; server applies them and broadcasts updated state.
+
+6. **Implement Synchronization Logic**
+   - On the client, update local state/rendering based on server messages.
+   - Handle latency, prediction, and reconciliation as needed.
+
+7. **Session/Lobby Management**
+   - Allow players to join/leave games, assign them to sessions/rooms.
+   - Track which player controls which game instance.
+
+8. **Testing and Validation**
+   - Add integration tests for networking, state sync, and edge cases.
+   - Test with multiple clients/devices.
+
+9. **Performance Optimization**
+   - Profile and optimize critical paths (e.g., rendering, collision detection).
+
+10. **(Optional) Authentication**
+    - Add player identification if needed for persistent sessions or leaderboards.
+
+---
+
+**Summary:**
+This plan will evolve your architecture from a local, split-screen game to a robust client-server system supporting multiple devices. The key is to centralize game state, abstract input, and synchronize state across clients via networking. This approach minimizes disruption to your core logic and prepares the codebase for further scalability.
