@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multiplayer Tetris</title>
+    <script src="https://cdn.jsdelivr.net/npm/pixi.js@6.x/dist/browser/pixi.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+        background-color: #1a1a1a;
+        color: white;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .page {
+        display: none;
+      }
+
+      .page.active {
+        display: block;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input,
+      button {
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+      }
+
+      input {
+        background-color: #333;
+        color: white;
+        width: 200px;
+      }
+
+      button {
+        background-color: #007acc;
+        color: white;
+        cursor: pointer;
+        margin: 5px;
+      }
+
+      button:hover {
+        background-color: #005999;
+      }
+
+      button:disabled {
+        background-color: #666;
+        cursor: not-allowed;
+      }
+
+      .players-list {
+        background-color: #333;
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 15px;
+      }
+
+      .player-item {
+        display: flex;
+        align-items: center;
+        padding: 5px 0;
+      }
+
+      .player-color {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        border-radius: 3px;
+      }
+
+      .game-container {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+      }
+
+      .game-area {
+        flex: 1;
+      }
+
+      .game-info {
+        width: 200px;
+        background-color: #333;
+        padding: 15px;
+        border-radius: 5px;
+      }
+
+      .error {
+        background-color: #d32f2f;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 15px;
+      }
+
+      .success {
+        background-color: #388e3c;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Landing Page -->
+      <div id="landing" class="page active">
+        <h1>Multiplayer Tetris</h1>
+        <div class="form-group">
+          <label for="player-name">Player Name:</label>
+          <input
+            type="text"
+            id="player-name"
+            placeholder="Enter your name"
+            value="Player1"
+          />
+        </div>
+        <div class="form-group">
+          <label for="player-color">Color:</label>
+          <input type="color" id="player-color" value="#ff6b6b" />
+        </div>
+        <div class="form-group">
+          <button id="create-game-btn">Create Game</button>
+          <button id="join-game-btn">Join Game</button>
+        </div>
+        <div id="join-form" style="display: none">
+          <div class="form-group">
+            <label for="game-id">Game ID:</label>
+            <input type="text" id="game-id" placeholder="Enter game ID" />
+          </div>
+          <button id="join-game-confirm-btn">Join</button>
+          <button id="cancel-join-btn">Cancel</button>
+        </div>
+        <div id="landing-message"></div>
+      </div>
+
+      <!-- Lobby Page -->
+      <div id="lobby" class="page">
+        <h1>Game Lobby</h1>
+        <div id="game-info">
+          <p><strong>Game ID:</strong> <span id="lobby-game-id"></span></p>
+          <p>Share this ID with friends to let them join!</p>
+        </div>
+        <div class="players-list">
+          <h3>Players:</h3>
+          <div id="players-container"></div>
+        </div>
+        <button id="ready-btn">Ready</button>
+        <button id="leave-lobby-btn">Leave Game</button>
+        <div id="lobby-message"></div>
+      </div>
+
+      <!-- Game Page -->
+      <div id="game" class="page">
+        <h1>Tetris Game</h1>
+        <div class="game-container">
+          <div class="game-area">
+            <div id="game-canvas"></div>
+          </div>
+          <div class="game-info">
+            <h3>Score</h3>
+            <div id="score">0</div>
+            <h3>Controls</h3>
+            <p>← → Move</p>
+            <p>↓ Soft Drop</p>
+            <p>↑ Rotate</p>
+            <p>Space Hard Drop</p>
+            <button id="leave-game-btn">Leave Game</button>
+          </div>
+        </div>
+        <div id="game-message"></div>
+      </div>
+
+      <!-- Game Over Page -->
+      <div id="game-over" class="page">
+        <h1>Game Over</h1>
+        <div id="results-container">
+          <h2>Final Results</h2>
+          <div id="final-scores"></div>
+        </div>
+        <button id="play-again-btn">Play Again</button>
+        <button id="back-to-home-btn">Back to Home</button>
+      </div>
+
+      <!-- Error Page -->
+      <div id="error" class="page">
+        <h1>Error</h1>
+        <div id="error-message" class="error"></div>
+        <button id="back-to-home-error-btn">Back to Home</button>
+      </div>
+    </div>
+
+    <script type="module" src="./app.ts"></script>
+  </body>
+</html>

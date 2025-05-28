@@ -1,0 +1,25 @@
+{
+	"name": "2025-05-25-multiplayer-tetris-game-part-5-server",
+	"version": "1.0.0",
+	"description": "WebSocket server for multiplayer Tetris game",
+	"main": "src/index.ts",
+	"type": "module",
+	"scripts": {
+		"start": "tsx src/index.ts",
+		"dev": "tsx watch src/index.ts",
+		"build": "tsc",
+		"test": "jest"
+	},
+	"dependencies": {
+		"uuid": "^9.0.1",
+		"ws": "^8.14.2"
+	},
+	"devDependencies": {
+		"@types/node": "^20.8.0",
+		"@types/uuid": "^9.0.5",
+		"@types/ws": "^8.5.8",
+		"tsx": "^4.19.4",
+		"typescript": "^5.2.2"
+	},
+	"packageManager": "yarn@4.0.0"
+}

@@ -11,6 +11,10 @@ node_modules
 /build
 /static/blog
 
+# Nested build directories
+dist
+.parcel-cache
+
 # OS
 .DS_Store
 Thumbs.db

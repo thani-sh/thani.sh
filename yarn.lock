@@ -37,6 +37,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"2025-05-25-multiplayer-tetris-game-part-5-embed-poc@workspace:src/routes/blog/2025-05-25-multiplayer-tetris-game-part-5/embed-poc":
+  version: 0.0.0-use.local
+  resolution: "2025-05-25-multiplayer-tetris-game-part-5-embed-poc@workspace:src/routes/blog/2025-05-25-multiplayer-tetris-game-part-5/embed-poc"
+  dependencies:
+    parcel: "npm:^2.15.1"
+  languageName: unknown
+  linkType: soft
+
 "@ampproject/remapping@npm:^2.3.0":
   version: 2.3.0
   resolution: "@ampproject/remapping@npm:2.3.0"
