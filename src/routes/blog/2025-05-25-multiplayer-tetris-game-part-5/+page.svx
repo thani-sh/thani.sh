@@ -6,6 +6,10 @@ tags: ['js', 'ai']
 layout: 'blog'
 ---
 
+<script>
+import img1 from "./images/screenshot.png";
+</script>
+
 I'm used to write code by hand and often paying too much attention to how the code itself looks. Let's see whether we can make AI agents do exactly what we need and eventually build a multiplayer game that supports multiple devices. I'm using Github Copilot on Visual Studio Code. Let's experiment with a few models available on Copilot and see whether they produce anything useful when asked to evaluate our system design and generate server side code.
 
 ## Evaluating our design
@@ -322,5 +326,7 @@ Let's see if it is smart enough to figure this out without any help.
 > at state.socket.onmessage (app.ts:119:14)
 
 Now we have something that kinda works. It's buggy as hell but I am still impressed with the result :)
+
+<img src={img1} alt="Basic components of the game" />
 
 I haven't looked at the generated code yet. Let's do a code review and fix remaining bugs on a follow up blog post.

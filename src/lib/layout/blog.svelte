@@ -43,7 +43,7 @@
 </main>
 
 <footer class="mt-8">
-	{#if tags.length > 0}
+	{#if tags?.length > 0}
 		<div class="flex flex-wrap items-center gap-2">
 			<span class="font-semibold">Tags:</span>
 			{#each tags as tag}
