@@ -10,6 +10,7 @@ export type Post = {
  * All slugs
  */
 const slugs: string[] = [
+  "2025-06-08-multiplayer-tetris-game-part-6",
   "2025-05-25-multiplayer-tetris-game-part-5",
   "2022-11-20-multiplayer-tetris-game-part-4",
   "2022-11-11-multiplayer-tetris-game-part-3",
@@ -47,6 +48,12 @@ const slugs: string[] = [
  * All posts
  */
 const posts: Post[] = [
+  {
+    "title": "Multiplayer Tetris Game (part 6)",
+    "slug": "2025-06-08-multiplayer-tetris-game-part-6",
+    "date": "2025-06-08",
+    "summary": "Instead of the step by step approach we followed on the previous article, what would happen if we simply asked the AI agent? Would it still be able to complete the task?"
+  },
   {
     "title": "Multiplayer Tetris Game (part 5)",
     "slug": "2025-05-25-multiplayer-tetris-game-part-5",

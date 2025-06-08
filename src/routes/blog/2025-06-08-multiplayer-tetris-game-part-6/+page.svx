@@ -1,0 +1,121 @@
+---
+title: Multiplayer Tetris Game (part 6)
+description: Instead of the step by step approach we followed on the previous article, what would happen if we simply asked the AI agent? Would it still be able to complete the task?
+date: 2025-06-08
+tags: ['js', 'ai']
+layout: 'blog'
+---
+
+<script>
+import img1 from "./images/client_welcome.png";
+import img2 from "./images/client_lobby.png";
+import img3 from "./images/client_game.png";
+</script>
+
+On the last blog post of this series, we started from a split screen multiplayer game and progressed towards a running multiplayer game (although it had some minor bugs). We approached this task step-by-step carefully documenting all the decisions we made. And for used outputs from each step as input for following steps. Before reviewing the code, let's see if we can get the same result with a single step.
+
+> **Prompt:**
+>
+> As an expert software architect and engineer hired to build a multi player tetris game. Understand and evaluate the architecture of the multi player tetris game described on these blog posts, ADRs and proof of concept code. Explain your evaluation thought process and at the end suggest what can be improved in 3-5 sentences.
+>
+> ### Reusing the POC
+>
+> The proof of concept code is a split multi player screen tetris game. Using this as a base, build a version of this game where users can play using multiple devices. Use a websocket server to keep the state.
+>
+> ### Build the client
+>
+> Define how the user flow would look like for a multi player tetris game. From the point where the client loads the web page, creates or joins a game, start and play and eventually end the game. Use this information to plan how to build the client application. The client should be responsible for rendering the game and capturing user input and sending it to the server. All game rules should be moved to the server. Setup a new project using Parcel (similar to the proof of concept code) in the `client` directory. Use Yarn v4 as the package manager. Create a package.json file. Add a task to start the client on port 8001. Create pages described on ADR#5. For the Game screen, use the Pixi.js renderer on the proof of concept code. Methods on the Pixi.js renderer should be called when the client receives messages from the server.
+>
+> ### Build the server
+>
+> Design a Websocket based API that can be used to send player actions to the server and state changes to the client. Use the user flow and existing client side code to determine what message types should be supported. For example: methods on the Renderer interface can be mapped to some of the messages the server needs to send the client so the client can render. Instead of sending the entire state, only send incremental changes using the renderer interface. There's no need to send the full game state to the client. Renderer based messages are not optional, it's the most important. Players should send a "ready" message to the server. When all players are ready, the server will send a "game_started" message to the client. This will make the client navigate to the game page and the game will start. Write an ADR in markdown that describes the API. Follow the style used by other ADRs in the app. Setup a new NodeJS + Typescript project in the `server` directory. Use Yarn v4 as the package manager. Create a package.json file. Add a script to start the server on port 8000. Create a tsconfig file that would work with ts-node. Then generate a WebSocket server implementing the previously defined API and the user flow. Please note that there can be multiple active games running in parallel. Copy all game logic code from the proof of concept directory but replace the pixi.js renderer with a network renderer that would forward changes as websocket messages to clients.
+>
+> ### Documentation
+>
+> Write ADRs about all significant architecture decisions made during this process, follow the same style as other ADRs in the project.
+
+After spending a reasonable amount of time, the agent didn't complete and kept making the same error so I had to stop the process. But, let's check the output so far and make further prompts to fix any issues. Let's breakdown the output on chat and see what the agent was up to.
+
+You can read the [full response](/blog/2025-06-08-multiplayer-tetris-game-part-6/children/claude-sonnet-4-output/) from the AI model if you like.
+
+### Architecture review
+
+The architecture review was as at least as good as the ones we got when we did them only. Although, last time we were using Claude 3.7 Sonnet and several other models. This is the first time we tried it with Claude Sonnet 4. It made similar suggestions as other models and it made the similar mistake as other models (eg: suggesting that we need to decouple user input when it's already decoupled).
+
+Perhaps because it knows the end goal early on, it also identified some missing features
+
+```md
+Missing Game Session Management: No concept of game rooms, player joining/leaving, or game lifecycle
+```
+
+On previous blog post, we separated components between the client and the server (and wrote an ADR documenting it). This is something that's missing this time.
+
+### WebSocket API
+
+At a high level, the API definition is exactly the same as what we got with slight differences in words. It removed message types "game_over" and "error" but that's not critical for the first version.
+
+One major difference from the previous attempt is that it doesn't explain each websocket message in detail. We will soon see that this caused the client and server to implement it in different ways.
+
+### Fixing the code
+
+It started by writing an ADR describing client side navigation "ADR#5: Client Application Pages and Navigation". This is something we don't have on the more guided output. I guess we could have got the same if we had added "Write ADRs about all significant architecture decisions" before.
+
+For some reasons, it made a much nicer UI compared to last time.
+
+<img src={img1} alt="Welcome screen" />
+
+The game client serves but it's failing when it tries to parse incoming websocket messages.
+
+> **Prompt:** Find why I'm getting this error on the client when creating a new game
+>
+> ```
+> Failed to parse WebSocket message: TypeError: Cannot read properties of undefined (reading 'gameId')
+>   at index.ts:58:36
+>   at websocket-client.ts:49:37
+>   at Array.forEach (<anonymous>)
+>   at WebSocketClient.handleMessage (websocket-client.ts:49:15)
+>   at ws.onmessage (websocket-client.ts:26:18)
+> ```
+
+The client was expecting certain fields (eg: "gameId") under payload but the server adds them at the root level. Surprisingly, while fixing this error, it identified and fixed several other compatibility issues between the client and the server.
+
+> Now I can see the issue clearly. The client expects messages with a payload structure, but the server is sending them with a flat structure. Let me fix the server to send messages in the expected format: ...
+>
+> Now let me check and fix other server messages that need to be wrapped with payload: ...
+>
+> The client is expecting renderer messages with specific types like "insert_shape", "update_shape", etc., but the server is sending "render_shape" with different data structures. Let me check the client types for renderer messages:
+
+Now we are able to join the game lobby, mark ourselves as ready and start the game.
+
+<img src={img2} alt="Game lobby" />
+
+When starting the game, we get another error. This is the same issue we ran into on the last blog post. Let's use the same basic prompt to fix this.
+
+> **Prompt:** Find why I'm getting this error on the client when starting a game.
+>
+> ```
+> Failed to parse WebSocket message: TypeError: Cannot read properties of undefined (reading 'position')
+>     at Object.updateShape (renderer.ts:79:8)
+>     at index.ts:103:27
+>     at websocket-client.ts:49:37
+>     at Array.forEach (<anonymous>)
+>     at WebSocketClient.handleMessage (websocket-client.ts:49:15)
+>     at ws.onmessage (websocket-client.ts:26:18)
+> ```
+
+The game starts, but only for the player who created the game, the other player does not receive any messages related to shapes. Also, it is not possible to interact with the game, the client sends user action messages to the server but it doesn't seem to have any effect.
+
+Can we fix 2 unrelated bugs on the same prompt? probably not a good idea but let's give it a try.
+
+> **Prompt:** You are an expert computer game developer hired to fix bugs with this multiplayer tetris game. Early test users have observed the following bugs.
+>
+> - Bug 1: When 2 players join and start a game, only the player who created the game receive shape updates from the server.
+> - Bug 2: After starting the game, websocket messages related to user actions are sent to the server but it doesn't seem to have any effect.
+
+It fixed these bugs successfully, and when it tried to create a script to verify the fix, it didn't go well. Something similar happened when we generated the code for the at the beginning of this blog post. Perhaps it needs some help with verifying websocket APIs.
+
+The end result is somewhat similar to what we had at the end of the previous blog post.
+
+<img src={img3} alt="Game with bugs" />
+
+The game works but has some bugs to iron out. This could be a bug we haven't figured out yet or something fundamentally wrong with our design. But let's stop here for now.
