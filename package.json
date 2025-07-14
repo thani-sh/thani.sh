@@ -50,5 +50,5 @@
 	"workspaces": [
 		"src/routes/blog/*/embed-*"
 	],
-	"packageManager": "yarn@4.9.1"
+	"packageManager": "yarn@4.9.2"
 }
