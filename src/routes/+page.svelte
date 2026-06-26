@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types';
+	import BackgroundCanvas from '$lib/ui/BackgroundCanvas.svelte';
 
 	export let data: PageData;
 </script>
@@ -20,13 +21,14 @@
 		</div>
 	</div>
 
-	<!-- Recent Posts Section -->
-	<section>
+	<!-- Recent Posts Section — Conway's Game of Life renders behind the cards -->
+	<section class="relative isolate -mx-4 overflow-hidden px-4 py-12 lg:-mx-6 lg:px-6">
+		<BackgroundCanvas class="absolute inset-0 -z-10 h-full w-full" />
 		<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
 			{#each data.posts as post (post.slug)}
 				<a
 					href="/blog/{post.slug}"
-					class="card card-border transition-all duration-200 hover:-translate-y-0.5 hover:border-primary"
+					class="card card-border bg-base-100/85 backdrop-blur-[2px] transition-all duration-200 hover:-translate-y-0.5 hover:border-primary"
 				>
 					<div class="card-body">
 						<h2 class="card-title text-base">{post.title}</h2>
