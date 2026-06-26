@@ -43,20 +43,18 @@
 <svelte:window onkeydown={handleKeydown} />
 
 <div class="container mx-auto p-4">
-	<!-- Hero Section -->
-	<div class="pt-20 pb-4 lg:pt-32 lg:pb-6">
-		<div class="max-w-3xl">
-			<h1 class="text-5xl font-light tracking-tight lg:text-7xl">thani<span class="text-primary">.</span>sh</h1>
-			<p class="mt-6 font-mono text-base text-base-content/70 lg:text-lg">
-				<span class="text-primary">$</span> dd if=/dev/head of=/dev/blog
-			</p>
-			<div class="mt-8 flex items-center gap-3">
-				<span class="h-px w-12 bg-base-content/20"></span>
-				<span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
-				<span class="h-px flex-1 bg-base-content/10"></span>
-			</div>
+	<!-- Hero Section — left-aligned to match the blog post view's header pattern -->
+	<header class="pt-20 pb-4 lg:pt-32 lg:pb-6">
+		<h1 class="text-5xl font-light tracking-tight lg:text-7xl">thani<span class="text-primary">.</span>sh</h1>
+		<p class="mt-2 font-mono text-base text-base-content/70 lg:text-lg">
+			<span class="text-primary">$</span> dd if=/dev/head of=/dev/blog
+		</p>
+		<div class="mt-8 flex items-center gap-3">
+			<span class="h-px w-12 bg-base-content/20"></span>
+			<span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+			<span class="h-px flex-1 bg-base-content/10"></span>
 		</div>
-	</div>
+	</header>
 </div>
 
 <!-- Recent Posts Section — Conway's Game of Life renders behind the cards.
