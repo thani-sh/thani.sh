@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "svelte-kit sync && yarn build:embed && yarn build:index && yarn build:svkit",
+    "build": "svelte-kit sync && bun run build:embed && bun run build:index && bun run build:svkit",
     "build:index": "node .scripts/build-index.js",
     "build:embed": "bash .scripts/build-embed.sh",
     "build:svkit": "vite build",
@@ -25,6 +25,7 @@
     "@sveltejs/vite-plugin-svelte": "^7.1.2",
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.1",
+    "@types/bun": "latest",
     "@types/node": "^26.0.1",
     "daisyui": "^5.6.3",
     "eslint": "^10.5.0",
@@ -45,11 +46,6 @@
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.62.0",
     "vite": "^8.1.0",
-    "wrangler": "^4.105.0",
-    "@types/bun": "latest"
-  },
-  "workspaces": [
-    "src/routes/blog/*/embed-*"
-  ],
-  "packageManager": "yarn@4.9.2"
+"wrangler": "^4.105.0"
+	}
 }
