@@ -1,5 +1,9 @@
-// blocks are 10px by 10px
+// blocks are 10px by 10px (grid cell size)
 const BLOCK_SIZE = 10;
+
+// rendered dot is half the cell, centered inside it
+const DOT_SIZE = 4;
+const DOT_OFFSET = (BLOCK_SIZE - DOT_SIZE) / 2;
 
 // render 1 frame per FRAME_DURATION ms
 const FRAME_DURATION = 200;
@@ -214,10 +218,10 @@ export class BackgroundCanvas {
 			for (let x = 0; x < this.width; x++) {
 				if (row[x]) {
 					this.ctx.fillRect(
-						x * BLOCK_SIZE + 1,
-						y * BLOCK_SIZE + 1,
-						BLOCK_SIZE - 2,
-						BLOCK_SIZE - 2
+						x * BLOCK_SIZE + DOT_OFFSET,
+						y * BLOCK_SIZE + DOT_OFFSET,
+						DOT_SIZE,
+						DOT_SIZE
 					);
 				}
 			}
