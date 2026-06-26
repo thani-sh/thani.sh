@@ -7,7 +7,7 @@
 
 <div class="container mx-auto p-4">
 	<!-- Hero Section -->
-	<div class="pt-20 pb-12 lg:pt-32 lg:pb-20">
+	<div class="pt-20 pb-4 lg:pt-32 lg:pb-6">
 		<div class="max-w-3xl">
 			<h1 class="text-5xl font-light tracking-tight lg:text-7xl">thani<span class="text-primary">.</span>sh</h1>
 			<p class="mt-6 font-mono text-base text-base-content/70 lg:text-lg">
@@ -20,10 +20,13 @@
 			</div>
 		</div>
 	</div>
+</div>
 
-	<!-- Recent Posts Section — Conway's Game of Life renders behind the cards -->
-	<section class="relative isolate -mx-4 overflow-hidden px-4 py-12 lg:-mx-6 lg:px-6">
-		<BackgroundCanvas class="absolute inset-0 -z-10 h-full w-full" />
+<!-- Recent Posts Section — Conway's Game of Life renders behind the cards.
+     Lives outside the container so the canvas spans the full viewport width. -->
+<section class="relative isolate overflow-hidden pt-4 pb-16 lg:pt-6 lg:pb-20">
+	<BackgroundCanvas class="absolute inset-0 -z-10 h-full w-full" />
+	<div class="container mx-auto p-4">
 		<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
 			{#each data.posts as post (post.slug)}
 				<a
@@ -44,5 +47,5 @@
 				</a>
 			{/each}
 		</div>
-	</section>
-</div>
+	</div>
+</section>
