@@ -1,7 +1,7 @@
-// blocks are 10px by 10px (grid cell size)
-const BLOCK_SIZE = 10;
+// blocks are 6px by 6px (grid cell size)
+const BLOCK_SIZE = 6;
 
-// rendered dot is half the cell, centered inside it
+// rendered dot fills most of the cell, leaving a 1px gap on each side
 const DOT_SIZE = 4;
 const DOT_OFFSET = (BLOCK_SIZE - DOT_SIZE) / 2;
 
