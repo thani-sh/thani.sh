@@ -7,6 +7,6 @@
 		"build": "parcel build src/index.html --dist-dir ../../../../../static/blog/2021-01-24-multiplayer-tetris-game-part-2/embed-poc --public-url /blog/2021-01-24-multiplayer-tetris-game-part-2/embed-poc/"
 	},
 	"devDependencies": {
-		"parcel": "^2.15.1"
+		"parcel": "^2.16.4"
 	}
 }
