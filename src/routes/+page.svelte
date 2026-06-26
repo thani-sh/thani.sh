@@ -6,17 +6,11 @@
 
 <div class="container mx-auto p-4">
 	<!-- Hero Section -->
-	<div class="hero relative overflow-hidden pt-16 pb-4 lg:py-32">
-		<div class="mesh-bg absolute inset-0 -z-10"></div>
-		<div class="hero-content text-center relative">
+	<div class="hero pt-16 pb-4 lg:py-32">
+		<div class="hero-content text-center">
 			<div>
-				<h1 class="gradient-text mb-4 text-6xl font-bold tracking-tight">thani.sh</h1>
-				<p class="font-mono text-lg">
-					<span class="text-base-content/50">$</span>
-					<span class="text-base-content/80">dd if=/dev/head of=/dev/blog</span><span
-						class="cursor-blink text-primary">█</span
-					>
-				</p>
+				<h1 class="mb-4 text-6xl font-bold">thani.sh</h1>
+				<p class="inline-block rounded-md font-mono text-lg">dd if=/dev/head of=/dev/blog</p>
 			</div>
 		</div>
 	</div>
@@ -27,7 +21,7 @@
 			{#each data.posts as post (post.slug)}
 				<a
 					href="/blog/{post.slug}"
-					class="card card-border bg-base-200/60 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/10"
+					class="card card-border transition-shadow duration-300 hover:shadow-lg"
 				>
 					<div class="card-body">
 						<h2 class="card-title">{post.title}</h2>
