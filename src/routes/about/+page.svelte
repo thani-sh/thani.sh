@@ -27,12 +27,12 @@
 			<span class="h-px flex-1 bg-base-content/10"></span>
 		</div>
 		<div class="mt-3 flex items-center justify-between">
-			<SocialIcons />
 			<a
 				href="/"
 				class="font-mono text-xs text-base-content/50 hover:text-base-content/80 hover:underline"
 				>← home</a
 			>
+			<SocialIcons />
 		</div>
 	</header>
 </div>
@@ -55,9 +55,9 @@
 			<span class="text-primary">##</span> career
 		</h3>
 		<p class="mt-4 text-base-content/80 leading-relaxed">
-			Co-founded Storybook at Kadira, designed CRDT collaboration at Creately, kept Klarna's
-			payments from eating itself, revamped access control at Normative, now leading frontend
-			at PostNord.
+			Co-founded Storybook at Kadira, built Creately with a CRDT-based collaborative editor,
+			kept Klarna's monthly invoice flow reliable, revamped access control at Normative, now
+			leading a full-stack team at PostNord.
 		</p>
 
 		<ol class="mt-8 grid grid-cols-1 gap-y-10 sm:grid-cols-5 sm:gap-x-4">
@@ -112,7 +112,8 @@
 			know me for, even though I haven't touched the codebase in years.
 		</p>
 		<p>
-			When work quiets down I hack on small OSS tools — <a
+			Side projects are how I learn new things — mostly weekends and late nights after the kids
+			are asleep. The ones that survived: <a
 				href="https://github.com/thani-sh/provar"
 				class="hover:text-primary hover:underline"
 				rel="noopener">provar</a
@@ -124,7 +125,7 @@
 				href="https://github.com/thani-sh/taskmaster"
 				class="hover:text-primary hover:underline"
 				rel="noopener">taskmaster</a
-			> — and write the occasional blog post here. Both happen less often than I'd like.
+			>. Blog posts happen even less often.
 		</p>
 	</section>
 </main>

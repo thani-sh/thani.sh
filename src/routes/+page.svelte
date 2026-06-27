@@ -154,11 +154,11 @@
 			<span class="h-px flex-1 bg-base-content/10"></span>
 		</div>
 		<div class="mt-3 flex items-center justify-between">
-			<SocialIcons />
 			<a
 				href="/about"
 				class="font-mono text-xs text-base-content/50 hover:text-base-content/80 hover:underline">→ about</a
 			>
+			<SocialIcons />
 		</div>
 	</header>
 </div>
