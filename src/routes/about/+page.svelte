@@ -16,24 +16,40 @@
 	</header>
 </div>
 
-<main class="container mx-auto max-w-3xl space-y-6 p-4 pb-16 lg:pb-20">
-	<!-- Bio — first-person, no CV chronology. A few short paragraphs that
-	     sound like the blog rather than a résumé. -->
-	<section class="space-y-4">
-		<p class="text-base-content/80 leading-relaxed">
-			I've been writing code for about a decade. Payments at Klarna, then climate accounting
-			at Normative, then four years at Creately where I built a CRDT-based collaborative
-			editor from scratch (the kind where two people can edit the same thing without stepping
-			on each other's toes). These days I lead a frontend team at PostNord, mostly thinking
-			about how AI agents fit into dev workflows.
+<main class="container mx-auto max-w-3xl space-y-4 p-4 pb-16 lg:pb-20">
+	<!-- Bio — first-person, chronological order, each role gets a specific
+	     angle (not a generic "did things at company"). Reads more like a
+	     blog post than a résumé. -->
+	<section class="text-base-content/80 space-y-4 leading-relaxed">
+		<p>
+			I've been writing code for about a decade. Started as a co-founder at Kadira, where I
+			helped ship Storybook — making it framework-agnostic, then getting the React Native
+			version out the door.
 		</p>
-		<p class="text-base-content/80 leading-relaxed">
-			I'm one of the founding developers of React Storybook. That's probably the thing people
-			know me for, even though I haven't touched the codebase in years.
+		<p>
+			After Kadira I spent four years at Creately, designing how their collaborative editor
+			would actually work: CRDTs end to end, plus enough HTML Canvas optimization that two
+			people on the same doc stopped noticing each other.
 		</p>
-		<p class="text-base-content/80 leading-relaxed">
-			When work quiets down I hack on small OSS tools — provar, duct-tape, taskmaster, a few
-			others — and write the occasional blog post here. Both happen less often than I'd like.
+		<p>
+			Klarna was a different kind of problem. Payments is mostly the unglamorous work of
+			making sure the same operation can't run twice by accident — race conditions,
+			idempotency, all the things you only appreciate after they've bitten you.
+		</p>
+		<p>
+			Then Normative, where I revamped the access control layer — user groups, granular
+			property-based permissions, federated auth for the enterprise customers who'd been
+			blocked on it. The kind of work where "the right people see the right things" depends
+			entirely on which customer is asking.
+		</p>
+		<p>
+			These days I lead a frontend team at PostNord, which is mostly process work: getting
+			engineers to write things down, training the team on AI-assisted dev, pushing the
+			boring best practices that prevent 3am pages.
+		</p>
+		<p>
+			When work quiets down I hack on small OSS tools — provar, duct-tape, taskmaster — and
+			write the occasional blog post here. Both happen less often than I'd like.
 		</p>
 	</section>
 
