@@ -2,13 +2,13 @@
 	import SocialIcons from '$lib/ui/SocialIcons.svelte';
 
 	// Career data — chronological order. Kadira first (Storybook birthplace),
-	// then Creately → Klarna → Normative → PostNord. Taglines stripped; the
-	// summary sentence under "## career" carries the per-role detail now.
+	// then Creately → Klarna → Normative → PostNord. Only the start year on
+	// each node — gaps are implied by the timeline rhythm, not spelled out.
 	const roles = [
-		{ dates: '2015–16', company: 'Kadira', current: false },
-		{ dates: '2016–20', company: 'Creately', current: false },
-		{ dates: '2020–23', company: 'Klarna', current: false },
-		{ dates: '2023–25', company: 'Normative', current: false },
+		{ dates: '2015', company: 'Kadira', current: false },
+		{ dates: '2016', company: 'Creately', current: false },
+		{ dates: '2020', company: 'Klarna', current: false },
+		{ dates: '2023', company: 'Normative', current: false },
 		{ dates: 'now', company: 'PostNord', current: true }
 	];
 </script>
@@ -55,9 +55,9 @@
 			<span class="text-primary">##</span> career
 		</h3>
 		<p class="mt-4 text-base-content/80 leading-relaxed">
-			Co-founded Storybook at Kadira, built Creately with a CRDT-based collaborative editor,
-			kept Klarna's monthly invoice flow reliable, revamped access control at Normative, now
-			leading a full-stack team at PostNord.
+			Co-founded Storybook, built Creately's collaborative editor, kept Klarna's monthly
+			invoice smoooth, wrote more SQL than is healthy at Normative, now leading a full-stack
+			team at PostNord.
 		</p>
 
 		<ol class="mt-8 grid grid-cols-1 gap-y-10 sm:grid-cols-5 sm:gap-x-4">
