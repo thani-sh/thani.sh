@@ -1,38 +1,13 @@
-# sv
+# thani.sh
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+My personal site. Writing lives here.
 
-## Creating a project
+## What's on it
 
-If you're seeing this, you've probably already done this step. Congrats!
+- **Blog** — posts going back to 2014. Mostly short technical notes; occasional longer series when a project warrants it. The most recent is a six-part build of a multiplayer Tetris game.
+- **About** — who I am, what I'm working on, and where to find me.
+- **RSS feed** — the posts without the chrome.
 
-```bash
-# create a new project in the current directory
-npx sv create
+## The look
 
-# create a new project in my-app
-npx sv create my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `bun install` (or `npm install`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+Warm paper background, mono details, and a [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) canvas running behind the posts. The tagline at the top of the home page — `dd if=/dev/head of=/dev/blog` — is a private joke, and a reminder to keep writing.
