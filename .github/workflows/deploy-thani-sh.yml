@@ -16,10 +16,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
       - name: Install Bun
-        run: curl -fsSL https://bun.sh/install | bash
-      - name: Add Bun to PATH
-        run: echo "$HOME/.bun/bin" >> "$GITHUB_PATH"
+        run: npm install -g bun
       - name: Install dependencies
         run: bun install --frozen-lockfile
       - name: Build thani.sh
