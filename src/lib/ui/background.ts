@@ -49,6 +49,7 @@ export class BackgroundCanvas {
 	private resizeObserver: ResizeObserver | null = null;
 	private rafId: number | null = null;
 	private running = false;
+	private paused = false;
 	private reducedMotion = false;
 
 	constructor(private canvas: HTMLCanvasElement) {
@@ -80,7 +81,40 @@ export class BackgroundCanvas {
 		}
 		this.resizeObserver?.disconnect();
 		this.canvas.removeEventListener('click', this.onClick);
+		document.removeEventListener('visibilitychange', this.onVisibilityChange);
 	}
+
+	/**
+	 * Pauses the animation loop without tearing down listeners. Used when the
+	 * tab is hidden so we stop burning CPU/GPU on a frame nobody sees.
+	 */
+	public pause(): void {
+		if (!this.running || this.paused) return;
+		this.paused = true;
+		if (this.rafId !== null) {
+			cancelAnimationFrame(this.rafId);
+			this.rafId = null;
+		}
+	}
+
+	/**
+	 * Resumes the animation loop after a pause. Resets the frame timer so we
+	 * don't fast-forward through missed frames on resume.
+	 */
+	public resume(): void {
+		if (!this.running || !this.paused) return;
+		this.paused = false;
+		this.previousTs = Date.now();
+		this.runAnimation();
+	}
+
+	private onVisibilityChange = (): void => {
+		if (document.hidden) {
+			this.pause();
+		} else {
+			this.resume();
+		}
+	};
 
 	/**
 	 * Resize canvas to match the parent's current size and re-initialize buffers.
@@ -111,6 +145,10 @@ export class BackgroundCanvas {
 
 	private setupListeners(): void {
 		this.canvas.addEventListener('click', this.onClick);
+		document.addEventListener('visibilitychange', this.onVisibilityChange);
+		// If the page mounted while the tab was already hidden (e.g. background
+		// tab being focused), start paused to avoid a burst of catch-up frames.
+		if (document.hidden) this.pause();
 		const parent = this.canvas.parentElement;
 		if (parent && typeof ResizeObserver !== 'undefined') {
 			this.resizeObserver = new ResizeObserver(() => this.resetCanvas());
