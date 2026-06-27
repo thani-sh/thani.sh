@@ -30,20 +30,21 @@
 					aria-hidden="true"
 				>
 					<!-- TODO: swap this CSS avatar for an <img src="/avatar.jpg"> once you have one -->
-					TS
+					TN
 				</div>
 				<div class="flex-1 pt-1">
-					<h2 class="font-light text-xl tracking-tight">Thani Shafeek</h2>
+					<h2 class="font-light text-xl tracking-tight">Thanish Nizam</h2>
 					<p class="mt-1 font-mono text-sm text-base-content/60">
-						software engineer · stockholm
+						tech lead at postnord · knivsta, sweden
 					</p>
 				</div>
 			</div>
-			<!-- TODO: replace with a 2-3 line bio about what you actually do and care about -->
 			<p class="mt-4 text-base-content/80 leading-relaxed">
-				Building multiplayer systems, distributed protocols, and the occasional game.
-				I write long-form on the blog and shorter thoughts in the feed. Previously shipped
-				software at companies you've probably heard of, currently figuring out what comes next.
+				Polyglot software engineer specializing in SaaS products. Ten years of building things
+				across payments, carbon accounting, collaborative editing, and developer tools —
+				currently tech-lead at PostNord working on AI-assisted development workflows.
+				Founding developer of React Storybook; built a CRDT-based collaborative editor at
+				Creately from scratch.
 			</p>
 		</div>
 	</section>
@@ -59,20 +60,49 @@
 				<li class="flex gap-3">
 					<span class="shrink-0 font-mono text-base-content/40">→</span>
 					<span>
-						Building
-						<a href="/blog/2025-06-08-multiplayer-tetris-game-part-6" class="hover:text-primary hover:underline"
-							>a multiplayer Tetris game</a
+						Leading frontend architecture and AI-assisted development at
+						<a
+							href="https://www.postnord.com/"
+							class="hover:text-primary hover:underline"
+							rel="noopener">PostNord</a
 						>
-						using AI agents to do the heavy lifting
 					</span>
 				</li>
 				<li class="flex gap-3">
 					<span class="shrink-0 font-mono text-base-content/40">→</span>
-					<span>Reading about lock-free data structures and CRDTs</span>
+					<span>
+						Open-sourcing side projects —
+						<a
+							href="https://github.com/thani-sh/provar"
+							class="hover:text-primary hover:underline"
+							rel="noopener">provar</a
+						>
+						(visual testing),
+						<a
+							href="https://github.com/thani-sh/duct-tape"
+							class="hover:text-primary hover:underline"
+							rel="noopener">duct-tape</a
+						>
+						(LLM self-healing runtime),
+						<a
+							href="https://github.com/thani-sh/taskmaster"
+							class="hover:text-primary hover:underline"
+							rel="noopener">taskmaster</a
+						>
+						(workflow engine), and a few others
+					</span>
 				</li>
 				<li class="flex gap-3">
 					<span class="shrink-0 font-mono text-base-content/40">→</span>
-					<span>Based in Stockholm, Sweden</span>
+					<span>
+						Writing
+						<a
+							href="/blog/2025-06-08-multiplayer-tetris-game-part-6"
+							class="hover:text-primary hover:underline"
+							>the multiplayer Tetris series</a
+						>
+						on the blog — letting AI agents do the heavy lifting this time
+					</span>
 				</li>
 			</ul>
 		</div>
@@ -86,12 +116,10 @@
 				<span class="text-primary">##</span> find me
 			</h3>
 			<div class="mt-3 flex flex-wrap gap-2">
-				<!-- TODO: replace the email + add/remove the channels you actually use.
-				     rel="me" on social links helps Mastodon/Bridgy verify ownership. -->
 				<a
-					href="mailto:hello@thani.sh"
+					href="mailto:me@thani.sh"
 					class="rounded-field border border-base-300 bg-base-100 px-3 py-1.5 text-sm text-base-content/80 transition-all hover:border-primary"
-					>hello@thani.sh</a
+					>me@thani.sh</a
 				>
 				<a
 					href="https://github.com/thani-sh"
@@ -100,7 +128,7 @@
 					>github / thani-sh</a
 				>
 				<a
-					href="https://www.linkedin.com/in/thani-shafeek"
+					href="https://www.linkedin.com/in/thani-sh/"
 					rel="me"
 					class="rounded-field border border-base-300 bg-base-100 px-3 py-1.5 text-sm text-base-content/80 transition-all hover:border-primary"
 					>linkedin</a
