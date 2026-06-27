@@ -17,7 +17,7 @@ The go playground is where go code can be run easily and fast therefore it makes
 
 <img src={img1} alt="The Go playground with a very familiar go program" />
 
-> The Go Playground is a web service that runs on [golang.org](https://golang.org/)'s servers. The service receives a Go program, compiles, links, and runs the program inside a sandbox, then returns the output. — Go Playground About Page
+> The Go Playground is a web service that runs on [golang.org](https://golang.org/)'s servers. The service receives a Go program, compiles, links, and runs the program inside a sandbox, then returns the output. (Go Playground About Page)
 
 When visiting the playground, it will already have a simple a hello-world like program in the editor. The code can be executed using the **Run** button. Google chrome users can install the [Better Go Playground](https://chrome.google.com/webstore/detail/better-go-playground/odfhkelcmblecfdnboahphiafolojmpl?hl=en) extension for syntax highlighting, code auto completion, auto save and more features.
 

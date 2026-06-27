@@ -8,7 +8,7 @@ const DOT_OFFSET = (BLOCK_SIZE - DOT_SIZE) / 2;
 // render 1 frame per FRAME_DURATION ms
 const FRAME_DURATION = 200;
 
-// list of available shapes (kept from original — non-glider patterns so the
+// list of available shapes (kept from original, non-glider patterns so the
 // simulation trends toward stable structures rather than migrating off-screen)
 const AVAILABLE_SHAPES = [
 	[[1]],
@@ -244,7 +244,7 @@ export class BackgroundCanvas {
 	}
 
 	private renderFrame(): void {
-		// Transparent background — let the page paper show through where there
+		// Transparent background: let the page paper show through where there
 		// are no cells, and let cards (rendered translucent on top) reveal the
 		// cells behind them.
 		this.ctx.clearRect(0, 0, this.widthPx, this.heightPx);

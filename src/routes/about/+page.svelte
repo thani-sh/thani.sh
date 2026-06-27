@@ -1,19 +1,19 @@
 <script lang="ts">
 	import SocialIcons from '$lib/ui/SocialIcons.svelte';
 
-	// Career data — chronological order. Kadira first (Storybook birthplace),
+	// Career data: chronological order. Kadira first (Storybook birthplace),
 	// then Creately → Klarna → Normative → PostNord. Only the start year on
-	// each node — gaps are implied by the timeline rhythm, not spelled out.
+	// each node. Gaps are implied by the timeline rhythm, not spelled out.
 	const roles = [
 		{ dates: '2015', company: 'Kadira', current: false },
 		{ dates: '2016', company: 'Creately', current: false },
 		{ dates: '2020', company: 'Klarna', current: false },
 		{ dates: '2023', company: 'Normative', current: false },
-		{ dates: 'now', company: 'PostNord', current: true }
+		{ dates: '2025', company: 'PostNord', current: true }
 	];
 </script>
 
-<!-- /about — the about page. Same chrome as the home page (thani.sh / $ whoami
+<!-- /about: the about page. Same chrome as the home page (thani.sh / $ whoami
      + divider + icons + page link), so the two pages feel like siblings. -->
 <div class="container mx-auto p-4">
 	<header class="pt-20 pb-4 lg:pt-32 lg:pb-6">
@@ -38,26 +38,23 @@
 </div>
 
 <main class="container mx-auto max-w-3xl space-y-10 p-4 pb-16 lg:pb-20">
-	<!-- whoami — short identity paragraph. First thing below the header. -->
+	<!-- whoami: short identity paragraph. First thing below the header. -->
 	<section>
 		<h3 class="flex items-center gap-2 font-mono text-sm text-base-content/60">
 			<span class="text-primary">##</span> whoami
 		</h3>
 		<p class="mt-4 text-base-content/80 leading-relaxed">
-			Software engineer based in Knivsta, Sweden. I've been writing code professionally since
-			2015 — mostly TypeScript and Go these days, with side projects when work quiets down.
+			I'm a Sweden-based software engineer with 10+ years of professional coding experience. These days, I mostly build with TypeScript and Go, while dedicating my weekends to mastering AI through hands-on side projects.
 		</p>
 	</section>
 
-	<!-- career — summary sentence, then the visual timeline -->
+	<!-- career: summary sentence, then the visual timeline -->
 	<section>
 		<h3 class="flex items-center gap-2 font-mono text-sm text-base-content/60">
 			<span class="text-primary">##</span> career
 		</h3>
 		<p class="mt-4 text-base-content/80 leading-relaxed">
-			Co-founded Storybook, built Creately's collaborative editor, kept Klarna's monthly
-			invoice smoooth, wrote more SQL than is healthy at Normative, now leading a full-stack
-			team at PostNord.
+			Co-founded Kadira (where I helped lay the initial bricks for Storybook), built Creately's collaborative editor, kept Klarna's monthly invoice smoooth, wrote more SQL than is healthy at Normative, and now leading a full-stack team at PostNord.
 		</p>
 
 		<ol class="mt-8 grid grid-cols-1 gap-y-10 sm:grid-cols-5 sm:gap-x-4">
@@ -104,28 +101,11 @@
 		</ol>
 	</section>
 
-	<!-- Side projects — kept as prose because there's no useful visual for
+	<!-- Side projects: kept as prose because there's no useful visual for
 	     "I tinker on OSS sometimes". -->
 	<section class="text-base-content/80 space-y-4 leading-relaxed">
 		<p>
-			I'm one of the founding developers of React Storybook. That's probably the thing people
-			know me for, even though I haven't touched the codebase in years.
-		</p>
-		<p>
-			Side projects are how I learn new things — mostly weekends and late nights after the kids
-			are asleep. The ones that survived: <a
-				href="https://github.com/thani-sh/provar"
-				class="hover:text-primary hover:underline"
-				rel="noopener">provar</a
-			>, <a
-				href="https://github.com/thani-sh/duct-tape"
-				class="hover:text-primary hover:underline"
-				rel="noopener">duct-tape</a
-			>, <a
-				href="https://github.com/thani-sh/taskmaster"
-				class="hover:text-primary hover:underline"
-				rel="noopener">taskmaster</a
-			>. Blog posts happen even less often.
+			Side projects are how I learn new things, mostly on weekends and late nights after the kids are asleep. Blog posts happen even less often.
 		</p>
 	</section>
 </main>

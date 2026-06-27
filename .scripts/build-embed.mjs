@@ -4,7 +4,7 @@
 // the HTML, follows the <script type="module"> tag, bundles the module,
 // and rewrites the script src. esbuild doesn't have that exact feature,
 // so we use esbuild's JS API to bundle the .mjs in-memory and inline the
-// result as a single <script type="module"> block — equivalent output
+// result as a single <script type="module"> block. Equivalent output
 // for these standalone embeds, no external file references to chase.
 import { build } from 'esbuild';
 import fs from 'fs';

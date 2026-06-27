@@ -9,7 +9,7 @@ Here’s an expert evaluation of your multiplayer Tetris game architecture, base
 **Evaluation Thought Process:**
 
 1. **Modular Design:**
-   The architecture is cleanly modularized. Core concepts—such as player input, rendering, game world state, and rules—are separated into distinct modules (player.ts, renderer.ts, world.ts, world_rule.ts). This separation of concerns makes the codebase maintainable and extensible.
+   The architecture is cleanly modularized. Core concepts (such as player input, rendering, game world state, and rules) are separated into distinct modules (player.ts, renderer.ts, world.ts, world_rule.ts). This separation of concerns makes the codebase maintainable and extensible.
 
 2. **Extensible Ruleset:**
    The rules engine is implemented as a list of pure functions (ruleset), making it easy to add, remove, or modify game rules without impacting unrelated logic. This is a strong architectural choice for future feature growth.

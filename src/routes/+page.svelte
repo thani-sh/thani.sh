@@ -46,7 +46,7 @@
 
 	function measureRowHeight() {
 		// querySelector picks up whichever card is first after a pagination
-		// change — different posts have different summary lengths, so row
+		// change. Different posts have different summary lengths, so row
 		// height isn't constant across pages.
 		const firstCard = gridEl?.querySelector('.card') as HTMLElement | null;
 		if (firstCard) {
@@ -105,7 +105,7 @@
 		gridObserver.observe(gridEl);
 		measureRowHeight();
 
-		// Column count flips at md/lg — mirror the grid-cols-* in the template.
+		// Column count flips at md/lg. Mirror the grid-cols-* in the template.
 		const mqLg = window.matchMedia('(min-width: 1024px)');
 		const mqMd = window.matchMedia('(min-width: 768px)');
 		const onMqChange = () => {
@@ -142,7 +142,7 @@
 <svelte:window onkeydown={handleKeydown} />
 
 <div class="container mx-auto p-4">
-	<!-- Hero Section — left-aligned to match the blog post view's header pattern -->
+	<!-- Hero Section: left-aligned to match the blog post view's header pattern -->
 	<header class="pt-20 pb-4 lg:pt-32 lg:pb-6">
 		<h1 class="text-5xl font-light tracking-tight lg:text-7xl">thani<span class="text-primary">.</span>sh</h1>
 		<p class="mt-2 font-mono text-base text-base-content/70 lg:text-lg">
@@ -163,7 +163,7 @@
 	</header>
 </div>
 
-<!-- Recent Posts Section — Conway's Game of Life renders behind the cards.
+<!-- Recent Posts Section: Conway's Game of Life renders behind the cards.
      Lives outside the container so the canvas spans the full viewport width.
      min-h-[calc(100vh-Xrem)] keeps the canvas reaching the bottom of the
      viewport even when the card grid is short, so we never get a blank
