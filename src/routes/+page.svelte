@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { browser } from '$app/environment';
-	import { page } from '$app/state';
+	import { page as pageStore } from '$app/stores';
 	import type { PageData } from './$types';
 	import BackgroundCanvas from '$lib/ui/BackgroundCanvas.svelte';
 	import SocialIcons from '$lib/ui/SocialIcons.svelte';
@@ -63,7 +63,12 @@
 	})();
 
 	// URL-driven pagination so reload / back / share work as expected.
-	$: pageIndex = Math.max(1, Number(page.url.searchParams.get('page') ?? '1') || 1);
+	// NOTE: uses $pageStore (the $app/stores store) instead of $app/state's
+	// `page` so that legacy `$:` reactive statements pick up URL changes after
+	// `goto()`. Reading `page.url` from $app/state in a `$:` block does NOT
+	// establish a reactive dependency in legacy mode, so the derived state
+	// below would not refresh after client-side navigation.
+	$: pageIndex = Math.max(1, Number($pageStore.url.searchParams.get('page') ?? '1') || 1);
 	$: totalPages = Math.max(1, Math.ceil(data.posts.length / perPage));
 	$: clampedIndex = Math.min(pageIndex, totalPages);
 	$: paginatedPosts = data.posts.slice((clampedIndex - 1) * perPage, clampedIndex * perPage);
@@ -73,7 +78,7 @@
 	function navigate(delta: number) {
 		const next = clampedIndex + delta;
 		if (next < 1 || next > totalPages) return;
-		const url = new URL(page.url);
+		const url = new URL($pageStore.url);
 		if (next === 1) {
 			url.searchParams.delete('page');
 		} else {
@@ -126,7 +131,7 @@
 	// window so more rows fit → fewer pages needed), sync the URL so a reload
 	// doesn't bounce them to a now-defunct page index.
 	$: if (browser && pageIndex !== clampedIndex) {
-		const url = new URL(page.url);
+		const url = new URL($pageStore.url);
 		const desiredParam = clampedIndex === 1 ? null : String(clampedIndex);
 		if (url.searchParams.get('page') !== desiredParam) {
 			if (desiredParam === null) {
