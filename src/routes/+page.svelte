@@ -161,7 +161,7 @@
 		<div class="mt-3 flex items-center justify-between">
 			<a
 				href="/about"
-				class="font-mono text-xs text-base-content/50 hover:text-base-content/80 hover:underline">→ about</a
+				class="font-mono text-xs text-base-content/50 hover:text-primary">→ about</a
 			>
 			<SocialIcons />
 		</div>
@@ -209,7 +209,7 @@
 					type="button"
 					onclick={() => navigate(-1)}
 					disabled={clampedIndex <= 1}
-					class="rounded-field border border-base-300 bg-base-100/85 px-4 py-2 text-sm text-base-content/80 backdrop-blur-[2px] transition-all hover:border-primary disabled:opacity-30 disabled:hover:border-base-300"
+					class="cursor-pointer rounded-field border border-base-300 bg-base-100/85 px-4 py-2 text-sm text-base-content/80 backdrop-blur-[2px] transition-all duration-200 hover:-translate-y-0.5 hover:border-primary disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:translate-y-0 disabled:hover:border-base-300"
 					aria-label="Newer posts"
 				>
 					<span aria-hidden="true">←</span> Newer
@@ -223,7 +223,7 @@
 					type="button"
 					onclick={() => navigate(1)}
 					disabled={clampedIndex >= totalPages}
-					class="rounded-field border border-base-300 bg-base-100/85 px-4 py-2 text-sm text-base-content/80 backdrop-blur-[2px] transition-all hover:border-primary disabled:opacity-30 disabled:hover:border-base-300"
+					class="cursor-pointer rounded-field border border-base-300 bg-base-100/85 px-4 py-2 text-sm text-base-content/80 backdrop-blur-[2px] transition-all duration-200 hover:-translate-y-0.5 hover:border-primary disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:translate-y-0 disabled:hover:border-base-300"
 					aria-label="Older posts"
 				>
 					Older <span aria-hidden="true">→</span>

@@ -34,7 +34,7 @@
 		</svg>
 	</a>
 	<a
-		href="https://www.linkedin.com/in/thani-sh/"
+		href="https://linkedin.com/in/thani-sh"
 		rel="me"
 		aria-label="LinkedIn"
 		class="text-base-content/60 transition-colors hover:text-primary"

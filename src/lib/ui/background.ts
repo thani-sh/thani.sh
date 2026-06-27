@@ -251,6 +251,7 @@ export class BackgroundCanvas {
 
 		const foregroundStyle = readCssVar('--color-primary', 'oklch(58% 0.15 35)');
 		this.ctx.fillStyle = foregroundStyle;
+		this.ctx.globalAlpha = 0.2;
 		for (let y = 0; y < this.height; y++) {
 			const row = this.currBuffer[y];
 			for (let x = 0; x < this.width; x++) {
@@ -264,5 +265,6 @@ export class BackgroundCanvas {
 				}
 			}
 		}
+		this.ctx.globalAlpha = 1;
 	}
 }

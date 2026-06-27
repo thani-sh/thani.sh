@@ -29,7 +29,7 @@
 		<div class="mt-3 flex items-center justify-between">
 			<a
 				href="/"
-				class="font-mono text-xs text-base-content/50 hover:text-base-content/80 hover:underline"
+				class="font-mono text-xs text-base-content/50 hover:text-primary"
 				>← home</a
 			>
 			<SocialIcons />
