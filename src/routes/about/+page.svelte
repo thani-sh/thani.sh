@@ -1,15 +1,11 @@
-<!-- /about — single static page that lets a stranger identify you and find a
-     way to reach out. Mirrors the home page's warm-paper / terminal aesthetic:
-     left-aligned hero, mono `##` section markers, translucent cards matching
-     the post preview style on the home page.
-
-     Placeholder content is realistic-shaped so the layout reads as a real
-     page; search for `TODO` to find the bits you want to replace. -->
+<!-- /about — person identity page. The home page hero is *site* identity
+     (thani.sh / $ dd / blog); this hero is *person* identity (your name +
+     one-line tagline + divider). One header, not two. -->
 <div class="container mx-auto p-4">
 	<header class="pt-20 pb-8 lg:pt-32 lg:pb-12">
-		<h1 class="text-5xl font-light tracking-tight lg:text-7xl">thani<span class="text-primary">.</span>sh</h1>
+		<h1 class="text-5xl font-light tracking-tight lg:text-7xl">Thanish Nizam</h1>
 		<p class="mt-2 font-mono text-base text-base-content/70 lg:text-lg">
-			<span class="text-primary">$</span> whoami
+			<span class="text-primary">$</span> polyglot software engineer specializing in saas products
 		</p>
 		<div class="mt-8 flex items-center gap-3">
 			<span class="h-px w-12 bg-base-content/20"></span>
@@ -20,34 +16,14 @@
 </div>
 
 <main class="container mx-auto max-w-3xl space-y-6 p-4 pb-16 lg:pb-20">
-	<!-- Identity — initials avatar (CSS-only, swap for <img> when you have one),
-	     name, one-liner role, and a short bio paragraph. -->
-	<section class="card card-border bg-base-100/85 backdrop-blur-[2px]">
-		<div class="card-body">
-			<div class="flex items-start gap-4">
-				<div
-					class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-primary/10 font-light text-2xl text-primary"
-					aria-hidden="true"
-				>
-					<!-- TODO: swap this CSS avatar for an <img src="/avatar.jpg"> once you have one -->
-					TN
-				</div>
-				<div class="flex-1 pt-1">
-					<h2 class="font-light text-xl tracking-tight">Thanish Nizam</h2>
-					<p class="mt-1 font-mono text-sm text-base-content/60">
-						tech lead at postnord · knivsta, sweden
-					</p>
-				</div>
-			</div>
-			<p class="mt-4 text-base-content/80 leading-relaxed">
-				Polyglot software engineer specializing in SaaS products. Ten years of building things
-				across payments, carbon accounting, collaborative editing, and developer tools —
-				currently tech-lead at PostNord working on AI-assisted development workflows.
-				Founding developer of React Storybook; built a CRDT-based collaborative editor at
-				Creately from scratch.
-			</p>
-		</div>
-	</section>
+	<!-- Bio — flows directly under the header, no card wrapper. The hero is
+	     the identity; this is just a paragraph hanging off it. -->
+	<p class="text-base-content/80 leading-relaxed">
+		Ten years of building things across payments, carbon accounting, collaborative editing,
+		and developer tools — currently tech-lead at PostNord working on AI-assisted development
+		workflows. Founding developer of React Storybook; built a CRDT-based collaborative editor
+		at Creately from scratch.
+	</p>
 
 	<!-- Currently — 2-4 short bullets. Keep it fresh; this section's job is
 	     "is this person still active?" -->
