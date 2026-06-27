@@ -5,8 +5,8 @@ const BLOCK_SIZE = 6;
 const DOT_SIZE = 4;
 const DOT_OFFSET = (BLOCK_SIZE - DOT_SIZE) / 2;
 
-// render 1 frame per FRAME_DURATION ms
-const FRAME_DURATION = 200;
+// render 1 frame per FRAME_DURATION ms (500ms = 2 FPS)
+const FRAME_DURATION = 500;
 
 // list of available shapes (kept from original, non-glider patterns so the
 // simulation trends toward stable structures rather than migrating off-screen)
