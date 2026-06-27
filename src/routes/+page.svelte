@@ -5,6 +5,7 @@
 	import { page } from '$app/state';
 	import type { PageData } from './$types';
 	import BackgroundCanvas from '$lib/ui/BackgroundCanvas.svelte';
+	import SocialIcons from '$lib/ui/SocialIcons.svelte';
 
 	export let data: PageData;
 
@@ -152,9 +153,13 @@
 			<span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
 			<span class="h-px flex-1 bg-base-content/10"></span>
 		</div>
-		<p class="mt-3 font-mono text-xs text-base-content/50">
-			<a href="/about" class="hover:text-base-content/80 hover:underline">→ about</a>
-		</p>
+		<div class="mt-3 flex items-center justify-between">
+			<SocialIcons />
+			<a
+				href="/about"
+				class="font-mono text-xs text-base-content/50 hover:text-base-content/80 hover:underline">→ about</a
+			>
+		</div>
 	</header>
 </div>
 

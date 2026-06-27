@@ -1,25 +1,22 @@
 <script lang="ts">
+	import SocialIcons from '$lib/ui/SocialIcons.svelte';
+
 	// Career data — chronological order. Kadira first (Storybook birthplace),
-	// then Creately → Klarna → Normative → PostNord.
+	// then Creately → Klarna → Normative → PostNord. Taglines stripped; the
+	// summary sentence under "## career" carries the per-role detail now.
 	const roles = [
-		{ dates: '2015–16', company: 'Kadira', tagline: 'co-founder · storybook' },
-		{ dates: '2016–20', company: 'Creately', tagline: 'CRDT collab · canvas perf' },
-		{ dates: '2020–23', company: 'Klarna', tagline: 'race conditions · idempotency' },
-		{ dates: '2023–25', company: 'Normative', tagline: 'access control · federated auth' },
-		{
-			dates: 'now',
-			company: 'PostNord',
-			tagline: 'tech lead · frontend · AI dev',
-			current: true
-		}
+		{ dates: '2015–16', company: 'Kadira', current: false },
+		{ dates: '2016–20', company: 'Creately', current: false },
+		{ dates: '2020–23', company: 'Klarna', current: false },
+		{ dates: '2023–25', company: 'Normative', current: false },
+		{ dates: 'now', company: 'PostNord', current: true }
 	];
 </script>
 
-<!-- /about — the about page. Same hero as the home page (thani.sh / $ whoami)
-     because it's still the same site; what's different is the content below:
-     a visual career timeline + the contact details and links. -->
+<!-- /about — the about page. Same chrome as the home page (thani.sh / $ whoami
+     + divider + icons + page link), so the two pages feel like siblings. -->
 <div class="container mx-auto p-4">
-	<header class="pt-20 pb-8 lg:pt-32 lg:pb-12">
+	<header class="pt-20 pb-4 lg:pt-32 lg:pb-6">
 		<h1 class="text-5xl font-light tracking-tight lg:text-7xl">thani<span class="text-primary">.</span>sh</h1>
 		<p class="mt-2 font-mono text-base text-base-content/70 lg:text-lg">
 			<span class="text-primary">$</span> whoami
@@ -29,18 +26,39 @@
 			<span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
 			<span class="h-px flex-1 bg-base-content/10"></span>
 		</div>
+		<div class="mt-3 flex items-center justify-between">
+			<SocialIcons />
+			<a
+				href="/"
+				class="font-mono text-xs text-base-content/50 hover:text-base-content/80 hover:underline"
+				>← home</a
+			>
+		</div>
 	</header>
 </div>
 
 <main class="container mx-auto max-w-3xl space-y-10 p-4 pb-16 lg:pb-20">
-	<!-- Career timeline — visual replacement for the chronological paragraphs.
-	     Horizontal on desktop (5 nodes connected by a thin line), vertical on
-	     mobile (each node has a line dropping to the next). Current role
-	     (PostNord) gets a filled primary dot to stand out. -->
+	<!-- whoami — short identity paragraph. First thing below the header. -->
+	<section>
+		<h3 class="flex items-center gap-2 font-mono text-sm text-base-content/60">
+			<span class="text-primary">##</span> whoami
+		</h3>
+		<p class="mt-4 text-base-content/80 leading-relaxed">
+			Software engineer based in Knivsta, Sweden. I've been writing code professionally since
+			2015 — mostly TypeScript and Go these days, with side projects when work quiets down.
+		</p>
+	</section>
+
+	<!-- career — summary sentence, then the visual timeline -->
 	<section>
 		<h3 class="flex items-center gap-2 font-mono text-sm text-base-content/60">
 			<span class="text-primary">##</span> career
 		</h3>
+		<p class="mt-4 text-base-content/80 leading-relaxed">
+			Co-founded Storybook at Kadira, designed CRDT collaboration at Creately, kept Klarna's
+			payments from eating itself, revamped access control at Normative, now leading frontend
+			at PostNord.
+		</p>
 
 		<ol class="mt-8 grid grid-cols-1 gap-y-10 sm:grid-cols-5 sm:gap-x-4">
 			{#each roles as role, i (role.company)}
@@ -81,14 +99,13 @@
 
 					<p class="font-mono text-xs text-base-content/50">{role.dates}</p>
 					<h4 class="mt-1 font-light text-base text-base-content">{role.company}</h4>
-					<p class="mt-0.5 text-sm text-base-content/60">{role.tagline}</p>
 				</li>
 			{/each}
 		</ol>
 	</section>
 
-	<!-- Side projects — what I'm up to when work quiets down. Kept as prose
-	     because there's no useful visual for "I tinker on OSS sometimes". -->
+	<!-- Side projects — kept as prose because there's no useful visual for
+	     "I tinker on OSS sometimes". -->
 	<section class="text-base-content/80 space-y-4 leading-relaxed">
 		<p>
 			I'm one of the founding developers of React Storybook. That's probably the thing people
@@ -109,58 +126,5 @@
 				rel="noopener">taskmaster</a
 			> — and write the occasional blog post here. Both happen less often than I'd like.
 		</p>
-	</section>
-
-	<!-- Find me — tag-style pills, same recipe as the pagination buttons on
-	     the home page. -->
-	<section class="card card-border bg-base-100/85 backdrop-blur-[2px]">
-		<div class="card-body">
-			<h3 class="flex items-center gap-2 font-mono text-sm text-base-content/60">
-				<span class="text-primary">##</span> find me
-			</h3>
-			<div class="mt-3 flex flex-wrap gap-2">
-				<a
-					href="mailto:me@thani.sh"
-					class="rounded-field border border-base-300 bg-base-100 px-3 py-1.5 text-sm text-base-content/80 transition-all hover:border-primary"
-					>me@thani.sh</a
-				>
-				<a
-					href="https://github.com/thani-sh"
-					rel="me"
-					class="rounded-field border border-base-300 bg-base-100 px-3 py-1.5 text-sm text-base-content/80 transition-all hover:border-primary"
-					>github / thani-sh</a
-				>
-				<a
-					href="https://www.linkedin.com/in/thani-sh/"
-					rel="me"
-					class="rounded-field border border-base-300 bg-base-100 px-3 py-1.5 text-sm text-base-content/80 transition-all hover:border-primary"
-					>linkedin</a
-				>
-			</div>
-		</div>
-	</section>
-
-	<!-- Elsewhere — utility links. -->
-	<section class="card card-border bg-base-100/85 backdrop-blur-[2px]">
-		<div class="card-body">
-			<h3 class="flex items-center gap-2 font-mono text-sm text-base-content/60">
-				<span class="text-primary">##</span> elsewhere
-			</h3>
-			<ul class="mt-3 space-y-2 text-base-content/80">
-				<li class="flex gap-3">
-					<span class="shrink-0 font-mono text-base-content/40">→</span>
-					<span>
-						<a href="/rss.xml" class="hover:text-primary hover:underline">RSS feed</a>
-						— get the posts without the site
-					</span>
-				</li>
-				<li class="flex gap-3">
-					<span class="shrink-0 font-mono text-base-content/40">→</span>
-					<span>
-						<a href="/" class="hover:text-primary hover:underline">← home</a>
-					</span>
-				</li>
-			</ul>
-		</div>
 	</section>
 </main>
