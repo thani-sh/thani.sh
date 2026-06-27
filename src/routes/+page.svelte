@@ -152,6 +152,9 @@
 			<span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
 			<span class="h-px flex-1 bg-base-content/10"></span>
 		</div>
+		<p class="mt-3 font-mono text-xs text-base-content/50">
+			<a href="/about" class="hover:text-base-content/80 hover:underline">→ about</a>
+		</p>
 	</header>
 </div>
 
